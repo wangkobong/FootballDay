@@ -7,19 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE18F1DA2744F4EC00A83F1F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE18F1D92744F4EC00A83F1F /* Constants.swift */; };
+		FE18F1DC2744FBE000A83F1F /* SearchGround.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE18F1DB2744FBE000A83F1F /* SearchGround.storyboard */; };
+		FE18F1DE2744FC0000A83F1F /* FavoriteList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE18F1DD2744FC0000A83F1F /* FavoriteList.storyboard */; };
+		FE18F1E02744FC1400A83F1F /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE18F1DF2744FC1400A83F1F /* Schedule.storyboard */; };
+		FE18F1E42744FED200A83F1F /* SearchGroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE18F1E32744FED200A83F1F /* SearchGroundViewController.swift */; };
+		FE18F1E62744FEE100A83F1F /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE18F1E52744FEE100A83F1F /* FavoriteListViewController.swift */; };
+		FE18F1E82744FEEB00A83F1F /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE18F1E72744FEEB00A83F1F /* ScheduleViewController.swift */; };
 		FE2A27F2274260F60056706E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A27F1274260F60056706E /* AppDelegate.swift */; };
 		FE2A27F4274260F60056706E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A27F3274260F60056706E /* SceneDelegate.swift */; };
-		FE2A27F6274260F60056706E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A27F5274260F60056706E /* ViewController.swift */; };
+		FE2A27F6274260F60056706E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A27F5274260F60056706E /* MainViewController.swift */; };
 		FE2A27F9274260F60056706E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27F7274260F60056706E /* Main.storyboard */; };
 		FE2A27FB274260F80056706E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FA274260F80056706E /* Assets.xcassets */; };
 		FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FC274260F80056706E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE18F1D92744F4EC00A83F1F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FE18F1DB2744FBE000A83F1F /* SearchGround.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchGround.storyboard; sourceTree = "<group>"; };
+		FE18F1DD2744FC0000A83F1F /* FavoriteList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteList.storyboard; sourceTree = "<group>"; };
+		FE18F1DF2744FC1400A83F1F /* Schedule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
+		FE18F1E32744FED200A83F1F /* SearchGroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroundViewController.swift; sourceTree = "<group>"; };
+		FE18F1E52744FEE100A83F1F /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
+		FE18F1E72744FEEB00A83F1F /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		FE2A27EE274260F60056706E /* CanISoccer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CanISoccer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE2A27F1274260F60056706E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE2A27F3274260F60056706E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FE2A27F5274260F60056706E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FE2A27F5274260F60056706E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FE2A27F8274260F60056706E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE2A27FA274260F80056706E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE2A27FD274260F80056706E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +51,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE18F1D62744F4BB00A83F1F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE2A27F5274260F60056706E /* MainViewController.swift */,
+				FE18F1E32744FED200A83F1F /* SearchGroundViewController.swift */,
+				FE18F1E52744FEE100A83F1F /* FavoriteListViewController.swift */,
+				FE18F1E72744FEEB00A83F1F /* ScheduleViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FE18F1D72744F4C900A83F1F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE2A27F7274260F60056706E /* Main.storyboard */,
+				FE18F1DB2744FBE000A83F1F /* SearchGround.storyboard */,
+				FE18F1DD2744FC0000A83F1F /* FavoriteList.storyboard */,
+				FE18F1DF2744FC1400A83F1F /* Schedule.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FE18F1D82744F4D700A83F1F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FE2A27E5274260F60056706E = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +99,15 @@
 		FE2A27F0274260F60056706E /* CanISoccer */ = {
 			isa = PBXGroup;
 			children = (
+				FE18F1D82744F4D700A83F1F /* Models */,
+				FE18F1D72744F4C900A83F1F /* Views */,
+				FE18F1D62744F4BB00A83F1F /* Controllers */,
 				FE2A27F1274260F60056706E /* AppDelegate.swift */,
 				FE2A27F3274260F60056706E /* SceneDelegate.swift */,
-				FE2A27F5274260F60056706E /* ViewController.swift */,
-				FE2A27F7274260F60056706E /* Main.storyboard */,
 				FE2A27FA274260F80056706E /* Assets.xcassets */,
 				FE2A27FC274260F80056706E /* LaunchScreen.storyboard */,
 				FE2A27FF274260F80056706E /* Info.plist */,
+				FE18F1D92744F4EC00A83F1F /* Constants.swift */,
 			);
 			path = CanISoccer;
 			sourceTree = "<group>";
@@ -127,7 +172,10 @@
 			files = (
 				FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */,
 				FE2A27FB274260F80056706E /* Assets.xcassets in Resources */,
+				FE18F1DE2744FC0000A83F1F /* FavoriteList.storyboard in Resources */,
 				FE2A27F9274260F60056706E /* Main.storyboard in Resources */,
+				FE18F1DC2744FBE000A83F1F /* SearchGround.storyboard in Resources */,
+				FE18F1E02744FC1400A83F1F /* Schedule.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE2A27F6274260F60056706E /* ViewController.swift in Sources */,
+				FE2A27F6274260F60056706E /* MainViewController.swift in Sources */,
 				FE2A27F2274260F60056706E /* AppDelegate.swift in Sources */,
+				FE18F1E62744FEE100A83F1F /* FavoriteListViewController.swift in Sources */,
 				FE2A27F4274260F60056706E /* SceneDelegate.swift in Sources */,
+				FE18F1E42744FED200A83F1F /* SearchGroundViewController.swift in Sources */,
+				FE18F1E82744FEEB00A83F1F /* ScheduleViewController.swift in Sources */,
+				FE18F1DA2744F4EC00A83F1F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
