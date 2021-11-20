@@ -137,6 +137,8 @@
 			dependencies = (
 			);
 			name = CanISoccer;
+			packageProductDependencies = (
+			);
 			productName = CanISoccer;
 			productReference = FE2A27EE274260F60056706E /* CanISoccer.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +167,8 @@
 				Base,
 			);
 			mainGroup = FE2A27E5274260F60056706E;
+			packageReferences = (
+			);
 			productRefGroup = FE2A27EF274260F60056706E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

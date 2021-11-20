@@ -17,18 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNA-YX-03d">
-                                <rect key="frame" x="186" y="438" width="71" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZM-G5-Tk2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="414"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UZM-G5-Tk2" secondAttribute="height" multiplier="1:1" id="QCG-VX-osF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UZM-G5-Tk2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7rZ-sD-8jk"/>
+                            <constraint firstItem="UZM-G5-Tk2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="bhq-O3-iCW"/>
+                            <constraint firstItem="UZM-G5-Tk2" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="fYF-Xj-1Yk"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="일정" image="calendar.badge.clock.rtl" catalog="system" id="FTN-v3-TdP"/>
+                    <connections>
+                        <outlet property="calendarView" destination="UZM-G5-Tk2" id="h0o-rG-tfa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -40,6 +48,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="axL-sl-El9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="A8x-zX-3dm">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

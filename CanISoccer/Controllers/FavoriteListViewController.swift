@@ -15,17 +15,13 @@ class FavoriteListViewController: UIViewController {
         favorite(title: "불암산구장", phoneNumber: "010-2323-2233", address: "사랑시 고백구 행복동 삼각산로 13")
     ]
 
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            tableView.register(UINib(nibName: K.FavoriteTableViewCellcellNibName, bundle: nil), forCellReuseIdentifier: K.FavoriteTableViewCellcellIdentifier)
-        }
-    }
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
-
+        tableView.register(UINib(nibName: K.FavoriteTableViewCellcellNibName, bundle: nil), forCellReuseIdentifier: K.FavoriteTableViewCellcellIdentifier)
     }
     
 }
