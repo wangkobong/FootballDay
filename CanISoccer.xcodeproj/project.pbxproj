@@ -24,6 +24,10 @@
 		FED6022927465FEC00428EFA /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */; };
 		FED6022A27465FEC00428EFA /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */; };
 		FED6022C2746669400428EFA /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6022B2746669400428EFA /* File.swift */; };
+		FEE7C3DC27493584007CC37E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3DB27493584007CC37E /* Realm */; };
+		FEE7C3DE27493584007CC37E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3DD27493584007CC37E /* RealmSwift */; };
+		FEE7C3E1274935A6007CC37E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3E0274935A6007CC37E /* Alamofire */; };
+		FEE7C3E5274937A8007CC37E /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3E4274937A8007CC37E /* SwiftyJSON */; };
 		FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFA86782749049400A4A713 /* Textfield++Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +61,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE7C3DE27493584007CC37E /* RealmSwift in Frameworks */,
+				FEE7C3E1274935A6007CC37E /* Alamofire in Frameworks */,
+				FEE7C3DC27493584007CC37E /* Realm in Frameworks */,
+				FEE7C3E5274937A8007CC37E /* SwiftyJSON in Frameworks */,
 				C282DEEE90F8D9D80E76A40D /* Pods_CanISoccer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +182,12 @@
 			dependencies = (
 			);
 			name = CanISoccer;
+			packageProductDependencies = (
+				FEE7C3DB27493584007CC37E /* Realm */,
+				FEE7C3DD27493584007CC37E /* RealmSwift */,
+				FEE7C3E0274935A6007CC37E /* Alamofire */,
+				FEE7C3E4274937A8007CC37E /* SwiftyJSON */,
+			);
 			productName = CanISoccer;
 			productReference = FE2A27EE274260F60056706E /* CanISoccer.app */;
 			productType = "com.apple.product-type.application";
@@ -202,6 +216,11 @@
 				Base,
 			);
 			mainGroup = FE2A27E5274260F60056706E;
+			packageReferences = (
+				FEE7C3DA27493584007CC37E /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				FEE7C3DF274935A6007CC37E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				FEE7C3E3274937A8007CC37E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = FE2A27EF274260F60056706E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -508,6 +527,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FEE7C3DA27493584007CC37E /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.18.0;
+			};
+		};
+		FEE7C3DF274935A6007CC37E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.4.0;
+			};
+		};
+		FEE7C3E3274937A8007CC37E /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FEE7C3DB27493584007CC37E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEE7C3DA27493584007CC37E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		FEE7C3DD27493584007CC37E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEE7C3DA27493584007CC37E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		FEE7C3E0274935A6007CC37E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEE7C3DF274935A6007CC37E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		FEE7C3E4274937A8007CC37E /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEE7C3E3274937A8007CC37E /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FE2A27E6274260F60056706E /* Project object */;
 }
