@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class MainViewController: UIViewController {
+    
 
     @IBOutlet weak var searchTextField: UITextField!{
         didSet {
@@ -39,11 +42,37 @@ class MainViewController: UIViewController {
     
     
     @IBAction func searchBtnPressed(_ sender: UIButton) {
-        let address = searchTextField.text
-        
+        if let address = searchTextField.text {
+            fetchGeocoding(address: address)
+        }
+
         print("searchBtnPressed")
     }
     
+    func fetchGeocoding(address: String) {
+        print(address)
+        if let query = address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            print(query)
+            let url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=\(query)"
+            let clientID = Bundle.main.naverAPIKEYID
+            let clientSecret = Bundle.main.naverAPIKEY
+            let header: HTTPHeaders = [
+                "X-NCP-APIGW-API-KEY-ID": clientID,
+                "X-NCP-APIGW-API-KEY": clientSecret
+            ]
+            
+            AF.request(url, method: .get, headers: header).validate().responseJSON { response in
+                switch response.result {
+                case.success(let value):
+                    let json = JSON(value)
+                    print("JSON: \(json)")
+                case.failure(let error):
+                    print(error)
+                }
+            }
+            
+        }
+    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
