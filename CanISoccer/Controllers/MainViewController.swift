@@ -34,11 +34,14 @@ class MainViewController: UIViewController {
     
     
     @IBAction func currentLocationBtnPressed(_ sender: UIButton) {
-        
+        print("currentLocationBtnPressed")
     }
     
     
     @IBAction func searchBtnPressed(_ sender: UIButton) {
+        let address = searchTextField.text
+        
+        print("searchBtnPressed")
     }
     
     

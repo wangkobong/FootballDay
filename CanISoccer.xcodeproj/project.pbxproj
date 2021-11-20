@@ -28,6 +28,8 @@
 		FEE7C3DE27493584007CC37E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3DD27493584007CC37E /* RealmSwift */; };
 		FEE7C3E1274935A6007CC37E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3E0274935A6007CC37E /* Alamofire */; };
 		FEE7C3E5274937A8007CC37E /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3E4274937A8007CC37E /* SwiftyJSON */; };
+		FEE7C3E727493B5C007CC37E /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEE7C3E627493B5C007CC37E /* WeatherInfo.plist */; };
+		FEE7C3E927493BD2007CC37E /* CanISoccer++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7C3E827493BD2007CC37E /* CanISoccer++Bundle.swift */; };
 		FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFA86782749049400A4A713 /* Textfield++Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		FED6022B2746669400428EFA /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		FEE7C3E627493B5C007CC37E /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
+		FEE7C3E827493BD2007CC37E /* CanISoccer++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CanISoccer++Bundle.swift"; sourceTree = "<group>"; };
 		FEFA86782749049400A4A713 /* Textfield++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Textfield++Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +156,7 @@
 				FE2A27FC274260F80056706E /* LaunchScreen.storyboard */,
 				FE2A27FF274260F80056706E /* Info.plist */,
 				FE18F1D92744F4EC00A83F1F /* Constants.swift */,
+				FEE7C3E627493B5C007CC37E /* WeatherInfo.plist */,
 			);
 			path = CanISoccer;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				FEFA86782749049400A4A713 /* Textfield++Extension.swift */,
+				FEE7C3E827493BD2007CC37E /* CanISoccer++Bundle.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -242,6 +248,7 @@
 				FE18F1DC2744FBE000A83F1F /* SearchGround.storyboard in Resources */,
 				FED6022A27465FEC00428EFA /* FavoriteTableViewCell.xib in Resources */,
 				FE18F1E02744FC1400A83F1F /* Schedule.storyboard in Resources */,
+				FEE7C3E727493B5C007CC37E /* WeatherInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE2A27F6274260F60056706E /* MainViewController.swift in Sources */,
+				FEE7C3E927493BD2007CC37E /* CanISoccer++Bundle.swift in Sources */,
 				FED6022927465FEC00428EFA /* FavoriteTableViewCell.swift in Sources */,
 				FE2A27F2274260F60056706E /* AppDelegate.swift in Sources */,
 				FE18F1E62744FEE100A83F1F /* FavoriteListViewController.swift in Sources */,

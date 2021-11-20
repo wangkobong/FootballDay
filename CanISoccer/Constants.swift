@@ -8,4 +8,5 @@
 struct K {
     static let FavoriteTableViewCellcellIdentifier = "FavoriteTableViewCell"
     static let FavoriteTableViewCellcellNibName = "FavoriteTableViewCell"
+    static let WeatherInfoPlist = "WeatherInfo"
 }
