@@ -33,6 +33,9 @@
                                         </constraints>
                                         <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
                                         <state key="normal" backgroundImage="location.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="currentLocationBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PhS-h3-Y27"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="zOb-l8-Ilz">
                                         <rect key="frame" x="50" y="0.0" width="274" height="40"/>
@@ -48,6 +51,9 @@
                                         </constraints>
                                         <color key="tintColor" name="BrandWhite"/>
                                         <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
+                                        <connections>
+                                            <action selector="searchBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7sy-qO-A88"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -154,6 +160,9 @@
                     <connections>
                         <outlet property="datePickerTextField" destination="QvU-Tj-eQb" id="w2P-VJ-UhA"/>
                         <outlet property="searchTextField" destination="zOb-l8-Ilz" id="mpH-pn-Tet"/>
+                        <outlet property="temperatureLable" destination="QAf-AF-y1O" id="hKg-nb-CSz"/>
+                        <outlet property="weatherStatusImageView" destination="LQD-0O-b7n" id="7uy-7s-mK8"/>
+                        <outlet property="weatherStatusLabel" destination="0Nh-SG-gsQ" id="n1d-zx-Ggh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

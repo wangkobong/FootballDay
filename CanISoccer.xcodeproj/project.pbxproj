@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C282DEEE90F8D9D80E76A40D /* Pods_CanISoccer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F490D0C1CD9DD5DB13D8379 /* Pods_CanISoccer.framework */; };
 		FE18F1DA2744F4EC00A83F1F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE18F1D92744F4EC00A83F1F /* Constants.swift */; };
 		FE18F1DC2744FBE000A83F1F /* SearchGround.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE18F1DB2744FBE000A83F1F /* SearchGround.storyboard */; };
 		FE18F1DE2744FC0000A83F1F /* FavoriteList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE18F1DD2744FC0000A83F1F /* FavoriteList.storyboard */; };
@@ -23,9 +24,13 @@
 		FED6022927465FEC00428EFA /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */; };
 		FED6022A27465FEC00428EFA /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */; };
 		FED6022C2746669400428EFA /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6022B2746669400428EFA /* File.swift */; };
+		FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFA86782749049400A4A713 /* Textfield++Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		386EDCC3338A05F3EC2C0712 /* Pods-CanISoccer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanISoccer.debug.xcconfig"; path = "Target Support Files/Pods-CanISoccer/Pods-CanISoccer.debug.xcconfig"; sourceTree = "<group>"; };
+		9F490D0C1CD9DD5DB13D8379 /* Pods_CanISoccer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CanISoccer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C57217D48634D0906F7DCFDB /* Pods-CanISoccer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanISoccer.release.xcconfig"; path = "Target Support Files/Pods-CanISoccer/Pods-CanISoccer.release.xcconfig"; sourceTree = "<group>"; };
 		FE18F1D92744F4EC00A83F1F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FE18F1DB2744FBE000A83F1F /* SearchGround.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchGround.storyboard; sourceTree = "<group>"; };
 		FE18F1DD2744FC0000A83F1F /* FavoriteList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteList.storyboard; sourceTree = "<group>"; };
@@ -44,6 +49,7 @@
 		FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		FED6022B2746669400428EFA /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		FEFA86782749049400A4A713 /* Textfield++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Textfield++Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,12 +57,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C282DEEE90F8D9D80E76A40D /* Pods_CanISoccer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3591F13CC7DE6FBA4AFE1B54 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				386EDCC3338A05F3EC2C0712 /* Pods-CanISoccer.debug.xcconfig */,
+				C57217D48634D0906F7DCFDB /* Pods-CanISoccer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DB8DCB90466AD7B478D6FE8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F490D0C1CD9DD5DB13D8379 /* Pods_CanISoccer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FE18F1D62744F4BB00A83F1F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +118,8 @@
 			children = (
 				FE2A27F0274260F60056706E /* CanISoccer */,
 				FE2A27EF274260F60056706E /* Products */,
+				3591F13CC7DE6FBA4AFE1B54 /* Pods */,
+				DB8DCB90466AD7B478D6FE8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +134,7 @@
 		FE2A27F0274260F60056706E /* CanISoccer */ = {
 			isa = PBXGroup;
 			children = (
+				FED60231274902DB00428EFA /* Extension */,
 				FE18F1D82744F4D700A83F1F /* Models */,
 				FE18F1D72744F4C900A83F1F /* Views */,
 				FE18F1D62744F4BB00A83F1F /* Controllers */,
@@ -121,6 +148,14 @@
 			path = CanISoccer;
 			sourceTree = "<group>";
 		};
+		FED60231274902DB00428EFA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FEFA86782749049400A4A713 /* Textfield++Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,17 +163,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE2A2802274260F80056706E /* Build configuration list for PBXNativeTarget "CanISoccer" */;
 			buildPhases = (
+				07CE1D034E9D0B6731143C1B /* [CP] Check Pods Manifest.lock */,
 				FE2A27EA274260F60056706E /* Sources */,
 				FE2A27EB274260F60056706E /* Frameworks */,
 				FE2A27EC274260F60056706E /* Resources */,
+				88EBAC1862891C49ED400A00 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = CanISoccer;
-			packageProductDependencies = (
-			);
 			productName = CanISoccer;
 			productReference = FE2A27EE274260F60056706E /* CanISoccer.app */;
 			productType = "com.apple.product-type.application";
@@ -167,8 +202,6 @@
 				Base,
 			);
 			mainGroup = FE2A27E5274260F60056706E;
-			packageReferences = (
-			);
 			productRefGroup = FE2A27EF274260F60056706E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -195,6 +228,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07CE1D034E9D0B6731143C1B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CanISoccer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		88EBAC1862891C49ED400A00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FE2A27EA274260F60056706E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -205,6 +280,7 @@
 				FE2A27F2274260F60056706E /* AppDelegate.swift in Sources */,
 				FE18F1E62744FEE100A83F1F /* FavoriteListViewController.swift in Sources */,
 				FE2A27F4274260F60056706E /* SceneDelegate.swift in Sources */,
+				FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */,
 				FE18F1E42744FED200A83F1F /* SearchGroundViewController.swift in Sources */,
 				FE18F1E82744FEEB00A83F1F /* ScheduleViewController.swift in Sources */,
 				FED6022C2746669400428EFA /* File.swift in Sources */,
@@ -352,6 +428,7 @@
 		};
 		FE2A2803274260F80056706E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 386EDCC3338A05F3EC2C0712 /* Pods-CanISoccer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -381,6 +458,7 @@
 		};
 		FE2A2804274260F80056706E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C57217D48634D0906F7DCFDB /* Pods-CanISoccer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

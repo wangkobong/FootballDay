@@ -6,16 +6,17 @@
 //
 
 import UIKit
-
+import FSCalendar
 
 class ScheduleViewController: UIViewController {
 
     @IBOutlet weak var calendarView: UIView!
+    
+    var calendar = FSCalendar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 

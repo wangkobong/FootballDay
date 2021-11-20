@@ -1,0 +1,6 @@
+framework module Pods_CanISoccer {
+  umbrella header "Pods-CanISoccer-umbrella.h"
+
+  export *
+  module * { export * }
+}
