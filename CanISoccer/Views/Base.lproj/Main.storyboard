@@ -40,6 +40,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="zOb-l8-Ilz">
                                         <rect key="frame" x="50" y="0.0" width="274" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" name="BrandWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go"/>
                                     </textField>
@@ -158,9 +159,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="날씨" image="location.fill" catalog="system" id="4wx-99-tNU"/>
                     <connections>
+                        <outlet property="assistantLabel" destination="jK0-Zu-6mZ" id="vLI-rd-RJW"/>
                         <outlet property="datePickerTextField" destination="QvU-Tj-eQb" id="w2P-VJ-UhA"/>
                         <outlet property="searchTextField" destination="zOb-l8-Ilz" id="mpH-pn-Tet"/>
                         <outlet property="temperatureLable" destination="QAf-AF-y1O" id="hKg-nb-CSz"/>
+                        <outlet property="weatherDescriptionLabel" destination="nJA-4Z-0XB" id="AgF-HT-m1V"/>
                         <outlet property="weatherStatusImageView" destination="LQD-0O-b7n" id="7uy-7s-mK8"/>
                         <outlet property="weatherStatusLabel" destination="0Nh-SG-gsQ" id="n1d-zx-Ggh"/>
                     </connections>

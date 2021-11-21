@@ -15,11 +15,11 @@ class MainViewController: UIViewController {
     var locationManager: CLLocationManager?
     var latitude = ""
     var longitude = ""
-    var didFindLocation = false
+    var locality = ""
+    var thorughfare = ""
 
     var currentLocation:CLLocationCoordinate2D!
-//    var weatherData = WeatherModel(conditionId: <#Int#>, cityname: <#String#>, temperature: <#Double#>, condition: <#String#>)
-
+    
     @IBOutlet weak var searchTextField: UITextField!{
         didSet {
             let placeholderText = NSAttributedString(string: "주소를 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -36,7 +36,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var temperatureLable: UILabel!
     @IBOutlet weak var weatherStatusLabel: UILabel!
     @IBOutlet weak var weatherStatusImageView: UIImageView!
-
+    @IBOutlet weak var weatherDescriptionLabel: UILabel!
+    @IBOutlet weak var assistantLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,7 +50,6 @@ class MainViewController: UIViewController {
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.startUpdatingLocation()
-        
 
     }
 
@@ -69,6 +70,7 @@ class MainViewController: UIViewController {
             self.latitude = y
             self.longitude = x
         }
+        
         func updateWeather () {
             
         }
@@ -90,6 +92,21 @@ class MainViewController: UIViewController {
              7. 강수확률 : list.pop
              8. 데이터 예측 시간 : list.dt_txt
              */
+        }
+    }
+    
+    func printLocality(_ lat: CLLocationDegrees, _ long: CLLocationDegrees){
+        let findLocation = CLLocation(latitude: lat, longitude: long)
+        let geocoder = CLGeocoder()
+        let locale = Locale(identifier: "Ko-kr")
+
+        geocoder.reverseGeocodeLocation(findLocation, preferredLocale: locale) { placemarks, error in
+            
+            if let placemark = placemarks?[0] {
+                self.locality = placemark.locality!
+                self.thorughfare = placemark.thoroughfare!
+
+            }
         }
     }
     
@@ -121,22 +138,24 @@ extension MainViewController: CLLocationManagerDelegate {
         guard let coordinates = locations.last?.coordinate else { return }
         let lat = coordinates.latitude
         let long = coordinates.longitude
-        print("viewDidLoad \(lat), \(long)")
-
-
+        let test = self.printLocality(lat, long)
+        print(" didUpdateLocations 처음부분  \(self.locality), \(self.thorughfare) ")
+        
         WeatherManager.shared.fetchCurrentweather(lat, long) { json in
-            print("locationManager: \(json)")
             let temperatureData = json["main"]["temp"].doubleValue
             let temperature = Int(temperatureData) - 273
             let condition = json["weather"][0]["main"].stringValue
             let conditiondId = json["weather"][0]["id"].stringValue
             let data = WeatherModel(conditionId: Int(conditiondId) ?? 0)
-            print("locationManager: \(condition)")
             self.temperatureLable.text = "\(temperature)"
             self.weatherStatusLabel.text = condition
             self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
+//            let currentLocation = self.printLocality(lat, long)
+            print(" didUpdateLocations currentLocation \(self.locality), \(self.thorughfare), ")
+            self.searchTextField.text = "\(self.locality)"
  
         }
         locationManager?.stopUpdatingLocation()
+        print(" didUpdateLocations CLLocationManagerDelegate \(self.locality), \(self.thorughfare)")
     }
 }
