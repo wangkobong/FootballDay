@@ -8,13 +8,17 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
 class MainViewController: UIViewController {
-    
-    // 위도가 y 경도가 x
+    var locationManager: CLLocationManager?
     var latitude = ""
     var longitude = ""
+    var didFindLocation = false
     
+
+    var currentLocation:CLLocationCoordinate2D!
+ 
 
     @IBOutlet weak var searchTextField: UITextField!{
         didSet {
@@ -37,7 +41,18 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         self.datePickerTextField.setInputViewDatePicker(target: self, selector: #selector(tapDone))
+        
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+   
+        
+        
+        !didFindLocation ? locationManager?.startUpdatingLocation() : locationManager?.stopUpdatingLocation()
     }
+
     
     
     @IBAction func currentLocationBtnPressed(_ sender: UIButton) {
@@ -47,16 +62,36 @@ class MainViewController: UIViewController {
     
     @IBAction func searchBtnPressed(_ sender: UIButton) {
 
-        guard let address = searchTextField.text else { return }
+        guard let address = self.searchTextField.text else { return }
+    
         WeatherManager.shared.fetchGeocoding(address: address) { item in
             let x = item[0]["x"].stringValue
             let y = item[0]["y"].stringValue
             self.latitude = y
             self.longitude = x
         }
-        print("searchBtnPressed  \(latitude), \(longitude)")
+        func test () {
+            
+        }
+
         
-        WeatherManager.shared.fetchWeatherForecast(latitude, longitude)
+   
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+            print("searchBtnPressed  \(self.latitude), \(self.longitude)")
+            WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude)
+            
+            /*
+             데이터 예측 시간, Unix, UTC : list.dt
+            1.온도 : list.main.temp
+             2. 체감온도 :list.main.feels_like
+             3. 습도 : list.main.humidity
+             4. list.weather.main
+             5. list.weather.description
+             6. 날씨아이콘 아아다 : list.weather.icon
+             7. 강수확률 : list.pop
+             8. 데이터 예측 시간 : list.dt_txt
+             */
+        }
     }
     
 
@@ -77,4 +112,21 @@ class MainViewController: UIViewController {
     }
     
 
+}
+
+
+// MARK: - CLLocationManagerDelegate
+extension MainViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(#function)
+        guard let coordinates = locations.last?.coordinate else { return }
+        let lat = coordinates.latitude
+        let long = coordinates.longitude
+        print("viewDidLoad \(lat), \(long)")
+
+
+        WeatherManager.shared.fetchCurrentweather(lat, long)
+        didFindLocation = true
+        locationManager?.stopUpdatingLocation()
+    }
 }
