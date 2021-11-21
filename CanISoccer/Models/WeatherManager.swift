@@ -59,7 +59,7 @@ struct WeatherManager {
         }
     }
     
-    func fetchCurrentweather(_ latitude: CLLocationDegrees, _ longitude: CLLocationDegrees) {
+    func fetchCurrentweather(_ latitude: CLLocationDegrees, _ longitude: CLLocationDegrees, result: @escaping (JSON) -> ()) {
         
         let appid = Bundle.main.openWeatherAPIKEY
         let url = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(appid)"
@@ -69,7 +69,7 @@ struct WeatherManager {
             case.success(let value):
                 let json = JSON(value)
                 print(json)
-                
+                result(json)
             case.failure(let error):
                 print(error)
             }

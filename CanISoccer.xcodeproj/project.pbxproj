@@ -31,6 +31,7 @@
 		FEE7C3E727493B5C007CC37E /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEE7C3E627493B5C007CC37E /* WeatherInfo.plist */; };
 		FEE7C3E927493BD2007CC37E /* CanISoccer++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7C3E827493BD2007CC37E /* CanISoccer++Bundle.swift */; };
 		FEE7C3EB27495B7D007CC37E /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7C3EA27495B7D007CC37E /* WeatherManager.swift */; };
+		FEE7C3ED274A8616007CC37E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7C3EC274A8616007CC37E /* WeatherModel.swift */; };
 		FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFA86782749049400A4A713 /* Textfield++Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		FEE7C3E627493B5C007CC37E /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
 		FEE7C3E827493BD2007CC37E /* CanISoccer++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CanISoccer++Bundle.swift"; sourceTree = "<group>"; };
 		FEE7C3EA27495B7D007CC37E /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		FEE7C3EC274A8616007CC37E /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		FEFA86782749049400A4A713 /* Textfield++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Textfield++Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 			children = (
 				FED6022B2746669400428EFA /* File.swift */,
 				FEE7C3EA27495B7D007CC37E /* WeatherManager.swift */,
+				FEE7C3EC274A8616007CC37E /* WeatherModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				FED6022927465FEC00428EFA /* FavoriteTableViewCell.swift in Sources */,
 				FE2A27F2274260F60056706E /* AppDelegate.swift in Sources */,
 				FE18F1E62744FEE100A83F1F /* FavoriteListViewController.swift in Sources */,
+				FEE7C3ED274A8616007CC37E /* WeatherModel.swift in Sources */,
 				FE2A27F4274260F60056706E /* SceneDelegate.swift in Sources */,
 				FEE7C3EB27495B7D007CC37E /* WeatherManager.swift in Sources */,
 				FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */,

@@ -11,14 +11,14 @@ import SwiftyJSON
 import CoreLocation
 
 class MainViewController: UIViewController {
+    
     var locationManager: CLLocationManager?
     var latitude = ""
     var longitude = ""
     var didFindLocation = false
-    
 
     var currentLocation:CLLocationCoordinate2D!
- 
+//    var weatherData = WeatherModel(conditionId: <#Int#>, cityname: <#String#>, temperature: <#Double#>, condition: <#String#>)
 
     @IBOutlet weak var searchTextField: UITextField!{
         didSet {
@@ -47,10 +47,9 @@ class MainViewController: UIViewController {
         
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-   
+        locationManager?.startUpdatingLocation()
         
-        
-        !didFindLocation ? locationManager?.startUpdatingLocation() : locationManager?.stopUpdatingLocation()
+
     }
 
     
@@ -70,7 +69,7 @@ class MainViewController: UIViewController {
             self.latitude = y
             self.longitude = x
         }
-        func test () {
+        func updateWeather () {
             
         }
 
@@ -125,8 +124,19 @@ extension MainViewController: CLLocationManagerDelegate {
         print("viewDidLoad \(lat), \(long)")
 
 
-        WeatherManager.shared.fetchCurrentweather(lat, long)
-        didFindLocation = true
+        WeatherManager.shared.fetchCurrentweather(lat, long) { json in
+            print("locationManager: \(json)")
+            let temperatureData = json["main"]["temp"].doubleValue
+            let temperature = Int(temperatureData) - 273
+            let condition = json["weather"][0]["main"].stringValue
+            let conditiondId = json["weather"][0]["id"].stringValue
+            let data = WeatherModel(conditionId: Int(conditiondId) ?? 0)
+            print("locationManager: \(condition)")
+            self.temperatureLable.text = "\(temperature)"
+            self.weatherStatusLabel.text = condition
+            self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
+ 
+        }
         locationManager?.stopUpdatingLocation()
     }
 }
