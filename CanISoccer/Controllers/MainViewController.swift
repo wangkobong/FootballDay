@@ -11,6 +11,10 @@ import SwiftyJSON
 
 class MainViewController: UIViewController {
     
+    // 위도가 y 경도가 x
+    var latitude = ""
+    var longitude = ""
+    
 
     @IBOutlet weak var searchTextField: UITextField!{
         didSet {
@@ -28,7 +32,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var temperatureLable: UILabel!
     @IBOutlet weak var weatherStatusLabel: UILabel!
     @IBOutlet weak var weatherStatusImageView: UIImageView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,37 +46,20 @@ class MainViewController: UIViewController {
     
     
     @IBAction func searchBtnPressed(_ sender: UIButton) {
-        if let address = searchTextField.text {
-            fetchGeocoding(address: address)
-        }
 
-        print("searchBtnPressed")
+        guard let address = searchTextField.text else { return }
+        WeatherManager.shared.fetchGeocoding(address: address) { item in
+            let x = item[0]["x"].stringValue
+            let y = item[0]["y"].stringValue
+            self.latitude = y
+            self.longitude = x
+        }
+        print("searchBtnPressed  \(latitude), \(longitude)")
+        
+        WeatherManager.shared.fetchWeatherForecast(latitude, longitude)
     }
     
-    func fetchGeocoding(address: String) {
-        print(address)
-        if let query = address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            print(query)
-            let url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=\(query)"
-            let clientID = Bundle.main.naverAPIKEYID
-            let clientSecret = Bundle.main.naverAPIKEY
-            let header: HTTPHeaders = [
-                "X-NCP-APIGW-API-KEY-ID": clientID,
-                "X-NCP-APIGW-API-KEY": clientSecret
-            ]
-            
-            AF.request(url, method: .get, headers: header).validate().responseJSON { response in
-                switch response.result {
-                case.success(let value):
-                    let json = JSON(value)
-                    print("JSON: \(json)")
-                case.failure(let error):
-                    print(error)
-                }
-            }
-            
-        }
-    }
+
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

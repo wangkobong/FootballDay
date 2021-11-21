@@ -23,4 +23,13 @@ extension Bundle {
         guard let key = resouce["X-NCP-APIGW-API-KEY"] as? String else { fatalError("WeatherInfo.plist에 X-NCP-APIGW-API-KEY를 설정해주세요.")}
         return key
     }
+    
+    var openWeatherAPIKEY: String {
+        guard let file = self.path(forResource: K.WeatherInfoPlist, ofType: "plist") else { return ""}
+        
+        guard let resouce = NSDictionary(contentsOfFile: file) else { return ""}
+        guard let key = resouce["openweatherAPIKEY"] as? String else { fatalError("WeatherInfo.plist에 openweatherAPIKEY를 설정해주세요.")}
+        return key
+    }
 }
+
