@@ -13,6 +13,16 @@ extension Date {
         timeIntervalSince1970 * 1000
     }
     
+    var onlyDate: String {
+        get {
+            let date = Date()
+            let dateformatter = DateFormatter()
+            dateformatter.locale = Locale(identifier: "ko_KR")
+            dateformatter.timeZone = TimeZone(abbreviation: "KST")
+            dateformatter.dateFormat = "yyyyMMdd"
+            return dateformatter.string(from: date)
+        }
+    }
     
     func setTimestamp(unixTime: TimeInterval) -> String {
         let dateformatter = DateFormatter()
@@ -25,14 +35,13 @@ extension Date {
         return dateformatter.string(from: unixTimeDate)
     }
     
-    var onlyDate: String {
-        get {
-            let date = Date()
-            let dateformatter = DateFormatter()
-            dateformatter.locale = Locale(identifier: "ko_KR")
-            dateformatter.timeZone = TimeZone(abbreviation: "KST")
-            dateformatter.dateFormat = "yyyyMMdd"
-            return dateformatter.string(from: date)
-        }
+
+    func dateToString(unixTime: Double) -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.locale = Locale(identifier: "ko_KR")
+        dateformatter.timeZone = TimeZone(abbreviation: "KST")
+        dateformatter.dateFormat = "MMM d, h:mm a"
+        let unixTimeToDate = Date(timeIntervalSince1970: unixTime)
+        return dateformatter.string(from: unixTimeToDate)
     }
 }

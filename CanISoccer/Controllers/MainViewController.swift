@@ -15,14 +15,14 @@ class MainViewController: UIViewController {
     
     let localRealm = try! Realm()
     var tasks: Results<Forecast>!
-    
+
     var locationManager: CLLocationManager?
     var latitude = ""
     var longitude = ""
     var locality = ""
     var thorughfare = ""
     var selectedTime = 0.0
-
+    let todayOnlyDate = Int(Date().onlyDate)
 
     var currentLocation:CLLocationCoordinate2D!
     
@@ -58,6 +58,10 @@ class MainViewController: UIViewController {
         locationManager?.startUpdatingLocation()
         
         print("Realm is located at:", localRealm.configuration.fileURL!)
+        
+        let nowUnixtime = Double(Date().timeIntervalSince1970)
+        tasks = localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(nowUnixtime) && regDateData == \(todayOnlyDate!)")
+        print("viewDidLoad: \(tasks!)")
 
     }
 
@@ -81,26 +85,28 @@ class MainViewController: UIViewController {
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
 
-            let todayOnlyDate = Int(Date().onlyDate)
-            let istoday = self.localRealm.objects(Forecast.self).filter("regDateData == \(todayOnlyDate!)")
-            
+
+            let istoday = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!)")
+
             if istoday.isEmpty {
                 print(#function)
                 WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
-
+                    print("fetchWeatherForecast: \(address)")
                     for item in list {
                         let predictedTimeUnix = item["dt"].doubleValue
+                        let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
                         let temp = item["main"]["temp"].doubleValue
                         let tempFeelsLike = item["main"]["feels_like"].doubleValue
-                        let regdate = Date().onlyDate
+                        let regDate = Date().onlyDate
                         let probabilityOfRain = item["pop"].doubleValue
-                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regdate)!, probabilityOfRain: floor(probabilityOfRain))
+                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: floor(probabilityOfRain))
                         try! self.localRealm.write {
                             self.localRealm.add(task)
                         }
                     }
                 }
             } else {
+                print("fetchWeatherForecast: \(address)")
                 return
             }
 
@@ -133,13 +139,9 @@ class MainViewController: UIViewController {
             if let placemark = placemarks?[0] {
                 self.locality = placemark.locality!
                 self.thorughfare = placemark.thoroughfare!
-
             }
         }
     }
-    
-
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
       self.view.endEditing(true)
@@ -167,7 +169,6 @@ extension MainViewController: CLLocationManagerDelegate {
         guard let coordinates = locations.last?.coordinate else { return }
         let lat = coordinates.latitude
         let long = coordinates.longitude
-        let test = self.printLocality(lat, long)
         print(" didUpdateLocations 처음부분  \(self.locality), \(self.thorughfare) ")
         
         WeatherManager.shared.fetchCurrentweather(lat, long) { json in
