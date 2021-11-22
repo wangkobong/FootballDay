@@ -23,6 +23,7 @@ class MainViewController: UIViewController {
     var thorughfare = ""
     var selectedTime = 0.0
 
+
     var currentLocation:CLLocationCoordinate2D!
     
     @IBOutlet weak var searchTextField: UITextField!{
@@ -79,24 +80,30 @@ class MainViewController: UIViewController {
         }
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-            print("searchBtnPressed  \(self.latitude), \(self.longitude)")
-            WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
 
-                print("list.count: \(list.count)")
-                for item in list {
-                    let predictedTimeUnix = item["dt"].doubleValue
-                    let temp = item["main"]["temp"].doubleValue
-                    let tempFeelsLike = item["main"]["feels_like"].doubleValue
-                    let regdate = Date().onlyDate
-                    let probabilityOfRain = item["pop"].doubleValue
-                    let task = Forecast(predictedTimeUnixData: predictedTimeUnix, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: regdate!, probabilityOfRain: floor(probabilityOfRain))
-                    try! self.localRealm.write {
-                        self.localRealm.add(task)
+            let todayOnlyDate = Int(Date().onlyDate)
+            let istoday = self.localRealm.objects(Forecast.self).filter("regDateData == \(todayOnlyDate!)")
+            
+            if istoday.isEmpty {
+                print(#function)
+                WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
+
+                    for item in list {
+                        let predictedTimeUnix = item["dt"].doubleValue
+                        let temp = item["main"]["temp"].doubleValue
+                        let tempFeelsLike = item["main"]["feels_like"].doubleValue
+                        let regdate = Date().onlyDate
+                        let probabilityOfRain = item["pop"].doubleValue
+                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regdate)!, probabilityOfRain: floor(probabilityOfRain))
+                        try! self.localRealm.write {
+                            self.localRealm.add(task)
+                        }
                     }
-                    print("--------------------------------------------")
-                    print("WeatherManager.shared.fetchWeatherForecast \(item)")
                 }
+            } else {
+                return
             }
+
             
             
             // 디스패치그룹

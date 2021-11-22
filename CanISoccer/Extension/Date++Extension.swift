@@ -25,15 +25,14 @@ extension Date {
         return dateformatter.string(from: unixTimeDate)
     }
     
-    var onlyDate: Date? {
+    var onlyDate: String {
         get {
-            let calender = Calendar.current
-            var dateComponents = calender.dateComponents([.year, .month, .day], from: self)
-            dateComponents.timeZone = NSTimeZone.system
+            let date = Date()
             let dateformatter = DateFormatter()
             dateformatter.locale = Locale(identifier: "ko_KR")
             dateformatter.timeZone = TimeZone(abbreviation: "KST")
-            return calender.date(from: dateComponents)
+            dateformatter.dateFormat = "yyyyMMdd"
+            return dateformatter.string(from: date)
         }
     }
 }

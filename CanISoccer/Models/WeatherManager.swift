@@ -45,7 +45,7 @@ struct WeatherManager {
     func fetchWeatherForecast(_ latitude: String, _ longitude: String, result: @escaping ([JSON]) -> ()) {
         
         let appid = Bundle.main.openWeatherAPIKEY
-        let totalDataCount = 10
+        let totalDataCount = 11
         let url = "https://api.openweathermap.org/data/2.5/forecast?lat=\(latitude)&lon=\(longitude)&cnt=\(totalDataCount)&appid=\(appid)"
         
         AF.request(url, method: .get).validate().responseJSON { response in
