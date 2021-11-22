@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     var longitude = ""
     var locality = ""
     var thorughfare = ""
+    var currentTimestamp: Int64 = 0
 
     var currentLocation:CLLocationCoordinate2D!
     
@@ -70,17 +71,12 @@ class MainViewController: UIViewController {
             self.latitude = y
             self.longitude = x
         }
-        
-        func updateWeather () {
-            
-        }
 
-        
-   
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
             print("searchBtnPressed  \(self.latitude), \(self.longitude)")
             WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude)
             
+            // 디스패치그룹
             /*
              데이터 예측 시간, Unix, UTC : list.dt
             1.온도 : list.main.temp
@@ -119,10 +115,15 @@ class MainViewController: UIViewController {
     
     @objc func tapDone() {
         if let datePicker = self.datePickerTextField.inputView as? UIDatePicker { // 2-1
-            let dateformatter = DateFormatter() // 2-2
-            dateformatter.dateFormat = "HH:mm"
+            let selectedTime = datePicker.date.timeIntervalSince1970
+            let unixTimeToStirng = Date().setTimestamp(unixTime: selectedTime)
+            print("selectedTime: \(selectedTime)")
+            print("unixTimeToStirng: \(unixTimeToStirng)")
+//            let dateformatter = DateFormatter() // 2-2
+//            dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//            dateformatter.dateFormat = "HH:mm"
 //            dateformatter.timeStyle = .short
-            self.datePickerTextField.text = dateformatter.string(from: datePicker.date) //2-4
+            self.datePickerTextField.text = unixTimeToStirng //2-4
         }
         self.datePickerTextField.resignFirstResponder() // 2-5
     }
