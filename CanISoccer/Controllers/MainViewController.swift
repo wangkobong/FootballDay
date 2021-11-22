@@ -9,15 +9,19 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import CoreLocation
+import RealmSwift
 
 class MainViewController: UIViewController {
+    
+    let localRealm = try! Realm()
+    var tasks: Results<Forecast>!
     
     var locationManager: CLLocationManager?
     var latitude = ""
     var longitude = ""
     var locality = ""
     var thorughfare = ""
-    var currentTimestamp: Int64 = 0
+    var selectedTime = 0.0
 
     var currentLocation:CLLocationCoordinate2D!
     
@@ -51,6 +55,8 @@ class MainViewController: UIViewController {
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.startUpdatingLocation()
+        
+        print("Realm is located at:", localRealm.configuration.fileURL!)
 
     }
 
@@ -74,7 +80,24 @@ class MainViewController: UIViewController {
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
             print("searchBtnPressed  \(self.latitude), \(self.longitude)")
-            WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude)
+            WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
+
+                print("list.count: \(list.count)")
+                for item in list {
+                    let predictedTimeUnix = item["dt"].doubleValue
+                    let temp = item["main"]["temp"].doubleValue
+                    let tempFeelsLike = item["main"]["feels_like"].doubleValue
+                    let regdate = Date().onlyDate
+                    let probabilityOfRain = item["pop"].doubleValue
+                    let task = Forecast(predictedTimeUnixData: predictedTimeUnix, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: regdate!, probabilityOfRain: floor(probabilityOfRain))
+                    try! self.localRealm.write {
+                        self.localRealm.add(task)
+                    }
+                    print("--------------------------------------------")
+                    print("WeatherManager.shared.fetchWeatherForecast \(item)")
+                }
+            }
+            
             
             // 디스패치그룹
             /*
@@ -88,6 +111,8 @@ class MainViewController: UIViewController {
              7. 강수확률 : list.pop
              8. 데이터 예측 시간 : list.dt_txt
              */
+            
+            //1. 데이터를 받아와서 당일 일기예보 12시, 15시, 18시, 21시, 24시 5개 DB에 저장 
         }
     }
     
@@ -115,14 +140,10 @@ class MainViewController: UIViewController {
     
     @objc func tapDone() {
         if let datePicker = self.datePickerTextField.inputView as? UIDatePicker { // 2-1
-            let selectedTime = datePicker.date.timeIntervalSince1970
+            selectedTime = datePicker.date.timeIntervalSince1970
             let unixTimeToStirng = Date().setTimestamp(unixTime: selectedTime)
             print("selectedTime: \(selectedTime)")
             print("unixTimeToStirng: \(unixTimeToStirng)")
-//            let dateformatter = DateFormatter() // 2-2
-//            dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-//            dateformatter.dateFormat = "HH:mm"
-//            dateformatter.timeStyle = .short
             self.datePickerTextField.text = unixTimeToStirng //2-4
         }
         self.datePickerTextField.resignFirstResponder() // 2-5

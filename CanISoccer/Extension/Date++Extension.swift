@@ -8,6 +8,7 @@
 import Foundation
 
 extension Date {
+
     var timestamp: Double {
         timeIntervalSince1970 * 1000
     }
@@ -22,5 +23,17 @@ extension Date {
         dateformatter.timeZone = TimeZone(abbreviation: "KST")
         dateformatter.dateFormat = "MMM d, h:mm a"
         return dateformatter.string(from: unixTimeDate)
+    }
+    
+    var onlyDate: Date? {
+        get {
+            let calender = Calendar.current
+            var dateComponents = calender.dateComponents([.year, .month, .day], from: self)
+            dateComponents.timeZone = NSTimeZone.system
+            let dateformatter = DateFormatter()
+            dateformatter.locale = Locale(identifier: "ko_KR")
+            dateformatter.timeZone = TimeZone(abbreviation: "KST")
+            return calender.date(from: dateComponents)
+        }
     }
 }

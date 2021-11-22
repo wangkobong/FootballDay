@@ -23,7 +23,8 @@
 		FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FC274260F80056706E /* LaunchScreen.storyboard */; };
 		FED6022927465FEC00428EFA /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */; };
 		FED6022A27465FEC00428EFA /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */; };
-		FED6022C2746669400428EFA /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6022B2746669400428EFA /* File.swift */; };
+		FEDC159E274BC6B90097EC65 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDC159D274BC6B90097EC65 /* ForecastModel.swift */; };
+		FEDC15A0274BC9CE0097EC65 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDC159F274BC9CE0097EC65 /* FavoriteModel.swift */; };
 		FEE7C3DC27493584007CC37E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3DB27493584007CC37E /* Realm */; };
 		FEE7C3DE27493584007CC37E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3DD27493584007CC37E /* RealmSwift */; };
 		FEE7C3E1274935A6007CC37E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3E0274935A6007CC37E /* Alamofire */; };
@@ -57,7 +58,8 @@
 		FE2A27FF274260F80056706E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
-		FED6022B2746669400428EFA /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		FEDC159D274BC6B90097EC65 /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
+		FEDC159F274BC9CE0097EC65 /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		FEE7C3E627493B5C007CC37E /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
 		FEE7C3E827493BD2007CC37E /* CanISoccer++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CanISoccer++Bundle.swift"; sourceTree = "<group>"; };
 		FEE7C3EA27495B7D007CC37E /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
@@ -126,9 +128,10 @@
 		FE18F1D82744F4D700A83F1F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FED6022B2746669400428EFA /* File.swift */,
 				FEE7C3EA27495B7D007CC37E /* WeatherManager.swift */,
 				FEE7C3EC274A8616007CC37E /* WeatherModel.swift */,
+				FEDC159D274BC6B90097EC65 /* ForecastModel.swift */,
+				FEDC159F274BC9CE0097EC65 /* FavoriteModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -316,13 +319,14 @@
 				FE2A27F2274260F60056706E /* AppDelegate.swift in Sources */,
 				FE18F1E62744FEE100A83F1F /* FavoriteListViewController.swift in Sources */,
 				FEE7C3ED274A8616007CC37E /* WeatherModel.swift in Sources */,
+				FEDC15A0274BC9CE0097EC65 /* FavoriteModel.swift in Sources */,
 				FE2A27F4274260F60056706E /* SceneDelegate.swift in Sources */,
 				FEE7C3EB27495B7D007CC37E /* WeatherManager.swift in Sources */,
 				FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */,
 				FE18F1E42744FED200A83F1F /* SearchGroundViewController.swift in Sources */,
 				FE18F1E82744FEEB00A83F1F /* ScheduleViewController.swift in Sources */,
 				FEE7C3EF274BABFD007CC37E /* Date++Extension.swift in Sources */,
-				FED6022C2746669400428EFA /* File.swift in Sources */,
+				FEDC159E274BC6B90097EC65 /* ForecastModel.swift in Sources */,
 				FE18F1DA2744F4EC00A83F1F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

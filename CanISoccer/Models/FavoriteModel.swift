@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  FavoriteModel.swift
 //  CanISoccer
 //
-//  Created by sungyeon kim on 2021/11/18.
+//  Created by sungyeon kim on 2021/11/22.
 //
 
 import Foundation
