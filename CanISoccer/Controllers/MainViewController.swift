@@ -107,7 +107,11 @@ class MainViewController: UIViewController {
                         let tempFeelsLike = item["main"]["feels_like"].doubleValue
                         let regDate = Date().onlyDate
                         let probabilityOfRain = item["pop"].doubleValue
-                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation,tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: floor(probabilityOfRain))
+                        let weatherID = item["weather"][0]["id"].intValue
+                        let weatherStatus = item["weather"][0]["main"].stringValue
+                        
+                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: probabilityOfRain, weatherIdData: weatherID, weatherStatusData: weatherStatus)
+                        
                         try! self.localRealm.write {
                             self.localRealm.add(task)
                         }
@@ -120,9 +124,21 @@ class MainViewController: UIViewController {
                             print(self.searchedTask!)
                             break
                         }
-                        
                     }
+                    guard let temperatureData = self.searchedTask[0]["tempData"] as? Double else { return }
+                    let temperature = floor(temperatureData - 273.15)
+                    let temperatureToInto = Int(temperature)
+                    let condition = self.searchedTask[0]["weatherStatusData"] as? String
+                    let conditiondId = self.searchedTask[0]["weatherIdData"] as? Int
+                    let data = WeatherModel(conditionId: conditiondId ?? 0)
+
+                    self.temperatureLable.text = "\(temperatureToInto)"
+                    self.weatherStatusLabel.text = condition
+                    self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
+                    self.searchTextField.text = "\(self.locality)"
+  
                 }
+      
                 
             } else {
                 print("이미 저장된 주소의 일기예보: \(address)")
@@ -138,25 +154,23 @@ class MainViewController: UIViewController {
                     }
                     
                 }
+                print("함수끝나기전 위치: \(self.searchedTask!)")
+                guard let temperatureData = self.searchedTask[0]["tempData"] as? Double else { return }
+                let temperature = floor(temperatureData - 273.15)
+                let temperatureToInto = Int(temperature)
+                let condition = self.searchedTask[0]["weatherStatusData"] as? String
+                let conditiondId = self.searchedTask[0]["weatherIdData"] as? Int
+                let data = WeatherModel(conditionId: conditiondId ?? 0)
+
+                self.temperatureLable.text = "\(temperatureToInto)"
+                self.weatherStatusLabel.text = condition
+                self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
+                self.searchTextField.text = "\(self.locality)"
+        
             }
 
-            
-            
-            //       
-            /*
-             데이터 예측 시간, Unix, UTC : list.dt
-            1.온도 : list.main.temp
-             2. 체감온도 :list.main.feels_like
-             3. 습도 : list.main.humidity
-             4. list.weather.main
-             5. list.weather.description
-             6. 날씨아이콘 아아다 : list.weather.icon
-             7. 강수확률 : list.pop
-             8. 데이터 예측 시간 : list.dt_txt
-             */
-            
-            //1. 데이터를 받아와서 당일 일기예보 12시, 15시, 18시, 21시, 24시 5개 DB에 저장 
         }
+
     }
     
     func printLocality(_ lat: CLLocationDegrees, _ long: CLLocationDegrees){
@@ -214,8 +228,6 @@ extension MainViewController: CLLocationManagerDelegate {
             self.temperatureLable.text = "\(temperature)"
             self.weatherStatusLabel.text = condition
             self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
-//            let currentLocation = self.printLocality(lat, long)
-            print(" didUpdateLocations currentLocation \(self.locality), \(self.thorughfare), ")
             self.searchTextField.text = "\(self.locality)"
  
         }

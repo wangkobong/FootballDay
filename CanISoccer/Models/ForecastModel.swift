@@ -17,10 +17,12 @@ class Forecast: Object {
     @Persisted var tempFeelsLikeData: Double
     @Persisted var regDateData: Int
     @Persisted var probabilityOfRain: Double
+    @Persisted var weatherIdData: Int
+    @Persisted var weatherStatusData: String
  
     @Persisted(primaryKey: true) var _id: ObjectId
     
-    convenience init(predictedTimeUnixData: Double, predictedTimeData: String, searchedLocationData:String, tempData: Double, tempFeelsLikeData: Double, regDateData: Int, probabilityOfRain: Double) {
+    convenience init(predictedTimeUnixData: Double, predictedTimeData: String, searchedLocationData:String, tempData: Double, tempFeelsLikeData: Double, regDateData: Int, probabilityOfRain: Double, weatherIdData: Int, weatherStatusData: String) {
         self.init()
         self.predictedTimeUnixData = predictedTimeUnixData
         self.predictedTimeData = predictedTimeData
@@ -29,5 +31,8 @@ class Forecast: Object {
         self.tempFeelsLikeData = tempFeelsLikeData
         self.regDateData = regDateData
         self.probabilityOfRain = probabilityOfRain
+        self.weatherIdData = weatherIdData
+        self.weatherStatusData = weatherStatusData
     }
+    
 }
