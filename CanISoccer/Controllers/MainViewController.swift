@@ -86,33 +86,51 @@ class MainViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
 
 
-            let istoday = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!)")
+            let isToday = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!)")
 
-            if istoday.isEmpty {
-                print(#function)
-                WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
-                    print("fetchWeatherForecast: \(address)")
-                    for item in list {
-                        let predictedTimeUnix = item["dt"].doubleValue
-                        let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
-                        let temp = item["main"]["temp"].doubleValue
-                        let tempFeelsLike = item["main"]["feels_like"].doubleValue
-                        let regDate = Date().onlyDate
-                        let probabilityOfRain = item["pop"].doubleValue
-                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: floor(probabilityOfRain))
-                        try! self.localRealm.write {
-                            self.localRealm.add(task)
-                        }
+//            if isToday.isEmpty {
+//                print(#function)
+//                WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
+//                    print("fetchWeatherForecast: \(address)")
+//                    for item in list {
+//                        let predictedTimeUnix = item["dt"].doubleValue
+//                        let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
+//                        let searchedLocation = address
+//                        let temp = item["main"]["temp"].doubleValue
+//                        let tempFeelsLike = item["main"]["feels_like"].doubleValue
+//                        let regDate = Date().onlyDate
+//                        let probabilityOfRain = item["pop"].doubleValue
+//                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation,tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: floor(probabilityOfRain))
+//                        try! self.localRealm.write {
+//                            self.localRealm.add(task)
+//                        }
+//                    }
+//                }
+//            } else {
+//                print("fetchWeatherForecast: \(address)")
+//                return
+//            }
+            
+            WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
+                print("fetchWeatherForecast: \(address)")
+                for item in list {
+                    let predictedTimeUnix = item["dt"].doubleValue
+                    let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
+                    let searchedLocation = address
+                    let temp = item["main"]["temp"].doubleValue
+                    let tempFeelsLike = item["main"]["feels_like"].doubleValue
+                    let regDate = Date().onlyDate
+                    let probabilityOfRain = item["pop"].doubleValue
+                    let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation,tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: floor(probabilityOfRain))
+                    try! self.localRealm.write {
+                        self.localRealm.add(task)
                     }
                 }
-            } else {
-                print("fetchWeatherForecast: \(address)")
-                return
             }
 
             
             
-            // 디스패치그룹
+            //       
             /*
              데이터 예측 시간, Unix, UTC : list.dt
             1.온도 : list.main.temp
