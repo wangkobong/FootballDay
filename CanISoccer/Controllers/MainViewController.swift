@@ -15,23 +15,27 @@ class MainViewController: UIViewController {
     
     let localRealm = try! Realm()
     var tasks: Results<Forecast>!
-
+    var filteredTasks: Results<Forecast>!
+    var searchedTask: Results<Forecast>!
+    
     var locationManager: CLLocationManager?
     var latitude = ""
     var longitude = ""
     var locality = ""
     var thorughfare = ""
     var selectedTime = 0.0
+    var currentUnixtime: TimeInterval = 0
     let todayOnlyDate = Int(Date().onlyDate)
 
     var currentLocation:CLLocationCoordinate2D!
     
-    @IBOutlet weak var searchTextField: UITextField!{
-        didSet {
-            let placeholderText = NSAttributedString(string: "주소를 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-            searchTextField.attributedPlaceholder = placeholderText
-        }
-    }
+    @IBOutlet weak var searchTextField: UITextField!
+//    {
+//        didSet {
+//            let placeholderText = NSAttributedString(string: "주소를 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+//            searchTextField.attributedPlaceholder = placeholderText
+//        }
+//    }
     
     @IBOutlet weak var datePickerTextField: UITextField!{
         didSet {
@@ -59,9 +63,10 @@ class MainViewController: UIViewController {
         
         print("Realm is located at:", localRealm.configuration.fileURL!)
         
-        let nowUnixtime = Double(Date().timeIntervalSince1970)
-        tasks = localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(nowUnixtime) && regDateData == \(todayOnlyDate!)")
-        print("viewDidLoad: \(tasks!)")
+        currentUnixtime = Double(Date().timeIntervalSince1970)
+        tasks = localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(currentUnixtime) && regDateData == \(todayOnlyDate!)")
+//        print("viewDidLoad: \(tasks!)")
+        print("현재 unixTime: \(currentUnixtime)")
 
     }
 
@@ -86,45 +91,52 @@ class MainViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
 
 
-            let isToday = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!)")
+            let isExisting = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
 
-//            if isToday.isEmpty {
-//                print(#function)
-//                WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
-//                    print("fetchWeatherForecast: \(address)")
-//                    for item in list {
-//                        let predictedTimeUnix = item["dt"].doubleValue
-//                        let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
-//                        let searchedLocation = address
-//                        let temp = item["main"]["temp"].doubleValue
-//                        let tempFeelsLike = item["main"]["feels_like"].doubleValue
-//                        let regDate = Date().onlyDate
-//                        let probabilityOfRain = item["pop"].doubleValue
-//                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation,tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: floor(probabilityOfRain))
-//                        try! self.localRealm.write {
-//                            self.localRealm.add(task)
-//                        }
-//                    }
-//                }
-//            } else {
-//                print("fetchWeatherForecast: \(address)")
-//                return
-//            }
-            
-            WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
-                print("fetchWeatherForecast: \(address)")
-                for item in list {
-                    let predictedTimeUnix = item["dt"].doubleValue
-                    let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
-                    let searchedLocation = address
-                    let temp = item["main"]["temp"].doubleValue
-                    let tempFeelsLike = item["main"]["feels_like"].doubleValue
-                    let regDate = Date().onlyDate
-                    let probabilityOfRain = item["pop"].doubleValue
-                    let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation,tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: floor(probabilityOfRain))
-                    try! self.localRealm.write {
-                        self.localRealm.add(task)
+            if isExisting.isEmpty {
+
+                WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
+                    print(#function)
+                    print("fetchWeatherForecast: \(address)")
+                    print("selectedTime: \(self.selectedTime)")
+                    for item in list {
+                        let predictedTimeUnix = item["dt"].doubleValue
+                        let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
+                        let searchedLocation = address
+                        let temp = item["main"]["temp"].doubleValue
+                        let tempFeelsLike = item["main"]["feels_like"].doubleValue
+                        let regDate = Date().onlyDate
+                        let probabilityOfRain = item["pop"].doubleValue
+                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation,tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: floor(probabilityOfRain))
+                        try! self.localRealm.write {
+                            self.localRealm.add(task)
+                        }
                     }
+                    self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
+                    for task in self.tasks {
+                        if task["predictedTimeUnixData"] as! Double > self.selectedTime {
+                            let predictedTimeUnixDataByUser = task["predictedTimeUnixData"] as! Double
+                            self.searchedTask = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData == \(predictedTimeUnixDataByUser) && searchedLocationData == '\(address)'")
+                            print(self.searchedTask!)
+                            break
+                        }
+                        
+                    }
+                }
+                
+            } else {
+                print("이미 저장된 주소의 일기예보: \(address)")
+                self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
+                for task in self.tasks {
+                    //for문을 돌면서 selectedTime 보다 predictedTimeUnixData가 크면 멈춰서 해당하는 데이터가 있는 task를 가져온다
+                    if task["predictedTimeUnixData"] as! Double > self.selectedTime {
+                        let predictedTimeUnixDataByUser = task["predictedTimeUnixData"] as! Double
+                        print(task["predictedTimeUnixData"]!)
+                        self.searchedTask = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData == \(predictedTimeUnixDataByUser) && searchedLocationData == '\(address)'")
+                        print(self.searchedTask!)
+                        break
+                    }
+                    
                 }
             }
 
@@ -161,19 +173,23 @@ class MainViewController: UIViewController {
         }
     }
     
+//    func setForecast() {
+//        let isExisting = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
+//    }
+//
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
       self.view.endEditing(true)
     }
     
     @objc func tapDone() {
-        if let datePicker = self.datePickerTextField.inputView as? UIDatePicker { // 2-1
+        if let datePicker = self.datePickerTextField.inputView as? UIDatePicker {
             selectedTime = datePicker.date.timeIntervalSince1970
             let unixTimeToStirng = Date().setTimestamp(unixTime: selectedTime)
             print("selectedTime: \(selectedTime)")
             print("unixTimeToStirng: \(unixTimeToStirng)")
-            self.datePickerTextField.text = unixTimeToStirng //2-4
+            self.datePickerTextField.text = unixTimeToStirng
         }
-        self.datePickerTextField.resignFirstResponder() // 2-5
+        self.datePickerTextField.resignFirstResponder() 
     }
     
 
