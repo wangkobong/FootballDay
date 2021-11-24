@@ -126,17 +126,20 @@ class MainViewController: UIViewController {
                         }
                     }
                     guard let temperatureData = self.searchedTask[0]["tempData"] as? Double else { return }
+                    guard let feelsLikeTemperatureData = self.searchedTask[0]["tempFeelsLikeData"] as? Double else { return }
                     let temperature = floor(temperatureData - 273.15)
                     let temperatureToInto = Int(temperature)
+                    let feelsLikeTemperature = floor(feelsLikeTemperatureData - 273.15)
+                    let feelsLikeTemperatureToInto = Int(feelsLikeTemperature)
                     let condition = self.searchedTask[0]["weatherStatusData"] as? String
                     let conditiondId = self.searchedTask[0]["weatherIdData"] as? Int
                     let data = WeatherModel(conditionId: conditiondId ?? 0)
+                    let probabilityOfRain = self.searchedTask[0]["probabilityOfRain"] as? Double ?? 0.0 * 100
 
                     self.temperatureLable.text = "\(temperatureToInto)"
                     self.weatherStatusLabel.text = condition
                     self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
-                    self.searchTextField.text = "\(self.locality)"
-  
+                    self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInto)°C, 강수확률은 \(probabilityOfRain)% 입니다."
                 }
       
                 
@@ -156,17 +159,21 @@ class MainViewController: UIViewController {
                 }
                 print("함수끝나기전 위치: \(self.searchedTask!)")
                 guard let temperatureData = self.searchedTask[0]["tempData"] as? Double else { return }
+                guard let feelsLikeTemperatureData = self.searchedTask[0]["tempFeelsLikeData"] as? Double else { return }
                 let temperature = floor(temperatureData - 273.15)
                 let temperatureToInto = Int(temperature)
+                let feelsLikeTemperature = floor(feelsLikeTemperatureData - 273.15)
+                let feelsLikeTemperatureToInto = Int(feelsLikeTemperature)
                 let condition = self.searchedTask[0]["weatherStatusData"] as? String
                 let conditiondId = self.searchedTask[0]["weatherIdData"] as? Int
                 let data = WeatherModel(conditionId: conditiondId ?? 0)
+                let probabilityOfRain = self.searchedTask[0]["probabilityOfRain"] as? Double ?? 0.0 * 100
 
                 self.temperatureLable.text = "\(temperatureToInto)"
                 self.weatherStatusLabel.text = condition
                 self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
-                self.searchTextField.text = "\(self.locality)"
-        
+                self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInto)°C, 강수확률은 \(probabilityOfRain)% 입니다."
+            
             }
 
         }
@@ -205,8 +212,6 @@ class MainViewController: UIViewController {
         }
         self.datePickerTextField.resignFirstResponder() 
     }
-    
-
 }
 
 
