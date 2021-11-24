@@ -37,9 +37,7 @@ struct WeatherManager {
                     print(error)
                 }
             }
-            
         }
-   
     }
     
     func fetchWeatherForecast(_ latitude: String, _ longitude: String, result: @escaping ([JSON]) -> ()) {
@@ -80,6 +78,5 @@ struct WeatherManager {
                 print(error)
             }
         }
-    
     }
 }

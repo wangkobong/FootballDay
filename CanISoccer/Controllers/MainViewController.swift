@@ -65,7 +65,6 @@ class MainViewController: UIViewController {
         
         currentUnixtime = Double(Date().timeIntervalSince1970)
         tasks = localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(currentUnixtime) && regDateData == \(todayOnlyDate!)")
-//        print("viewDidLoad: \(tasks!)")
         print("현재 unixTime: \(currentUnixtime)")
 
     }
@@ -117,63 +116,16 @@ class MainViewController: UIViewController {
                         }
                     }
                     self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
-                    for task in self.tasks {
-                        if task["predictedTimeUnixData"] as! Double > self.selectedTime {
-                            let predictedTimeUnixDataByUser = task["predictedTimeUnixData"] as! Double
-                            self.searchedTask = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData == \(predictedTimeUnixDataByUser) && searchedLocationData == '\(address)'")
-                            print(self.searchedTask!)
-                            break
-                        }
-                    }
-                    guard let temperatureData = self.searchedTask[0]["tempData"] as? Double else { return }
-                    guard let feelsLikeTemperatureData = self.searchedTask[0]["tempFeelsLikeData"] as? Double else { return }
-                    let temperature = floor(temperatureData - 273.15)
-                    let temperatureToInto = Int(temperature)
-                    let feelsLikeTemperature = floor(feelsLikeTemperatureData - 273.15)
-                    let feelsLikeTemperatureToInto = Int(feelsLikeTemperature)
-                    let condition = self.searchedTask[0]["weatherStatusData"] as? String
-                    let conditiondId = self.searchedTask[0]["weatherIdData"] as? Int
-                    let data = WeatherModel(conditionId: conditiondId ?? 0)
-                    let probabilityOfRain = self.searchedTask[0]["probabilityOfRain"] as? Double ?? 0.0 * 100
-
-                    self.temperatureLable.text = "\(temperatureToInto)"
-                    self.weatherStatusLabel.text = condition
-                    self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
-                    self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInto)°C, 강수확률은 \(probabilityOfRain)% 입니다."
+                    
+                    self.setDescription(tasks: self.tasks, address: address)
                 }
       
                 
             } else {
                 print("이미 저장된 주소의 일기예보: \(address)")
                 self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
-                for task in self.tasks {
-                    //for문을 돌면서 selectedTime 보다 predictedTimeUnixData가 크면 멈춰서 해당하는 데이터가 있는 task를 가져온다
-                    if task["predictedTimeUnixData"] as! Double > self.selectedTime {
-                        let predictedTimeUnixDataByUser = task["predictedTimeUnixData"] as! Double
-                        print(task["predictedTimeUnixData"]!)
-                        self.searchedTask = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData == \(predictedTimeUnixDataByUser) && searchedLocationData == '\(address)'")
-                        print(self.searchedTask!)
-                        break
-                    }
-                    
-                }
-                print("함수끝나기전 위치: \(self.searchedTask!)")
-                guard let temperatureData = self.searchedTask[0]["tempData"] as? Double else { return }
-                guard let feelsLikeTemperatureData = self.searchedTask[0]["tempFeelsLikeData"] as? Double else { return }
-                let temperature = floor(temperatureData - 273.15)
-                let temperatureToInto = Int(temperature)
-                let feelsLikeTemperature = floor(feelsLikeTemperatureData - 273.15)
-                let feelsLikeTemperatureToInto = Int(feelsLikeTemperature)
-                let condition = self.searchedTask[0]["weatherStatusData"] as? String
-                let conditiondId = self.searchedTask[0]["weatherIdData"] as? Int
-                let data = WeatherModel(conditionId: conditiondId ?? 0)
-                let probabilityOfRain = self.searchedTask[0]["probabilityOfRain"] as? Double ?? 0.0 * 100
 
-                self.temperatureLable.text = "\(temperatureToInto)"
-                self.weatherStatusLabel.text = condition
-                self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
-                self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInto)°C, 강수확률은 \(probabilityOfRain)% 입니다."
-            
+                self.setDescription(tasks: self.tasks, address: address)
             }
 
         }
@@ -212,6 +164,8 @@ class MainViewController: UIViewController {
         }
         self.datePickerTextField.resignFirstResponder() 
     }
+    
+
 }
 
 
@@ -239,4 +193,32 @@ extension MainViewController: CLLocationManagerDelegate {
         locationManager?.stopUpdatingLocation()
         print(" didUpdateLocations CLLocationManagerDelegate \(self.locality), \(self.thorughfare)")
     }
+    
+    func setDescription(tasks: Results<Forecast>!, address: String) {
+        for task in self.tasks {
+            if task["predictedTimeUnixData"] as! Double > self.selectedTime {
+                let predictedTimeUnixDataByUser = task["predictedTimeUnixData"] as! Double
+                self.searchedTask = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData == \(predictedTimeUnixDataByUser) && searchedLocationData == '\(address)'")
+                print(self.searchedTask!)
+                break
+            }
+        }
+        
+        guard let temperatureData = self.searchedTask[0]["tempData"] as? Double else { return }
+        guard let feelsLikeTemperatureData = self.searchedTask[0]["tempFeelsLikeData"] as? Double else { return }
+        let temperature = floor(temperatureData - 273.15)
+        let temperatureToInto = Int(temperature)
+        let feelsLikeTemperature = floor(feelsLikeTemperatureData - 273.15)
+        let feelsLikeTemperatureToInto = Int(feelsLikeTemperature)
+        let condition = self.searchedTask[0]["weatherStatusData"] as? String
+        let conditiondId = self.searchedTask[0]["weatherIdData"] as? Int
+        let data = WeatherModel(conditionId: conditiondId ?? 0)
+        let probabilityOfRain = self.searchedTask[0]["probabilityOfRain"] as? Double ?? 0.0 * 100
+
+        self.temperatureLable.text = "\(temperatureToInto)"
+        self.weatherStatusLabel.text = condition
+        self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
+        self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInto)°C, 강수확률은 \(probabilityOfRain)% 입니다."
+    }
+    
 }
