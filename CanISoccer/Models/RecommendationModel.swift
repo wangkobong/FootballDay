@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct InfoModel {
+struct RecommendationModel {
     let feelsLikeTemperature: Int
     
     var conditionTemperature: String {

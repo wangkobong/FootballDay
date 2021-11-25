@@ -240,19 +240,23 @@ extension MainViewController: CLLocationManagerDelegate {
         guard let feelsLikeTemperatureData = self.searchedTask[0]["tempFeelsLikeData"] as? Double else { return }
         let temperature = floor(temperatureData)
         let temperatureToInto = Int(temperature)
+        guard let predictedTimeData = self.searchedTask[0]["predictedTimeData"] as? String else { return }
+        let droppedPredictedTimeData = String(predictedTimeData.dropFirst(8))
         let feelsLikeTemperature = floor(feelsLikeTemperatureData)
         let feelsLikeTemperatureToInt = Int(feelsLikeTemperature)
         let condition = self.searchedTask[0]["weatherStatusData"] as? String
         let conditiondId = self.searchedTask[0]["weatherIdData"] as? Int
         let forecastIconId = WeatherModel(conditionId: conditiondId ?? 0)
-        let recommendationLabelData = InfoModel(feelsLikeTemperature: feelsLikeTemperatureToInt)
+        let recommendationLabelData = RecommendationModel(feelsLikeTemperature: feelsLikeTemperatureToInt)
+        let hoursLabelData = HoursModel(hours: droppedPredictedTimeData)
         let probabilityOfRain = self.searchedTask[0]["probabilityOfRain"] as? Double ?? 0.0 * 100
 
         self.temperatureLable.text = "\(temperatureToInto)"
         self.weatherStatusLabel.text = condition
         self.weatherStatusImageView.image = UIImage(systemName: forecastIconId.conditionName)
         self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInt)°C, 강수확률은 \(probabilityOfRain)% 입니다."
-        self.recommendationLabel.text = "\(recommendationLabelData.conditionTemperature)"
+        self.recommendationLabel.text = "\(recommendationLabelData.conditionTemperature) \(hoursLabelData.recommendSunblock)"
+        print("String(predictedTimeData.dropFirst(8)): \(droppedPredictedTimeData)")
     }
     
     func showToastMessage(message: String, title: String) {
