@@ -15,6 +15,8 @@ import Toast
 class MainViewController: UIViewController {
     
     let localRealm = try! Realm()
+
+    
     var tasks: Results<Forecast>!
     var filteredTasks: Results<Forecast>!
     var searchedTask: Results<Forecast>!
@@ -31,12 +33,12 @@ class MainViewController: UIViewController {
     var currentLocation:CLLocationCoordinate2D!
     
     @IBOutlet weak var searchTextField: UITextField!
-//    {
-//        didSet {
-//            let placeholderText = NSAttributedString(string: "주소를 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-//            searchTextField.attributedPlaceholder = placeholderText
-//        }
-//    }
+    {
+        didSet {
+            let placeholderText = NSAttributedString(string: "주소를 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            searchTextField.attributedPlaceholder = placeholderText
+        }
+    }
     
     @IBOutlet weak var datePickerTextField: UITextField!{
         didSet {
@@ -80,7 +82,7 @@ class MainViewController: UIViewController {
     @IBAction func searchBtnPressed(_ sender: UIButton) {
 
         guard let address = self.searchTextField.text else { return }
-    
+        let group = DispatchGroup()
         if address.isEmpty && selectedTime == 0.0 {
             showToastMessage(message: "시간대 선택 후 주소를 xx구 xx동 형식으로 입력해주세요.", title: "검색할 주소와 시간을 입력해주세요!")
         } else if address.isEmpty {
@@ -88,59 +90,73 @@ class MainViewController: UIViewController {
         } else if selectedTime == 0.0 {
             showToastMessage(message: "지금 시간보다 이후의 시간대를 선택해주세요.", title: "검색할 시간대를 선택해주세요.")
         } else {
-            WeatherManager.shared.fetchGeocoding(address: address) { item in
-                let x = item[0]["x"].stringValue
-                let y = item[0]["y"].stringValue
-                self.latitude = y
-                self.longitude = x
-                print("fetchGeocoding \(item)")
-            }
-
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-
-
-                let isExisting = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
-
-                if isExisting.isEmpty {
-
-                    WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list, code in
-                        print(#function)
-                        print("fetchWeatherForecast: \(address)")
-                        print("selectedTime: \(self.selectedTime)")
-                        print("상태코드 : \(code)")
-                        for item in list {
-                            let predictedTimeUnix = item["dt"].doubleValue
-                            let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
-                            let searchedLocation = address
-                            let temp = item["main"]["temp"].doubleValue
-                            let tempFeelsLike = item["main"]["feels_like"].doubleValue
-                            let regDate = Date().onlyDate
-                            let probabilityOfRain = item["pop"].doubleValue
-                            let weatherID = item["weather"][0]["id"].intValue
-                            let weatherStatus = item["weather"][0]["main"].stringValue
-                            
-                            let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: probabilityOfRain, weatherIdData: weatherID, weatherStatusData: weatherStatus)
-                            
-                            try! self.localRealm.write {
-                                self.localRealm.add(task)
+            DispatchQueue.global().async(group: group) {
+                group.enter()
+                WeatherManager.shared.fetchGeocoding(address: address) { item, code in
+                    let x = item[0]["x"].stringValue
+                    let y = item[0]["y"].stringValue
+                    self.latitude = y
+                    self.longitude = x
+                    if code == 200 {
+                        group.leave()
+                    } else {
+                        self.showToastMessage(message: "좀 더 자세한 주소를 적어주세요", title: "중복된 주소들이 검색되었습니다.")
+                        return
+                    }
+                }
+                
+                group.notify(queue: DispatchQueue.main) {
+                    
+                    let isExisting = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
+                    
+                    if isExisting.isEmpty {
+                        print("X좌표: \(self.longitude), Y좌표: \(self.latitude)")
+                        WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list, code in
+                            print(#function)
+                            print("fetchWeatherForecast: \(address)")
+                            print("selectedTime: \(self.selectedTime)")
+                            print(" fetchWeatherForecast X좌표: \(self.longitude), Y좌표: \(self.latitude)")
+                            print("fetchWeatherForecast 상태코드 : \(code)")
+                            switch code {
+                                case 200:
+                                    for item in list {
+                                        let predictedTimeUnix = item["dt"].doubleValue
+                                        let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
+                                        let searchedLocation = address
+                                        let temp = item["main"]["temp"].doubleValue
+                                        let tempFeelsLike = item["main"]["feels_like"].doubleValue
+                                        let regDate = Date().onlyDate
+                                        let probabilityOfRain = item["pop"].doubleValue
+                                        let weatherID = item["weather"][0]["id"].intValue
+                                        let weatherStatus = item["weather"][0]["main"].stringValue
+                                        
+                                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: probabilityOfRain, weatherIdData: weatherID, weatherStatusData: weatherStatus)
+                                        
+                                        try! self.localRealm.write {
+                                            self.localRealm.add(task)
+                                        }
+                                    }
+                                    self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
+                    
+                                    self.setDescription(tasks: self.tasks, address: address)
+                                case 400:
+                                    self.showToastMessage(message: "(ex. xx구 xx동 형식으로 입력해주세요)", title: "유효하지 않은 주소입니다.")
+                                default:
+                                    self.showToastMessage(message: "관리자에게 문의해주세요!", title: "알 수 없는 오류가 발생했습니다.")
                             }
+                            self.initCoordinates()
                         }
+
+                    } else {
+                        print("이미 저장된 주소의 일기예보: \(address), 오늘날짜: \(self.todayOnlyDate!)")
                         self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
-                        
+
                         self.setDescription(tasks: self.tasks, address: address)
                     }
-          
-                    
-                } else {
-                    print("이미 저장된 주소의 일기예보: \(address), 오늘날짜: \(self.todayOnlyDate!)")
-                    self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
-
-                    self.setDescription(tasks: self.tasks, address: address)
                 }
-
             }
-
         }
+
     }
     
     func printLocality(_ lat: CLLocationDegrees, _ long: CLLocationDegrees){
@@ -181,7 +197,6 @@ class MainViewController: UIViewController {
         }
         self.datePickerTextField.resignFirstResponder() 
     }
-    
 
 }
 
@@ -197,14 +212,13 @@ extension MainViewController: CLLocationManagerDelegate {
         
         WeatherManager.shared.fetchCurrentweather(lat, long) { json in
             let temperatureData = json["main"]["temp"].doubleValue
-            let temperature = Int(temperatureData) - 273
+            let temperature = Int(temperatureData)
             let condition = json["weather"][0]["main"].stringValue
             let conditiondId = json["weather"][0]["id"].stringValue
             let data = WeatherModel(conditionId: Int(conditiondId) ?? 0)
             self.temperatureLable.text = "\(temperature)"
             self.weatherStatusLabel.text = condition
             self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
-            self.searchTextField.text = "\(self.locality)"
  
         }
         locationManager?.stopUpdatingLocation()
@@ -224,9 +238,9 @@ extension MainViewController: CLLocationManagerDelegate {
         
         guard let temperatureData = self.searchedTask[0]["tempData"] as? Double else { return }
         guard let feelsLikeTemperatureData = self.searchedTask[0]["tempFeelsLikeData"] as? Double else { return }
-        let temperature = floor(temperatureData - 273.15)
+        let temperature = floor(temperatureData)
         let temperatureToInto = Int(temperature)
-        let feelsLikeTemperature = floor(feelsLikeTemperatureData - 273.15)
+        let feelsLikeTemperature = floor(feelsLikeTemperatureData)
         let feelsLikeTemperatureToInto = Int(feelsLikeTemperature)
         let condition = self.searchedTask[0]["weatherStatusData"] as? String
         let conditiondId = self.searchedTask[0]["weatherIdData"] as? Int
@@ -244,6 +258,11 @@ extension MainViewController: CLLocationManagerDelegate {
         style.messageColor = .white
         style.titleColor = .white
         self.view.makeToast(message, duration: 2.0, position: .center, title: title, image: UIImage(systemName: "x.circle.fill"), style: style, completion: nil)
+    }
+    
+    func initCoordinates() {
+        self.latitude = ""
+        self.longitude = ""
     }
     
     
