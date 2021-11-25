@@ -25,6 +25,7 @@
 		FED6022A27465FEC00428EFA /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */; };
 		FEDC159E274BC6B90097EC65 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDC159D274BC6B90097EC65 /* ForecastModel.swift */; };
 		FEDC15A0274BC9CE0097EC65 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDC159F274BC9CE0097EC65 /* FavoriteModel.swift */; };
+		FEDC15A3274F5DAF0097EC65 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = FEDC15A2274F5DAF0097EC65 /* Toast */; };
 		FEE7C3DC27493584007CC37E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3DB27493584007CC37E /* Realm */; };
 		FEE7C3DE27493584007CC37E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3DD27493584007CC37E /* RealmSwift */; };
 		FEE7C3E1274935A6007CC37E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3E0274935A6007CC37E /* Alamofire */; };
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEDC15A3274F5DAF0097EC65 /* Toast in Frameworks */,
 				FEE7C3DE27493584007CC37E /* RealmSwift in Frameworks */,
 				FEE7C3E1274935A6007CC37E /* Alamofire in Frameworks */,
 				FEE7C3DC27493584007CC37E /* Realm in Frameworks */,
@@ -205,6 +207,7 @@
 				FEE7C3DD27493584007CC37E /* RealmSwift */,
 				FEE7C3E0274935A6007CC37E /* Alamofire */,
 				FEE7C3E4274937A8007CC37E /* SwiftyJSON */,
+				FEDC15A2274F5DAF0097EC65 /* Toast */,
 			);
 			productName = CanISoccer;
 			productReference = FE2A27EE274260F60056706E /* CanISoccer.app */;
@@ -238,6 +241,7 @@
 				FEE7C3DA27493584007CC37E /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				FEE7C3DF274935A6007CC37E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				FEE7C3E3274937A8007CC37E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				FEDC15A1274F5DAF0097EC65 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = FE2A27EF274260F60056706E /* Products */;
 			projectDirPath = "";
@@ -553,6 +557,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FEDC15A1274F5DAF0097EC65 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.1;
+			};
+		};
 		FEE7C3DA27493584007CC37E /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
@@ -580,6 +592,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FEDC15A2274F5DAF0097EC65 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEDC15A1274F5DAF0097EC65 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		FEE7C3DB27493584007CC37E /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FEE7C3DA27493584007CC37E /* XCRemoteSwiftPackageReference "realm-cocoa" */;

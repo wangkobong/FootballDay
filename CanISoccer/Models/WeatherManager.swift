@@ -40,23 +40,24 @@ struct WeatherManager {
         }
     }
     
-    func fetchWeatherForecast(_ latitude: String, _ longitude: String, result: @escaping ([JSON]) -> ()) {
+    func fetchWeatherForecast(_ latitude: String, _ longitude: String, result: @escaping ([JSON], Int) -> ()) {
         
         let appid = Bundle.main.openWeatherAPIKEY
         let totalDataCount = 11
         let url = "https://api.openweathermap.org/data/2.5/forecast?lat=\(latitude)&lon=\(longitude)&cnt=\(totalDataCount)&appid=\(appid)"
         
-        AF.request(url, method: .get).validate().responseJSON { response in
+        AF.request(url, method: .get).validate(statusCode: 200...500).responseJSON { response in
             switch response.result {
             case.success(let value):
                 let json = JSON(value)
+                guard let code = response.response?.statusCode else { return }
                 let list = json["list"]
                 var listArray:[JSON] = []
                 
                 for item in list.arrayValue{ 
                     listArray.append(item)
                 }
-                result(listArray)
+                result(listArray, code)
                 
             case.failure(let error):
                 print(error)

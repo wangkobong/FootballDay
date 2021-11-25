@@ -94,10 +94,11 @@ class MainViewController: UIViewController {
 
             if isExisting.isEmpty {
 
-                WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list in
+                WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list, code in
                     print(#function)
                     print("fetchWeatherForecast: \(address)")
                     print("selectedTime: \(self.selectedTime)")
+                    print("상태코드 : \(code)")
                     for item in list {
                         let predictedTimeUnix = item["dt"].doubleValue
                         let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
