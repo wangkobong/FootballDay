@@ -68,7 +68,7 @@ class MainViewController: UIViewController {
         tasks = localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(currentUnixtime) && regDateData == \(todayOnlyDate!)")
         print("현재 unixTime: \(currentUnixtime)")
 
-    }
+    }   
 
     
     
@@ -81,57 +81,61 @@ class MainViewController: UIViewController {
 
         guard let address = self.searchTextField.text else { return }
     
-        WeatherManager.shared.fetchGeocoding(address: address) { item in
-            let x = item[0]["x"].stringValue
-            let y = item[0]["y"].stringValue
-            self.latitude = y
-            self.longitude = x
-        }
+        if address.isEmpty {
+            showToastMessage(message: "xx구 xx동 형식으로 입력해주세요.", title: "주소를 입력해주세요!")
+        } else {
+            WeatherManager.shared.fetchGeocoding(address: address) { item in
+                let x = item[0]["x"].stringValue
+                let y = item[0]["y"].stringValue
+                self.latitude = y
+                self.longitude = x
+            }
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
 
 
-            let isExisting = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
+                let isExisting = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
 
-            if isExisting.isEmpty {
+                if isExisting.isEmpty {
 
-                WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list, code in
-                    print(#function)
-                    print("fetchWeatherForecast: \(address)")
-                    print("selectedTime: \(self.selectedTime)")
-                    print("상태코드 : \(code)")
-                    for item in list {
-                        let predictedTimeUnix = item["dt"].doubleValue
-                        let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
-                        let searchedLocation = address
-                        let temp = item["main"]["temp"].doubleValue
-                        let tempFeelsLike = item["main"]["feels_like"].doubleValue
-                        let regDate = Date().onlyDate
-                        let probabilityOfRain = item["pop"].doubleValue
-                        let weatherID = item["weather"][0]["id"].intValue
-                        let weatherStatus = item["weather"][0]["main"].stringValue
-                        
-                        let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: probabilityOfRain, weatherIdData: weatherID, weatherStatusData: weatherStatus)
-                        
-                        try! self.localRealm.write {
-                            self.localRealm.add(task)
+                    WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list, code in
+                        print(#function)
+                        print("fetchWeatherForecast: \(address)")
+                        print("selectedTime: \(self.selectedTime)")
+                        print("상태코드 : \(code)")
+                        for item in list {
+                            let predictedTimeUnix = item["dt"].doubleValue
+                            let predictedTimeData = Date().dateToString(unixTime: predictedTimeUnix)
+                            let searchedLocation = address
+                            let temp = item["main"]["temp"].doubleValue
+                            let tempFeelsLike = item["main"]["feels_like"].doubleValue
+                            let regDate = Date().onlyDate
+                            let probabilityOfRain = item["pop"].doubleValue
+                            let weatherID = item["weather"][0]["id"].intValue
+                            let weatherStatus = item["weather"][0]["main"].stringValue
+                            
+                            let task = Forecast(predictedTimeUnixData: predictedTimeUnix, predictedTimeData: predictedTimeData, searchedLocationData: searchedLocation, tempData: temp, tempFeelsLikeData: tempFeelsLike, regDateData: Int(regDate)!, probabilityOfRain: probabilityOfRain, weatherIdData: weatherID, weatherStatusData: weatherStatus)
+                            
+                            try! self.localRealm.write {
+                                self.localRealm.add(task)
+                            }
                         }
+                        self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
+                        
+                        self.setDescription(tasks: self.tasks, address: address)
                     }
-                    self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
+          
                     
+                } else {
+                    print("이미 저장된 주소의 일기예보: \(address), 오늘날짜: \(self.todayOnlyDate!)")
+                    self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
+
                     self.setDescription(tasks: self.tasks, address: address)
                 }
-      
-                
-            } else {
-                print("이미 저장된 주소의 일기예보: \(address), 오늘날짜: \(self.todayOnlyDate)")
-                self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
 
-                self.setDescription(tasks: self.tasks, address: address)
             }
 
         }
-
     }
     
     func printLocality(_ lat: CLLocationDegrees, _ long: CLLocationDegrees){
@@ -164,7 +168,7 @@ class MainViewController: UIViewController {
             print("unixTimeToStirng: \(unixTimeToStirng)")
 
             if currentUnixtime > selectedTime {
-                showToastMessage()
+                showToastMessage(message: "현재시간 이후의 시간을 선택해주세요!", title: "지난 시간을 입력할 수 없습니다.")
             } else {
                 self.datePickerTextField.text = unixTimeToStirng
             }
@@ -230,11 +234,11 @@ extension MainViewController: CLLocationManagerDelegate {
         self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInto)°C, 강수확률은 \(probabilityOfRain)% 입니다."
     }
     
-    func showToastMessage() {
+    func showToastMessage(message: String, title: String) {
         var style = ToastStyle()
         style.messageColor = .white
         style.titleColor = .white
-        self.view.makeToast("현재시간 이후를 선택해주세요!", duration: 2.0, position: .center, title: "이미 지나간 시간입니다.", image: UIImage(systemName: "x.circle.fill"), style: style, completion: nil)
+        self.view.makeToast(message, duration: 2.0, position: .center, title: title, image: UIImage(systemName: "x.circle.fill"), style: style, completion: nil)
     }
     
     
