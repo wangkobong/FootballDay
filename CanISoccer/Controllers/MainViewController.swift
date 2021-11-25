@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 import CoreLocation
 import RealmSwift
+import Toast
 
 class MainViewController: UIViewController {
     
@@ -123,7 +124,7 @@ class MainViewController: UIViewController {
       
                 
             } else {
-                print("이미 저장된 주소의 일기예보: \(address)")
+                print("이미 저장된 주소의 일기예보: \(address), 오늘날짜: \(self.todayOnlyDate)")
                 self.tasks = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(self.currentUnixtime) && regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
 
                 self.setDescription(tasks: self.tasks, address: address)
@@ -161,7 +162,13 @@ class MainViewController: UIViewController {
             let unixTimeToStirng = Date().setTimestamp(unixTime: selectedTime)
             print("selectedTime: \(selectedTime)")
             print("unixTimeToStirng: \(unixTimeToStirng)")
-            self.datePickerTextField.text = unixTimeToStirng
+
+            if currentUnixtime > selectedTime {
+                showToastMessage()
+            } else {
+                self.datePickerTextField.text = unixTimeToStirng
+            }
+            
         }
         self.datePickerTextField.resignFirstResponder() 
     }
@@ -199,7 +206,8 @@ extension MainViewController: CLLocationManagerDelegate {
         for task in self.tasks {
             if task["predictedTimeUnixData"] as! Double > self.selectedTime {
                 let predictedTimeUnixDataByUser = task["predictedTimeUnixData"] as! Double
-                self.searchedTask = self.localRealm.objects(Forecast.self).filter("predictedTimeUnixData == \(predictedTimeUnixDataByUser) && searchedLocationData == '\(address)'")
+                self.searchedTask = self.localRealm.objects(Forecast.self)
+                .filter("predictedTimeUnixData == \(predictedTimeUnixDataByUser) && searchedLocationData == '\(address)' && regDateData == \(todayOnlyDate ?? 0)")
                 print(self.searchedTask!)
                 break
             }
@@ -221,5 +229,14 @@ extension MainViewController: CLLocationManagerDelegate {
         self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
         self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInto)°C, 강수확률은 \(probabilityOfRain)% 입니다."
     }
+    
+    func showToastMessage() {
+        var style = ToastStyle()
+        style.messageColor = .white
+        style.titleColor = .white
+        self.view.makeToast("현재시간 이후를 선택해주세요!", duration: 2.0, position: .center, title: "이미 지나간 시간입니다.", image: UIImage(systemName: "x.circle.fill"), style: style, completion: nil)
+    }
+    
+    
     
 }
