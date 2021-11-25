@@ -9,8 +9,6 @@ import Foundation
 
 struct WeatherModel {
     let conditionId: Int
-//    let temperature: Double
-//    let condition: String
     
     var conditionName: String {
         switch conditionId {
@@ -32,4 +30,5 @@ struct WeatherModel {
             return "cloud"
         }
     }
+
 }

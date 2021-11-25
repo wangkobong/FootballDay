@@ -50,7 +50,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var weatherStatusLabel: UILabel!
     @IBOutlet weak var weatherStatusImageView: UIImageView!
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
-    @IBOutlet weak var assistantLabel: UILabel!
+    @IBOutlet weak var recommendationLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +100,7 @@ class MainViewController: UIViewController {
                     if code == 200 {
                         group.leave()
                     } else {
-                        self.showToastMessage(message: "좀 더 자세한 주소를 적어주세요", title: "중복된 주소들이 검색되었습니다.")
+                        self.showToastMessage(message: "좀 더 자세한 주소를 적어주세요", title: "잘못된 주소입니다.")
                         return
                     }
                 }
@@ -241,16 +241,18 @@ extension MainViewController: CLLocationManagerDelegate {
         let temperature = floor(temperatureData)
         let temperatureToInto = Int(temperature)
         let feelsLikeTemperature = floor(feelsLikeTemperatureData)
-        let feelsLikeTemperatureToInto = Int(feelsLikeTemperature)
+        let feelsLikeTemperatureToInt = Int(feelsLikeTemperature)
         let condition = self.searchedTask[0]["weatherStatusData"] as? String
         let conditiondId = self.searchedTask[0]["weatherIdData"] as? Int
-        let data = WeatherModel(conditionId: conditiondId ?? 0)
+        let forecastIconId = WeatherModel(conditionId: conditiondId ?? 0)
+        let recommendationLabelData = InfoModel(feelsLikeTemperature: feelsLikeTemperatureToInt)
         let probabilityOfRain = self.searchedTask[0]["probabilityOfRain"] as? Double ?? 0.0 * 100
 
         self.temperatureLable.text = "\(temperatureToInto)"
         self.weatherStatusLabel.text = condition
-        self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
-        self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInto)°C, 강수확률은 \(probabilityOfRain)% 입니다."
+        self.weatherStatusImageView.image = UIImage(systemName: forecastIconId.conditionName)
+        self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInt)°C, 강수확률은 \(probabilityOfRain)% 입니다."
+        self.recommendationLabel.text = "\(recommendationLabelData.conditionTemperature)"
     }
     
     func showToastMessage(message: String, title: String) {

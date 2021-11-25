@@ -160,8 +160,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="날씨" image="location.fill" catalog="system" id="4wx-99-tNU"/>
                     <connections>
-                        <outlet property="assistantLabel" destination="jK0-Zu-6mZ" id="vLI-rd-RJW"/>
                         <outlet property="datePickerTextField" destination="QvU-Tj-eQb" id="w2P-VJ-UhA"/>
+                        <outlet property="recommendationLabel" destination="jK0-Zu-6mZ" id="vLI-rd-RJW"/>
                         <outlet property="searchTextField" destination="zOb-l8-Ilz" id="mpH-pn-Tet"/>
                         <outlet property="temperatureLable" destination="QAf-AF-y1O" id="hKg-nb-CSz"/>
                         <outlet property="weatherDescriptionLabel" destination="nJA-4Z-0XB" id="AgF-HT-m1V"/>
