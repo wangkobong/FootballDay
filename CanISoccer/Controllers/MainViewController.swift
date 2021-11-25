@@ -81,14 +81,19 @@ class MainViewController: UIViewController {
 
         guard let address = self.searchTextField.text else { return }
     
-        if address.isEmpty {
-            showToastMessage(message: "xx구 xx동 형식으로 입력해주세요.", title: "주소를 입력해주세요!")
+        if address.isEmpty && selectedTime == 0.0 {
+            showToastMessage(message: "시간대 선택 후 주소를 xx구 xx동 형식으로 입력해주세요.", title: "검색할 주소와 시간을 입력해주세요!")
+        } else if address.isEmpty {
+            showToastMessage(message: "xx구 xx동 형식으로 입력해주세요.", title: "검색할 지역을 입력해주세요.")
+        } else if selectedTime == 0.0 {
+            showToastMessage(message: "지금 시간보다 이후의 시간대를 선택해주세요.", title: "검색할 시간대를 선택해주세요.")
         } else {
             WeatherManager.shared.fetchGeocoding(address: address) { item in
                 let x = item[0]["x"].stringValue
                 let y = item[0]["y"].stringValue
                 self.latitude = y
                 self.longitude = x
+                print("fetchGeocoding \(item)")
             }
 
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
