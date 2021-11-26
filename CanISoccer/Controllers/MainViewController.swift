@@ -68,7 +68,7 @@ class MainViewController: UIViewController {
 
     @IBAction func currentLocationBtnPressed(_ sender: UIButton) {
         print("currentLocationBtnPressed")
-//        fetchCurrentWeather(lat: latitude, long: longitude)
+        locationManager.startUpdatingLocation()
     }
     
     
@@ -100,7 +100,7 @@ class MainViewController: UIViewController {
                 }
                 
                 group.notify(queue: DispatchQueue.main) {
-                    
+                    // 이 부분을 함수로 묶어 status code가 200일 경우 실행하도록 하자!
                     let isExisting = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
                     
                     if isExisting.isEmpty {
@@ -154,6 +154,7 @@ class MainViewController: UIViewController {
     }
     
     func printLocality(_ lat: CLLocationDegrees, _ long: CLLocationDegrees){
+        print(#function)
         let findLocation = CLLocation(latitude: lat, longitude: long)
         let geocoder = CLGeocoder()
         let locale = Locale(identifier: "Ko-kr")
@@ -163,6 +164,7 @@ class MainViewController: UIViewController {
             if let placemark = placemarks?[0] {
                 self.locality = placemark.locality!
                 self.thorughfare = placemark.thoroughfare!
+                self.weatherDescriptionLabel.text = "\(self.locality) \(self.thorughfare)의 날씨입니다."
             }
         }
     }
@@ -227,7 +229,7 @@ extension MainViewController: CLLocationManagerDelegate {
         case .authorizedAlways:
             locationManager.startUpdatingLocation()
         case .authorizedWhenInUse:
-            locationManager.startUpdatingLocation() 
+            locationManager.startUpdatingLocation()
         @unknown default:
             print("DEFAULT")
         }
@@ -249,7 +251,6 @@ extension MainViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager.startUpdatingLocation()
         print(#function)
         if let coordinates = locations.last?.coordinate {
             let lat = coordinates.latitude
@@ -257,8 +258,10 @@ extension MainViewController: CLLocationManagerDelegate {
             print(" didUpdateLocations 처음부분  \(self.locality), \(self.thorughfare) ")
             
             fetchCurrentWeather(lat: lat, long: long)
-            locationManager.stopUpdatingLocation()
+            printLocality(lat, long)
             print(" didUpdateLocations CLLocationManagerDelegate \(self.locality), \(self.thorughfare)")
+            print(" fetchCurrentWeather 다음부분  \(lat), \(long) ")
+            locationManager.stopUpdatingLocation()
         } else {
             print("Location Cannot Find")
         }
@@ -269,12 +272,10 @@ extension MainViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print(#function)
         checkUserLocationServiceAuthorization()
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print(#function)
         checkUserLocationServiceAuthorization()
     }
     
@@ -309,7 +310,6 @@ extension MainViewController: CLLocationManagerDelegate {
         self.weatherStatusImageView.image = UIImage(systemName: forecastIconId.conditionName)
         self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInt)°C, 강수확률은 \(probabilityOfRain)% 입니다."
         self.recommendationLabel.text = "\(recommendationLabelData.conditionTemperature) \(hoursLabelData.recommendSunblock)"
-        print("String(predictedTimeData.dropFirst(8)): \(droppedPredictedTimeData)")
     }
     
     func showToastMessage(message: String, title: String) {
@@ -329,7 +329,6 @@ extension MainViewController: CLLocationManagerDelegate {
             self.temperatureLable.text = "\(temperature)"
             self.weatherStatusLabel.text = condition
             self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
-            self.weatherDescriptionLabel.text = ""
             self.recommendationLabel.text = ""
         }
     }
