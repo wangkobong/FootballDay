@@ -31,12 +31,9 @@ struct WeatherManager {
                     let json = JSON(value)
                     let item = json["addresses"]
                     let code = response.response?.statusCode
-                    if json["meta"]["totalCount"].intValue == 1 {
-                        result(item, code ?? 400)
-                    } else {
-                        result(item, 400)
-                    }
-
+                    
+                    json["meta"]["totalCount"].intValue == 1 ? result(item, code ?? 400) : result(item, 400)
+                    
                 case.failure(let error):
                     print(error)
                 }

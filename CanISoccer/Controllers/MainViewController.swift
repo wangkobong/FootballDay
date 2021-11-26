@@ -9,19 +9,21 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import CoreLocation
+import CoreLocationUI
 import RealmSwift
 import Toast
+
 
 class MainViewController: UIViewController {
     
     let localRealm = try! Realm()
-
     
     var tasks: Results<Forecast>!
     var filteredTasks: Results<Forecast>!
     var searchedTask: Results<Forecast>!
     
-    var locationManager: CLLocationManager?
+    let locationManager = CLLocationManager()
+    var currentLocation:CLLocationCoordinate2D!
     var latitude = ""
     var longitude = ""
     var locality = ""
@@ -30,7 +32,6 @@ class MainViewController: UIViewController {
     var currentUnixtime: TimeInterval = 0
     let todayOnlyDate = Int(Date().onlyDate)
 
-    var currentLocation:CLLocationCoordinate2D!
     
     @IBOutlet weak var searchTextField: UITextField!
     {
@@ -56,26 +57,18 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         self.datePickerTextField.setInputViewDatePicker(target: self, selector: #selector(tapDone))
-        
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        
-        locationManager?.requestWhenInUseAuthorization()
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.startUpdatingLocation()
+    
+        locationManager.delegate = self
         
         print("Realm is located at:", localRealm.configuration.fileURL!)
         
         currentUnixtime = Double(Date().timeIntervalSince1970)
         tasks = localRealm.objects(Forecast.self).filter("predictedTimeUnixData > \(currentUnixtime) && regDateData == \(todayOnlyDate!)")
-        print("현재 unixTime: \(currentUnixtime)")
-
     }   
 
-    
-    
     @IBAction func currentLocationBtnPressed(_ sender: UIButton) {
         print("currentLocationBtnPressed")
+//        fetchCurrentWeather(lat: latitude, long: longitude)
     }
     
     
@@ -103,6 +96,7 @@ class MainViewController: UIViewController {
                         self.showToastMessage(message: "좀 더 자세한 주소를 적어주세요", title: "잘못된 주소입니다.")
                         return
                     }
+                    
                 }
                 
                 group.notify(queue: DispatchQueue.main) {
@@ -173,10 +167,6 @@ class MainViewController: UIViewController {
         }
     }
     
-//    func setForecast() {
-//        let isExisting = self.localRealm.objects(Forecast.self).filter("regDateData == \(self.todayOnlyDate!) && searchedLocationData == '\(address)'")
-//    }
-//
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
       self.view.endEditing(true)
     }
@@ -197,32 +187,95 @@ class MainViewController: UIViewController {
         }
         self.datePickerTextField.resignFirstResponder() 
     }
+    
 
 }
 
 
 // MARK: - CLLocationManagerDelegate
 extension MainViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(#function)
-        guard let coordinates = locations.last?.coordinate else { return }
-        let lat = coordinates.latitude
-        let long = coordinates.longitude
-        print(" didUpdateLocations 처음부분  \(self.locality), \(self.thorughfare) ")
+    
+    func checkUserLocationServiceAuthorization() {
+        let authorizationStatus: CLAuthorizationStatus
         
-        WeatherManager.shared.fetchCurrentweather(lat, long) { json in
-            let temperatureData = json["main"]["temp"].doubleValue
-            let temperature = Int(temperatureData)
-            let condition = json["weather"][0]["main"].stringValue
-            let conditiondId = json["weather"][0]["id"].stringValue
-            let data = WeatherModel(conditionId: Int(conditiondId) ?? 0)
-            self.temperatureLable.text = "\(temperature)"
-            self.weatherStatusLabel.text = condition
-            self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
- 
+        if #available(iOS 14.0, *) {
+            authorizationStatus = locationManager.authorizationStatus
+        } else {
+            authorizationStatus = CLLocationManager.authorizationStatus()
         }
-        locationManager?.stopUpdatingLocation()
-        print(" didUpdateLocations CLLocationManagerDelegate \(self.locality), \(self.thorughfare)")
+        
+        if CLLocationManager.locationServicesEnabled() {
+            checkCurrentLocationAuthorization(authorizationStatus)
+        } else {
+            print("iOS 위치 서비스를 켜주세요")
+        }
+    }
+    func checkCurrentLocationAuthorization(_ authorizationStatus: CLAuthorizationStatus) {
+        switch authorizationStatus {
+        case .notDetermined:
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        case .restricted, .denied:
+            showAlert(title: "위치권한 설정을 거부하셨습니다", message: "위치 설정 화면으로 가시겠습니까?", okTitle: "설정으로 이동") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL)
+                } else {
+                    UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString)! as URL)
+                }
+            }
+        case .authorizedAlways:
+            locationManager.startUpdatingLocation()
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation() 
+        @unknown default:
+            print("DEFAULT")
+        }
+        
+        if #available(iOS 14.0, *) {
+            let accurancyState = locationManager.accuracyAuthorization
+            
+            switch accurancyState {
+            case .fullAccuracy:
+                print("FULL")
+            case .reducedAccuracy:
+                print("REDUCE")
+            @unknown default:
+                print("DEFAULT")
+                
+            }
+
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locationManager.startUpdatingLocation()
+        print(#function)
+        if let coordinates = locations.last?.coordinate {
+            let lat = coordinates.latitude
+            let long = coordinates.longitude
+            print(" didUpdateLocations 처음부분  \(self.locality), \(self.thorughfare) ")
+            
+            fetchCurrentWeather(lat: lat, long: long)
+            locationManager.stopUpdatingLocation()
+            print(" didUpdateLocations CLLocationManagerDelegate \(self.locality), \(self.thorughfare)")
+        } else {
+            print("Location Cannot Find")
+        }
+
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(#function)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print(#function)
+        checkUserLocationServiceAuthorization()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        print(#function)
+        checkUserLocationServiceAuthorization()
     }
     
     func setDescription(tasks: Results<Forecast>!, address: String) {
@@ -264,6 +317,21 @@ extension MainViewController: CLLocationManagerDelegate {
         style.messageColor = .white
         style.titleColor = .white
         self.view.makeToast(message, duration: 2.0, position: .center, title: title, image: UIImage(systemName: "x.circle.fill"), style: style, completion: nil)
+    }
+    
+    func fetchCurrentWeather(lat: CLLocationDegrees, long: CLLocationDegrees) {
+        WeatherManager.shared.fetchCurrentweather(lat, long) { json in
+            let temperatureData = json["main"]["temp"].doubleValue
+            let temperature = Int(temperatureData)
+            let condition = json["weather"][0]["main"].stringValue
+            let conditiondId = json["weather"][0]["id"].stringValue
+            let data = WeatherModel(conditionId: Int(conditiondId) ?? 0)
+            self.temperatureLable.text = "\(temperature)"
+            self.weatherStatusLabel.text = condition
+            self.weatherStatusImageView.image = UIImage(systemName: data.conditionName)
+            self.weatherDescriptionLabel.text = ""
+            self.recommendationLabel.text = ""
+        }
     }
     
     func initCoordinates() {
