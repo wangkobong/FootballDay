@@ -18,58 +18,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="afT-dL-7oc">
-                                <rect key="frame" x="20" y="44" width="374" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDX-BE-c4b">
-                                        <rect key="frame" x="0.0" y="0.5" width="40" height="39"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="BwB-nz-ZFM"/>
-                                            <constraint firstAttribute="width" constant="40" id="jcL-Oa-fwf"/>
-                                        </constraints>
-                                        <color key="tintColor" name="BrandBlack"/>
-                                        <state key="normal" backgroundImage="location.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="locationButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3xO-RO-Eer"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="8LN-pk-hvP">
-                                        <rect key="frame" x="50" y="0.0" width="274" height="40"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaJ-NT-hzN">
-                                        <rect key="frame" x="334" y="0.5" width="40" height="38.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="OHN-W8-pUM"/>
-                                            <constraint firstAttribute="height" constant="40" id="hrh-Xx-geg"/>
-                                        </constraints>
-                                        <color key="tintColor" red="0.12549248339999999" green="0.12548607589999999" blue="0.12549039719999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
-                                        <connections>
-                                            <action selector="searchButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GST-cK-JXc"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="OaS-ay-rGs"/>
-                                </constraints>
-                            </stackView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9dG-rj-1Rl">
                                 <rect key="frame" x="20" y="92" width="374" height="721"/>
                             </mapView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pkw-TE-vWa">
+                                <rect key="frame" x="20" y="44" width="374" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPg-zo-uwk">
+                                        <rect key="frame" x="0.0" y="0.5" width="40" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="4JN-2H-Z1R"/>
+                                            <constraint firstAttribute="height" constant="40" id="L8u-2d-gnJ"/>
+                                        </constraints>
+                                        <color key="tintColor" name="BrandBlack"/>
+                                        <state key="normal" backgroundImage="location.circle.fill" catalog="system"/>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="지역을 입력해주세요" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="w9S-th-xXJ">
+                                        <rect key="frame" x="50" y="0.0" width="274" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" name="BrandWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPm-li-o4D">
+                                        <rect key="frame" x="334" y="0.5" width="40" height="38.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="SnK-qh-yh2"/>
+                                            <constraint firstAttribute="height" constant="40" id="bPA-xb-YQL"/>
+                                        </constraints>
+                                        <color key="tintColor" name="BrandBlack"/>
+                                        <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="JOy-Do-ksP"/>
+                                </constraints>
+                            </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mvV-AM-7bQ">
+                                <rect key="frame" x="154.5" y="92" width="105" height="32"/>
+                                <segments>
+                                    <segment title="축구장"/>
+                                    <segment title="풋살장"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="9dG-rj-1Rl" firstAttribute="top" secondItem="afT-dL-7oc" secondAttribute="bottom" constant="8" id="1mq-cE-1nb"/>
-                            <constraint firstItem="afT-dL-7oc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Izi-tv-kO1"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="afT-dL-7oc" secondAttribute="trailing" constant="20" id="cAx-tb-HYI"/>
-                            <constraint firstItem="9dG-rj-1Rl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="inS-eh-F1s"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9dG-rj-1Rl" secondAttribute="trailing" constant="20" id="o4v-oC-3Fv"/>
-                            <constraint firstItem="9dG-rj-1Rl" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="t8c-QV-Vs5"/>
-                            <constraint firstItem="afT-dL-7oc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="vo6-T6-BCE"/>
+                            <constraint firstItem="mvV-AM-7bQ" firstAttribute="centerX" secondItem="9dG-rj-1Rl" secondAttribute="centerX" id="3vo-pG-8JT"/>
+                            <constraint firstItem="9dG-rj-1Rl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="AIf-an-Ncr"/>
+                            <constraint firstItem="Pkw-TE-vWa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="D9c-Xk-jY8"/>
+                            <constraint firstItem="9dG-rj-1Rl" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="ESZ-zJ-DEm"/>
+                            <constraint firstItem="mvV-AM-7bQ" firstAttribute="top" secondItem="Pkw-TE-vWa" secondAttribute="bottom" constant="8" id="S9o-fa-dQj"/>
+                            <constraint firstItem="Pkw-TE-vWa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="YDM-kM-XSu"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Pkw-TE-vWa" secondAttribute="trailing" constant="20" id="ZaP-6I-F73"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9dG-rj-1Rl" secondAttribute="trailing" constant="20" id="qiz-vo-iIO"/>
+                            <constraint firstItem="9dG-rj-1Rl" firstAttribute="top" secondItem="Pkw-TE-vWa" secondAttribute="bottom" constant="8" id="sGE-Sz-Gxw"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="구장검색" image="magnifyingglass" catalog="system" id="aqr-Cy-eSS"/>
@@ -104,6 +108,9 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <namedColor name="BrandBlack">
             <color red="0.097999997437000275" green="0.10199999809265137" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrandWhite">
+            <color red="0.99199998378753662" green="0.99199998378753662" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
