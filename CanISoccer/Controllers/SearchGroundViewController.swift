@@ -19,8 +19,10 @@ import MapKit
 class SearchGroundViewController: UIViewController {
 
     var groundKeyword = "축구장"
+    var locations: [Places] = []
     
     let locationManager = CLLocationManager()
+
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchTextFiled: UITextField!
@@ -47,30 +49,65 @@ class SearchGroundViewController: UIViewController {
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        mapView.showsUserLocation = true
+        mapView.showsUserLocation = true
 
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.viewWillDisappear(false)
-        self.locationManager.stopUpdatingLocation()
-    }
 
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-        print(#function)
+        locations.removeAll()
+        let annotations = mapView.annotations
+        mapView.removeAnnotations(annotations)
         if let locationKeyword = searchTextFiled.text {
             let keyword = "\(locationKeyword) \(groundKeyword)"
-            WeatherManager.shared.fetchSearchPlaces(keyword)
-            print("keyword: \(keyword)")
+            WeatherManager.shared.fetchSearchPlaces(keyword) { items in
+                print(items[0]["address"])
+                for (_, value) in items {
+                    let address = value["address_name"].stringValue
+                    let phone = value["phone"].stringValue
+                    let placeName = value["place_name"].stringValue
+                    let placeURL = value["place_url"].stringValue
+                    let latitude = value["y"].stringValue
+                    let longitude = value["x"].stringValue
+                    let location = Places(placeName: placeName, address: address, phone: phone, placeURL: placeURL, latitude: latitude, longitude: longitude)
+                    print("location: \(location)")
+                    self.locations.append(location)
+                }
+            }
         } else {
             print("통신실패")
         }
+        print("testddfdfsf: \(locations)")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.setAnnotation()
+        }
+    }
+    
+    func setAnnotation() {
+        var annotations = [MKAnnotation]()
+        for location in locations {
+            let annotation = MKPointAnnotation()
+            let lat = (location.latitude as NSString).doubleValue
+            let long = (location.longitude as NSString).doubleValue
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            print("coordinate: \(coordinate)")
+            let placeName = location.placeName
+            print("placeName: \(placeName)")
+            annotation.title = placeName
+            annotation.coordinate = coordinate
+            annotations.append(annotation)
+            }
+        mapView.addAnnotations(annotations)
+        if let lastAnnotation = annotations.last {
+            let region = MKCoordinateRegion(center: lastAnnotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.2))
+            mapView.setRegion(region, animated: true)
+        }
+        locationManager.startUpdatingLocation()
     }
     
     
     @IBAction func selectGroundPressed(_ sender: UISegmentedControl) {
         groundKeyword = sender.titleForSegment(at: sender.selectedSegmentIndex) ?? "축구장"
-        print(groundKeyword)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -84,26 +121,23 @@ extension SearchGroundViewController: CLLocationManagerDelegate {
 
     //4. 사용자가 위치 허용을 한 경우
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(#function)
-        print(locations)
-        
+
         if let coordinate = locations.last?.coordinate {
-             
-            let annotation = MKPointAnnotation()
-            annotation.title = "현재 위치"
-            annotation.coordinate = coordinate
-            mapView.addAnnotation(annotation)
-            
-            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            let region = MKCoordinateRegion(center: coordinate, span: span)
-            mapView.setRegion(region, animated: true)
-            
-            //10. (중요)
-            locationManager.startUpdatingLocation()
+
+
+//            let annotation = MKPointAnnotation()
+//            annotation.title = "CURRENT LOCATION"
+//            annotation.coordinate = coordinate
+//            mapView.addAnnotation(annotation)
+//
+//            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+//            let region = MKCoordinateRegion(center: coordinate, span: span)
+//            mapView.setRegion(region, animated: true)
+
+
         } else {
             print("Location Cannot Find")
         }
-        locationManager.stopUpdatingLocation()
     }
     
     //5. 위치 접근이 실패했을 경우

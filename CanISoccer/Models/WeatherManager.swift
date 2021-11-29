@@ -83,8 +83,9 @@ struct WeatherManager {
         }
     }
     
-    func fetchSearchPlaces(_ keyword: String) {
-        let urlString = "https://dapi.kakao.com/v2/local/search/keyword?query=\(keyword)"
+    func fetchSearchPlaces(_ keyword: String, result: @escaping (JSON) -> ()) {
+        let int0 = 0
+        let urlString = "https://dapi.kakao.com/v2/local/search/keyword?query=\(keyword)&radius=\(int0)"
         let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
         let url = URL(string: encodedString)
@@ -92,14 +93,13 @@ struct WeatherManager {
         let header: HTTPHeaders = [
             "Authorization": Authorization,
         ]
-        print(Authorization)
-        print(header)
-        
+
         AF.request(url!, method: .get, headers: header).validate().responseJSON { response in
             switch response.result {
             case.success(let value):
                 let json = JSON(value)
-                print(json)
+                let items = json["documents"]
+                result(items)
             case.failure(let error):
                 print("error: \(error)")
             }

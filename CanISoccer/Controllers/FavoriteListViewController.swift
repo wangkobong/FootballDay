@@ -33,7 +33,7 @@ extension FavoriteListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.FavoriteTableViewCellcellIdentifier, for: indexPath) as! FavoriteTableViewCell
-        
+        print("data: \(data)")
         let row = data[indexPath.row]
         cell.nameLabel.text = row.title
         cell.phoneLabel.text = row.phoneNumber
