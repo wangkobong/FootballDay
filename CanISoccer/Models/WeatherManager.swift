@@ -83,9 +83,8 @@ struct WeatherManager {
         }
     }
     
-    func fetchSearchPlaces() {
-        let query = "강북구 풋살장"
-        let urlString = "https://dapi.kakao.com/v2/local/search/keyword?query=\(query)"
+    func fetchSearchPlaces(_ keyword: String) {
+        let urlString = "https://dapi.kakao.com/v2/local/search/keyword?query=\(keyword)"
         let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
         let url = URL(string: encodedString)

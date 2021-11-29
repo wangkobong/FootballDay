@@ -36,7 +36,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="지역을 입력해주세요" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="w9S-th-xXJ">
                                         <rect key="frame" x="50" y="0.0" width="274" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" name="BrandWhite"/>
+                                        <color key="textColor" name="BrandBlack"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go"/>
                                     </textField>
@@ -48,6 +48,9 @@
                                         </constraints>
                                         <color key="tintColor" name="BrandBlack"/>
                                         <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
+                                        <connections>
+                                            <action selector="searchButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3jK-Uj-z7j"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -55,17 +58,21 @@
                                 </constraints>
                             </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mvV-AM-7bQ">
-                                <rect key="frame" x="154.5" y="92" width="105" height="32"/>
+                                <rect key="frame" x="20" y="92" width="374" height="32"/>
                                 <segments>
                                     <segment title="축구장"/>
                                     <segment title="풋살장"/>
                                 </segments>
+                                <connections>
+                                    <action selector="selectGroundPressed:" destination="Y6W-OH-hqX" eventType="valueChanged" id="QEL-Xe-8Ez"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mvV-AM-7bQ" firstAttribute="centerX" secondItem="9dG-rj-1Rl" secondAttribute="centerX" id="3vo-pG-8JT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mvV-AM-7bQ" secondAttribute="trailing" constant="20" id="8so-Zn-4im"/>
                             <constraint firstItem="9dG-rj-1Rl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="AIf-an-Ncr"/>
                             <constraint firstItem="Pkw-TE-vWa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="D9c-Xk-jY8"/>
                             <constraint firstItem="9dG-rj-1Rl" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="ESZ-zJ-DEm"/>
@@ -73,11 +80,16 @@
                             <constraint firstItem="Pkw-TE-vWa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="YDM-kM-XSu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Pkw-TE-vWa" secondAttribute="trailing" constant="20" id="ZaP-6I-F73"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9dG-rj-1Rl" secondAttribute="trailing" constant="20" id="qiz-vo-iIO"/>
+                            <constraint firstItem="mvV-AM-7bQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="r3S-qK-ItZ"/>
                             <constraint firstItem="9dG-rj-1Rl" firstAttribute="top" secondItem="Pkw-TE-vWa" secondAttribute="bottom" constant="8" id="sGE-Sz-Gxw"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="구장검색" image="magnifyingglass" catalog="system" id="aqr-Cy-eSS"/>
                     <navigationItem key="navigationItem" id="2Xl-3Y-nWg"/>
+                    <connections>
+                        <outlet property="mapView" destination="9dG-rj-1Rl" id="GyF-Fd-tQc"/>
+                        <outlet property="searchTextFiled" destination="w9S-th-xXJ" id="7NP-Ej-pZe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,9 +120,6 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <namedColor name="BrandBlack">
             <color red="0.097999997437000275" green="0.10199999809265137" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="BrandWhite">
-            <color red="0.99199998378753662" green="0.99199998378753662" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
