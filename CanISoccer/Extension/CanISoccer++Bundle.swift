@@ -36,7 +36,7 @@ extension Bundle {
         guard let file = self.path(forResource: K.WeatherInfoPlist, ofType: "plist") else { return ""}
         
         guard let resouce = NSDictionary(contentsOfFile: file) else { return ""}
-        guard let key = resouce["openweatherAPIKEY"] as? String else { fatalError("WeatherInfo.plist에 Authorization를 설정해주세요.")}
+        guard let key = resouce["Authorization"] as? String else { fatalError("WeatherInfo.plist에 Authorization을 설정해주세요.")}
         return key
     }
 }

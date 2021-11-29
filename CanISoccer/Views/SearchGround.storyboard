@@ -29,6 +29,9 @@
                                         </constraints>
                                         <color key="tintColor" name="BrandBlack"/>
                                         <state key="normal" backgroundImage="location.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="locationButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3xO-RO-Eer"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="8LN-pk-hvP">
                                         <rect key="frame" x="50" y="0.0" width="274" height="40"/>
@@ -44,6 +47,9 @@
                                         </constraints>
                                         <color key="tintColor" red="0.12549248339999999" green="0.12548607589999999" blue="0.12549039719999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
+                                        <connections>
+                                            <action selector="searchButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GST-cK-JXc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

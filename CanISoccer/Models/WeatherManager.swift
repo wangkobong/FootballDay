@@ -82,4 +82,28 @@ struct WeatherManager {
             }
         }
     }
+    
+    func fetchSearchPlaces() {
+        let query = "강북구 풋살장"
+        let urlString = "https://dapi.kakao.com/v2/local/search/keyword?query=\(query)"
+        let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+
+        let url = URL(string: encodedString)
+        let Authorization = Bundle.main.kakaoAPIKEY
+        let header: HTTPHeaders = [
+            "Authorization": Authorization,
+        ]
+        print(Authorization)
+        print(header)
+        
+        AF.request(url!, method: .get, headers: header).validate().responseJSON { response in
+            switch response.result {
+            case.success(let value):
+                let json = JSON(value)
+                print(json)
+            case.failure(let error):
+                print("error: \(error)")
+            }
+        }
+    }
 }
