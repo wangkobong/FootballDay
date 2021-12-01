@@ -65,14 +65,18 @@ class SearchGroundViewController: UIViewController {
                     let location = Places(placeName: placeName, address: address, phone: phone, placeURL: placeURL, latitude: latitude, longitude: longitude)
                     self.locations.append(location)
                 }
+                
+                self.setAnnotation()
             }
+            
+            
         } else {
             print("통신실패")
         }
         print("testddfdfsf: \(locations)")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            self.setAnnotation()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+//
+//        }
     }
     
     func setAnnotation() {

@@ -84,5 +84,113 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA4305B1-397D-4297-A26D-58CA1C6F8913"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CanISoccer/Views/FavoriteTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "FavoriteTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "FA4305B1-397D-4297-A26D-58CA1C6F8913 - f2c47da3d541f3b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CanISoccer.FavoriteTableViewCell.nameLabel.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "CanISoccer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sungyeonkim/workspace/ssac/CanISoccer/CanISoccer/Views/FavoriteTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "FA4305B1-397D-4297-A26D-58CA1C6F8913 - 40cea498b6e57a0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CanISoccer.FavoriteTableViewCell.nameLabel.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "CanISoccer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sungyeonkim/workspace/ssac/CanISoccer/CanISoccer/Views/FavoriteTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "FA4305B1-397D-4297-A26D-58CA1C6F8913 - 5afa6f0e7d81c62d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CanISoccer.FavoriteTableViewCell.nameLabel.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "CanISoccer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sungyeonkim/workspace/ssac/CanISoccer/CanISoccer/Views/FavoriteTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "FA4305B1-397D-4297-A26D-58CA1C6F8913 - 8a6b6d234674f584"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CanISoccer.FavoriteTableViewCell.nameLabel.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "CanISoccer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sungyeonkim/workspace/ssac/CanISoccer/CanISoccer/Views/FavoriteTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "FA4305B1-397D-4297-A26D-58CA1C6F8913 - 4506a919c9f5e256"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CanISoccer.FavoriteTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; CanISoccer.FavoriteTableViewCell"
+                  moduleName = "CanISoccer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sungyeonkim/workspace/ssac/CanISoccer/CanISoccer/Views/FavoriteTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "FA4305B1-397D-4297-A26D-58CA1C6F8913 - c3285f4ceb7bbd94"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CanISoccer.FavoriteTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;CanISoccer.FavoriteTableViewCell&gt;"
+                  moduleName = "CanISoccer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sungyeonkim/workspace/ssac/CanISoccer/CanISoccer/Views/FavoriteTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -20,12 +20,22 @@ class FavoriteListViewController: UIViewController {
     var tasks: Results<Ground>!
     let localRealm = try! Realm()
     
-    
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        
+        header.backgroundColor = UIColor(named: "BrandGreen")
+        
+        let headerLabel = UILabel(frame: header.bounds)
+        headerLabel.text = "FAVORITE GROUNDS"
+        headerLabel.font = UIFont(name: "thonburi", size: 18)
+        headerLabel.textColor = UIColor(named: "BrandWhite")
+        headerLabel.textAlignment = .center
+        header.addSubview(headerLabel)
+        tableView.tableHeaderView = header
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -52,7 +62,7 @@ extension FavoriteListViewController: UITableViewDataSource, UITableViewDelegate
         let row = tasks[indexPath.row]
         let phone = row.phoneData
         cell.nameLabel.text = row.placeNameData
-        cell.phoneLabel.text = row.phoneData
+        cell.addressLabel.text = row.addressData
         if phone != "" {
             cell.phoneLabel.text = row.phoneData
         } else {
@@ -84,6 +94,10 @@ extension FavoriteListViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         .delete
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
     }
     
     

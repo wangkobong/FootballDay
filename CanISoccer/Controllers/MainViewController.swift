@@ -266,6 +266,7 @@ extension MainViewController: CLLocationManagerDelegate {
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(#function)
+        // 여기에 팝업을 보여줘서 설정으로 이동시키기
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vwR-1Q-kvj">
-                                <rect key="frame" x="20" y="44" width="374" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -26,9 +26,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vwR-1Q-kvj" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="L7f-1z-TpZ"/>
-                            <constraint firstItem="vwR-1Q-kvj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="gXB-xd-bTW"/>
+                            <constraint firstItem="vwR-1Q-kvj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gXB-xd-bTW"/>
                             <constraint firstItem="vwR-1Q-kvj" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="h5Z-ZG-mrk"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vwR-1Q-kvj" secondAttribute="trailing" constant="20" id="ymX-q9-4hb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vwR-1Q-kvj" secondAttribute="trailing" id="ymX-q9-4hb"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="즐겨찾기" image="star.fill" catalog="system" id="Chy-Y6-hL2"/>
