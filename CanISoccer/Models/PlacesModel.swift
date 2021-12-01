@@ -7,16 +7,6 @@
 
 import Foundation
 
-/*
- 1.주소
- 2.전화번호
- 3.상호명
- 4.홈페이지주소
- 5.x좌표
- 6.y좌표
- 
- */
-
 class Places {
     var placeName: String
     var address: String
@@ -34,3 +24,4 @@ class Places {
         self.longitude = longitude
     }
 }
+

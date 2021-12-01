@@ -177,9 +177,6 @@ class MainViewController: UIViewController {
         if let datePicker = self.datePickerTextField.inputView as? UIDatePicker {
             selectedTime = datePicker.date.timeIntervalSince1970
             let unixTimeToStirng = Date().setTimestamp(unixTime: selectedTime)
-            print("selectedTime: \(selectedTime)")
-            print("unixTimeToStirng: \(unixTimeToStirng)")
-
             if currentUnixtime > selectedTime {
                 showToastMessage(message: "현재시간 이후의 시간을 선택해주세요!", title: "지난 시간을 입력할 수 없습니다.")
             } else {
@@ -308,7 +305,7 @@ extension MainViewController: CLLocationManagerDelegate {
         self.temperatureLable.text = "\(temperatureToInto)"
         self.weatherStatusLabel.text = condition
         self.weatherStatusImageView.image = UIImage(systemName: forecastIconId.conditionName)
-        self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInt)°C, 강수확률은 \(probabilityOfRain)% 입니다."
+        self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInt)°C, 강수확률은 \(probabilityOfRain * 100)% 입니다."
         self.recommendationLabel.text = "\(recommendationLabelData.conditionTemperature) \(hoursLabelData.recommendSunblock)"
     }
     

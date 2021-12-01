@@ -36,3 +36,24 @@ class Forecast: Object {
     }
     
 }
+
+
+class Ground: Object {
+    
+    @Persisted var placeNameData: String
+    @Persisted var addressData: String
+    @Persisted var phoneData: String
+    @Persisted var placeURLData: String
+
+ 
+    @Persisted(primaryKey: true) var _id: ObjectId
+    
+    convenience init(placeNameData: String, addressData: String, phoneData: String, placeURLData: String) {
+        self.init()
+        self.placeNameData = placeNameData
+        self.addressData = addressData
+        self.phoneData = phoneData
+        self.placeURLData = placeURLData
+    }
+    
+}

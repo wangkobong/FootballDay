@@ -20,9 +20,14 @@ class SearchGroundViewController: UIViewController {
 
     var groundKeyword = "축구장"
     var locations: [Places] = []
-    
+    var selectedAnnotation: MKPointAnnotation?
     let locationManager = CLLocationManager()
-
+    var data = Places(placeName: "", address: "", phone: "", placeURL: "", latitude: "", longitude: "")
+    
+    
+    var tasks: Results<Ground>!
+    let localRealm = try! Realm()
+    
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchTextFiled: UITextField!
@@ -30,27 +35,14 @@ class SearchGroundViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let location = CLLocationCoordinate2D(latitude: 37.49826709543227, longitude: 127.02763571410598)
-//        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.1)
-//        let region = MKCoordinateRegion(center: location, span: span)
-//        mapView.setRegion(region, animated: true)
-//
-//        let annotaion = MKPointAnnotation()
-//        annotaion.title = "다시 가고싶다"
-//        annotaion.coordinate = location
-//        mapView.addAnnotation(annotaion)
-//
-        //맵뷰에 어노테이션을 삭제하고자 할 때
-//        let annotations = mapView.annotations
-//        mapView.removeAnnotations(annotations)
-//
-        
         mapView.delegate = self
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.showsUserLocation = true
-
+        
+        print("Realm is located at:", localRealm.configuration.fileURL!)
+        tasks = localRealm.objects(Ground.self)
     }
     
 
@@ -63,6 +55,7 @@ class SearchGroundViewController: UIViewController {
             WeatherManager.shared.fetchSearchPlaces(keyword) { items in
                 print(items[0]["address"])
                 for (_, value) in items {
+
                     let address = value["address_name"].stringValue
                     let phone = value["phone"].stringValue
                     let placeName = value["place_name"].stringValue
@@ -70,7 +63,6 @@ class SearchGroundViewController: UIViewController {
                     let latitude = value["y"].stringValue
                     let longitude = value["x"].stringValue
                     let location = Places(placeName: placeName, address: address, phone: phone, placeURL: placeURL, latitude: latitude, longitude: longitude)
-                    print("location: \(location)")
                     self.locations.append(location)
                 }
             }
@@ -93,7 +85,9 @@ class SearchGroundViewController: UIViewController {
             print("coordinate: \(coordinate)")
             let placeName = location.placeName
             print("placeName: \(placeName)")
+            let address = location.address
             annotation.title = placeName
+            annotation.subtitle = address
             annotation.coordinate = coordinate
             annotations.append(annotation)
             }
@@ -112,6 +106,13 @@ class SearchGroundViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
       self.view.endEditing(true)
+    }
+    
+    func showToastMessage(message: String, title: String) {
+        var style = ToastStyle()
+        style.messageColor = .white
+        style.titleColor = .white
+        self.view.makeToast(message, duration: 2.0, position: .center, title: title, style: style, completion: nil)
     }
 }
 
@@ -152,6 +153,47 @@ extension SearchGroundViewController: MKMapViewDelegate {
     
     //맵 어노테이션 클릭 시 이벤트 핸들링
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("가고 싶다 ㅣ진짜")
+        let annotationsTitle = view.annotation?.title
+        let newData = locations.filter { $0.placeName == annotationsTitle}
+        let selectedAnnotationData = newData[0]
+        data = selectedAnnotationData
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if !(annotation is MKUserLocation) {
+            let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: String(annotation.hash))
+            let rightButton = UIButton(type: .contactAdd)
+            let tag = annotation.hash
+            rightButton.tag = tag
+            rightButton.addTarget(self, action: #selector(setFavorite), for: .touchUpInside)
+            pinView.animatesDrop = true
+            pinView.canShowCallout = true
+            pinView.rightCalloutAccessoryView = rightButton
+   
+            return pinView
+        }
+        else {
+            return nil
+        }
+    }
+    
+    @objc func setFavorite() {
+        let placeName = data.placeName
+        self.tasks = self.localRealm.objects(Ground.self).filter("placeNameData == '\(placeName)'")
+
+        if tasks.isEmpty {
+            let task = Ground(placeNameData: data.placeName, addressData: data.address, phoneData: data.phone, placeURLData: data.placeURL)
+            try! self.localRealm.write {
+                self.localRealm.add(task)
+            }
+            var style = ToastStyle()
+            style.messageColor = .white
+            style.titleColor = .white
+            self.showToastMessage(message: "", title: "즐겨찾기 성공!")
+        } else {
+            self.showToastMessage(message: "", title: "이미 즐겨찾기된 구장입니다!")
+        }
+
     }
 }
+
