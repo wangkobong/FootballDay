@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RealmSwift
+import SafariServices
 
 class FavoriteListViewController: UIViewController {
     
@@ -14,32 +16,74 @@ class FavoriteListViewController: UIViewController {
         favorite(title: "도봉산구장", phoneNumber: "010-2323-2233", address: "사랑시 고백구 행복동 삼각산로 13"),
         favorite(title: "불암산구장", phoneNumber: "010-2323-2233", address: "사랑시 고백구 행복동 삼각산로 13")
     ]
+    
+    var tasks: Results<Ground>!
+    let localRealm = try! Realm()
+    
+    
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: K.FavoriteTableViewCellcellNibName, bundle: nil), forCellReuseIdentifier: K.FavoriteTableViewCellcellIdentifier)
+        tasks = localRealm.objects(Ground.self)
+        print(tasks)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
 }
 
-extension FavoriteListViewController: UITableViewDataSource {
+extension FavoriteListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
+        tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.FavoriteTableViewCellcellIdentifier, for: indexPath) as! FavoriteTableViewCell
         print("data: \(data)")
-        let row = data[indexPath.row]
-        cell.nameLabel.text = row.title
-        cell.phoneLabel.text = row.phoneNumber
-        cell.addressLabel.text = row.address
-        
+        let row = tasks[indexPath.row]
+        let phone = row.phoneData
+        cell.nameLabel.text = row.placeNameData
+        cell.phoneLabel.text = row.phoneData
+        if phone != "" {
+            cell.phoneLabel.text = row.phoneData
+        } else {
+            cell.phoneLabel.text = "번호정보없음"
+        }
+
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = tasks[indexPath.row]
+        let urlData = row.placeURLData
+        let url = NSURL(string: urlData)
+        let groundSafariView: SFSafariViewController = SFSafariViewController(url: url! as URL)
+        self.present(groundSafariView, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+        if editingStyle == .delete {
+            let taskToDelete = self.tasks[indexPath.row]
+            try! self.localRealm.write {
+                self.localRealm.delete(taskToDelete)
+            }
+            
+        }
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .delete
     }
     
     
