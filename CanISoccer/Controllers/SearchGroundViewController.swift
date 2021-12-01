@@ -82,20 +82,24 @@ class SearchGroundViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             let locationKeyword = "\(self.locality)"
             let keyword = "\(locationKeyword) \(self.groundKeyword)"
-            WeatherManager.shared.fetchSearchPlaces(keyword) { items in
-                print(items[0]["address"])
-                for (_, value) in items {
+            if locationKeyword != "" {
+                WeatherManager.shared.fetchSearchPlaces(keyword) { items in
+                    print(items[0]["address"])
+                    for (_, value) in items {
 
-                    let address = value["address_name"].stringValue
-                    let phone = value["phone"].stringValue
-                    let placeName = value["place_name"].stringValue
-                    let placeURL = value["place_url"].stringValue
-                    let latitude = value["y"].stringValue
-                    let longitude = value["x"].stringValue
-                    let location = Places(placeName: placeName, address: address, phone: phone, placeURL: placeURL, latitude: latitude, longitude: longitude)
-                    self.locations.append(location)
+                        let address = value["address_name"].stringValue
+                        let phone = value["phone"].stringValue
+                        let placeName = value["place_name"].stringValue
+                        let placeURL = value["place_url"].stringValue
+                        let latitude = value["y"].stringValue
+                        let longitude = value["x"].stringValue
+                        let location = Places(placeName: placeName, address: address, phone: phone, placeURL: placeURL, latitude: latitude, longitude: longitude)
+                        self.locations.append(location)
+                    }
+                    self.setAnnotation()
                 }
-                self.setAnnotation()
+            } else {
+                self.showToastMessage(message: "위치권한설정을 확인해주세요!", title: "위치정보를 받아올 수 없습니다.")
             }
         }
     }
