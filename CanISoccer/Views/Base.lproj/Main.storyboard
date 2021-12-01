@@ -105,7 +105,7 @@
                                 <color key="textColor" name="BrandWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨가 덥습니다. 마실 물 많이 챙기세요. 강수확률이 높습니다. 우산 잊지마세요. 선크림 꼭꼭 발라주세요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jK0-Zu-6mZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jK0-Zu-6mZ">
                                 <rect key="frame" x="20" y="280" width="374" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="Tms-3x-uBl"/>

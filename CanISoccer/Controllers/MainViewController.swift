@@ -248,16 +248,13 @@ extension MainViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(#function)
+
         if let coordinates = locations.last?.coordinate {
             let lat = coordinates.latitude
             let long = coordinates.longitude
-            print(" didUpdateLocations 처음부분  \(self.locality), \(self.thorughfare) ")
-            
+
             fetchCurrentWeather(lat: lat, long: long)
             printLocality(lat, long)
-            print(" didUpdateLocations CLLocationManagerDelegate \(self.locality), \(self.thorughfare)")
-            print(" fetchCurrentWeather 다음부분  \(lat), \(long) ")
             locationManager.stopUpdatingLocation()
         } else {
             print("Location Cannot Find")
@@ -266,7 +263,13 @@ extension MainViewController: CLLocationManagerDelegate {
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(#function)
-        // 여기에 팝업을 보여줘서 설정으로 이동시키기
+        showAlert(title: "위치권한 설정을 거부하셨습니다", message: "위치 설정 화면으로 가시겠습니까?", okTitle: "설정으로 이동") {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL)
+            } else {
+                UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString)! as URL)
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

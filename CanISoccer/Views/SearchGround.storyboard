@@ -32,6 +32,9 @@
                                         </constraints>
                                         <color key="tintColor" name="BrandBlack"/>
                                         <state key="normal" backgroundImage="location.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="currentLocationButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Mq7-yt-sSH"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="지역을 입력해주세요" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="w9S-th-xXJ">
                                         <rect key="frame" x="50" y="0.0" width="274" height="40"/>

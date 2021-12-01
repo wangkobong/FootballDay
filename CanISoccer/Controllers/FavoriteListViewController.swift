@@ -11,12 +11,6 @@ import SafariServices
 
 class FavoriteListViewController: UIViewController {
     
-    var data = [
-        favorite(title: "창골구장", phoneNumber: "010-2323-2233", address: "사랑시 고백구 행복동 삼각산로 13"),
-        favorite(title: "도봉산구장", phoneNumber: "010-2323-2233", address: "사랑시 고백구 행복동 삼각산로 13"),
-        favorite(title: "불암산구장", phoneNumber: "010-2323-2233", address: "사랑시 고백구 행복동 삼각산로 13")
-    ]
-    
     var tasks: Results<Ground>!
     let localRealm = try! Realm()
     
@@ -25,6 +19,20 @@ class FavoriteListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setTableViewHeader()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: K.FavoriteTableViewCellcellNibName, bundle: nil), forCellReuseIdentifier: K.FavoriteTableViewCellcellIdentifier)
+        tasks = localRealm.objects(Ground.self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    func setTableViewHeader() {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
         
         header.backgroundColor = UIColor(named: "BrandGreen")
@@ -37,20 +45,11 @@ class FavoriteListViewController: UIViewController {
         header.addSubview(headerLabel)
         tableView.tableHeaderView = header
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: K.FavoriteTableViewCellcellNibName, bundle: nil), forCellReuseIdentifier: K.FavoriteTableViewCellcellIdentifier)
-        tasks = localRealm.objects(Ground.self)
-        print(tasks)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
     }
     
 }
 
+// MARK: -
 extension FavoriteListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tasks.count
@@ -58,7 +57,6 @@ extension FavoriteListViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.FavoriteTableViewCellcellIdentifier, for: indexPath) as! FavoriteTableViewCell
-        print("data: \(data)")
         let row = tasks[indexPath.row]
         let phone = row.phoneData
         cell.nameLabel.text = row.placeNameData

@@ -19,6 +19,8 @@ import MapKit
 class SearchGroundViewController: UIViewController {
 
     var groundKeyword = "축구장"
+    var locality = ""
+    var thorughfare = ""
     var locations: [Places] = []
     var selectedAnnotation: MKPointAnnotation?
     let locationManager = CLLocationManager()
@@ -40,7 +42,6 @@ class SearchGroundViewController: UIViewController {
         locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.showsUserLocation = true
-        
         print("Realm is located at:", localRealm.configuration.fileURL!)
         tasks = localRealm.objects(Ground.self)
     }
@@ -68,16 +69,37 @@ class SearchGroundViewController: UIViewController {
                 
                 self.setAnnotation()
             }
-            
-            
         } else {
             print("통신실패")
         }
-        print("testddfdfsf: \(locations)")
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-//
-//        }
     }
+    
+    @IBAction func currentLocationButtonPressed(_ sender: UIButton) {
+        locations.removeAll()
+        let annotations = mapView.annotations
+        mapView.removeAnnotations(annotations)
+        getLocality()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            let locationKeyword = "\(self.locality)"
+            let keyword = "\(locationKeyword) \(self.groundKeyword)"
+            WeatherManager.shared.fetchSearchPlaces(keyword) { items in
+                print(items[0]["address"])
+                for (_, value) in items {
+
+                    let address = value["address_name"].stringValue
+                    let phone = value["phone"].stringValue
+                    let placeName = value["place_name"].stringValue
+                    let placeURL = value["place_url"].stringValue
+                    let latitude = value["y"].stringValue
+                    let longitude = value["x"].stringValue
+                    let location = Places(placeName: placeName, address: address, phone: phone, placeURL: placeURL, latitude: latitude, longitude: longitude)
+                    self.locations.append(location)
+                }
+                self.setAnnotation()
+            }
+        }
+    }
+    
     
     func setAnnotation() {
         var annotations = [MKAnnotation]()
@@ -86,9 +108,7 @@ class SearchGroundViewController: UIViewController {
             let lat = (location.latitude as NSString).doubleValue
             let long = (location.longitude as NSString).doubleValue
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            print("coordinate: \(coordinate)")
             let placeName = location.placeName
-            print("placeName: \(placeName)")
             let address = location.address
             annotation.title = placeName
             annotation.subtitle = address
@@ -100,7 +120,6 @@ class SearchGroundViewController: UIViewController {
             let region = MKCoordinateRegion(center: lastAnnotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.2))
             mapView.setRegion(region, animated: true)
         }
-        locationManager.startUpdatingLocation()
     }
     
     
@@ -118,31 +137,37 @@ class SearchGroundViewController: UIViewController {
         style.titleColor = .white
         self.view.makeToast(message, duration: 2.0, position: .center, title: title, style: style, completion: nil)
     }
+    
+    func getLocality() {
+        let myCoordinate = mapView.userLocation
+        let findLocation = CLLocation(latitude: myCoordinate.coordinate.latitude, longitude: myCoordinate.coordinate.longitude)
+        let geocoder = CLGeocoder()
+        let locale = Locale(identifier: "Ko-kr")
+
+        geocoder.reverseGeocodeLocation(findLocation, preferredLocale: locale) { placemarks, error in
+            if let placemark = placemarks?[0] {
+                self.locality = placemark.locality ?? ""
+                
+            }
+        }
+    }
 }
 
 
 // MARK: -
 extension SearchGroundViewController: CLLocationManagerDelegate {
 
-    //4. 사용자가 위치 허용을 한 경우
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
         if let coordinate = locations.last?.coordinate {
 
-
-//            let annotation = MKPointAnnotation()
-//            annotation.title = "CURRENT LOCATION"
-//            annotation.coordinate = coordinate
-//            mapView.addAnnotation(annotation)
-//
-//            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-//            let region = MKCoordinateRegion(center: coordinate, span: span)
-//            mapView.setRegion(region, animated: true)
-
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            let region = MKCoordinateRegion(center: coordinate, span: span)
+            mapView.setRegion(region, animated: true)
 
         } else {
             print("Location Cannot Find")
         }
+        locationManager.stopUpdatingLocation()
     }
     
     //5. 위치 접근이 실패했을 경우
@@ -173,7 +198,6 @@ extension SearchGroundViewController: MKMapViewDelegate {
             pinView.animatesDrop = true
             pinView.canShowCallout = true
             pinView.rightCalloutAccessoryView = rightButton
-   
             return pinView
         }
         else {

@@ -65,6 +65,7 @@
                     <constraint firstItem="NtG-5B-pdp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="6Ol-wh-Nfc"/>
                     <constraint firstAttribute="bottom" secondItem="NtG-5B-pdp" secondAttribute="bottom" constant="8" id="GbL-vp-AIQ"/>
                     <constraint firstItem="NtG-5B-pdp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="JNr-s6-I6Y"/>
+                    <constraint firstAttribute="trailing" secondItem="NtG-5B-pdp" secondAttribute="trailing" constant="20" id="aQ4-f7-JpJ"/>
                     <constraint firstAttribute="trailing" secondItem="NtG-5B-pdp" secondAttribute="trailing" constant="20" id="hab-in-mcL"/>
                 </constraints>
             </tableViewCellContentView>
