@@ -22,6 +22,10 @@
 		FE2A27FB274260F80056706E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FA274260F80056706E /* Assets.xcassets */; };
 		FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FC274260F80056706E /* LaunchScreen.storyboard */; };
 		FE8E5E7E2756311800E0D94C /* GroundInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E5E7D2756311800E0D94C /* GroundInfoModel.swift */; };
+		FE8E5E862757DC1400E0D94C /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E822757DC1300E0D94C /* NotoSansKR-Bold.otf */; };
+		FE8E5E872757DC1400E0D94C /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E832757DC1400E0D94C /* NotoSansKR-Light.otf */; };
+		FE8E5E882757DC1400E0D94C /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E842757DC1400E0D94C /* NotoSansKR-Black.otf */; };
+		FE8E5E892757DC1400E0D94C /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E852757DC1400E0D94C /* NotoSansKR-Medium.otf */; };
 		FED6022927465FEC00428EFA /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */; };
 		FED6022A27465FEC00428EFA /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */; };
 		FEDBF64A2754F32F001A3389 /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEDBF6492754F32F001A3389 /* WeatherInfo.plist */; };
@@ -63,6 +67,10 @@
 		FE2A27FD274260F80056706E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE2A27FF274260F80056706E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE8E5E7D2756311800E0D94C /* GroundInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundInfoModel.swift; sourceTree = "<group>"; };
+		FE8E5E822757DC1300E0D94C /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Bold.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		FE8E5E832757DC1400E0D94C /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Light.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		FE8E5E842757DC1400E0D94C /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Black.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		FE8E5E852757DC1400E0D94C /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Medium.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		FEDBF6492754F32F001A3389 /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
@@ -173,6 +181,7 @@
 		FE2A27F0274260F60056706E /* CanISoccer */ = {
 			isa = PBXGroup;
 			children = (
+				FE8E5E812757DBCB00E0D94C /* Fonts */,
 				FED60231274902DB00428EFA /* Extension */,
 				FE18F1D82744F4D700A83F1F /* Models */,
 				FE18F1D72744F4C900A83F1F /* Views */,
@@ -186,6 +195,17 @@
 				FEDBF6492754F32F001A3389 /* WeatherInfo.plist */,
 			);
 			path = CanISoccer;
+			sourceTree = "<group>";
+		};
+		FE8E5E812757DBCB00E0D94C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FE8E5E842757DC1400E0D94C /* NotoSansKR-Black.otf */,
+				FE8E5E822757DC1300E0D94C /* NotoSansKR-Bold.otf */,
+				FE8E5E832757DC1400E0D94C /* NotoSansKR-Light.otf */,
+				FE8E5E852757DC1400E0D94C /* NotoSansKR-Medium.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		FED60231274902DB00428EFA /* Extension */ = {
@@ -272,11 +292,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE8E5E892757DC1400E0D94C /* NotoSansKR-Medium.otf in Resources */,
 				FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */,
+				FE8E5E882757DC1400E0D94C /* NotoSansKR-Black.otf in Resources */,
 				FE2A27FB274260F80056706E /* Assets.xcassets in Resources */,
 				FE18F1DE2744FC0000A83F1F /* FavoriteList.storyboard in Resources */,
 				FE2A27F9274260F60056706E /* Main.storyboard in Resources */,
+				FE8E5E862757DC1400E0D94C /* NotoSansKR-Bold.otf in Resources */,
 				FE18F1DC2744FBE000A83F1F /* SearchGround.storyboard in Resources */,
+				FE8E5E872757DC1400E0D94C /* NotoSansKR-Light.otf in Resources */,
 				FED6022A27465FEC00428EFA /* FavoriteTableViewCell.xib in Resources */,
 				FE18F1E02744FC1400A83F1F /* Schedule.storyboard in Resources */,
 				FEDBF64A2754F32F001A3389 /* WeatherInfo.plist in Resources */,

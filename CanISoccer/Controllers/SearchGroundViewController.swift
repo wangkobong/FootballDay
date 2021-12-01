@@ -121,7 +121,7 @@ class SearchGroundViewController: UIViewController {
             }
         mapView.addAnnotations(annotations)
         if let lastAnnotation = annotations.last {
-            let region = MKCoordinateRegion(center: lastAnnotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.2))
+            let region = MKCoordinateRegion(center: lastAnnotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
             mapView.setRegion(region, animated: true)
         }
     }
@@ -164,7 +164,7 @@ extension SearchGroundViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coordinate = locations.last?.coordinate {
 
-            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
             let region = MKCoordinateRegion(center: coordinate, span: span)
             mapView.setRegion(region, animated: true)
 

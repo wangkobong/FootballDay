@@ -304,12 +304,12 @@ extension MainViewController: CLLocationManagerDelegate {
         let forecastIconId = WeatherModel(conditionId: conditiondId ?? 0)
         let recommendationLabelData = RecommendationModel(feelsLikeTemperature: feelsLikeTemperatureToInt)
         let hoursLabelData = HoursModel(hours: droppedPredictedTimeData)
-        let probabilityOfRain = self.searchedTask[0]["probabilityOfRain"] as? Double ?? 0.0 * 100
+        let probabilityOfRain = self.searchedTask[0]["probabilityOfRain"] as? Double ?? 0.0
 
         self.temperatureLable.text = "\(temperatureToInto)"
         self.weatherStatusLabel.text = condition
         self.weatherStatusImageView.image = UIImage(systemName: forecastIconId.conditionName)
-        self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInt)°C, 강수확률은 \(probabilityOfRain * 100)% 입니다."
+        self.weatherDescriptionLabel.text = "체감온도는 \(feelsLikeTemperatureToInt)°C, 강수확률은 \(Int(probabilityOfRain * 100))% 입니다."
         self.recommendationLabel.text = "\(recommendationLabelData.conditionTemperature) \(hoursLabelData.recommendSunblock)"
     }
     
