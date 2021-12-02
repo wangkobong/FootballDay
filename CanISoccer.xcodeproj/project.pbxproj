@@ -21,6 +21,8 @@
 		FE2A27F9274260F60056706E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27F7274260F60056706E /* Main.storyboard */; };
 		FE2A27FB274260F80056706E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FA274260F80056706E /* Assets.xcassets */; };
 		FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FC274260F80056706E /* LaunchScreen.storyboard */; };
+		FE8DFE35275910B900636FB9 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8DFE34275910B900636FB9 /* Setting.storyboard */; };
+		FE8DFE37275910E000636FB9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8DFE36275910E000636FB9 /* SettingViewController.swift */; };
 		FE8E5E862757DC1400E0D94C /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E822757DC1300E0D94C /* NotoSansKR-Bold.otf */; };
 		FE8E5E872757DC1400E0D94C /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E832757DC1400E0D94C /* NotoSansKR-Light.otf */; };
 		FE8E5E882757DC1400E0D94C /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E842757DC1400E0D94C /* NotoSansKR-Black.otf */; };
@@ -65,6 +67,8 @@
 		FE2A27FA274260F80056706E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE2A27FD274260F80056706E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE2A27FF274260F80056706E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE8DFE34275910B900636FB9 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		FE8DFE36275910E000636FB9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		FE8E5E822757DC1300E0D94C /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Bold.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		FE8E5E832757DC1400E0D94C /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Light.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		FE8E5E842757DC1400E0D94C /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Black.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Black.otf"; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				FE18F1E32744FED200A83F1F /* SearchGroundViewController.swift */,
 				FE18F1E52744FEE100A83F1F /* FavoriteListViewController.swift */,
 				FE18F1E72744FEEB00A83F1F /* ScheduleViewController.swift */,
+				FE8DFE36275910E000636FB9 /* SettingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 				FE18F1DF2744FC1400A83F1F /* Schedule.storyboard */,
 				FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */,
 				FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */,
+				FE8DFE34275910B900636FB9 /* Setting.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 				FED6022A27465FEC00428EFA /* FavoriteTableViewCell.xib in Resources */,
 				FE18F1E02744FC1400A83F1F /* Schedule.storyboard in Resources */,
 				FEDBF64A2754F32F001A3389 /* WeatherInfo.plist in Resources */,
+				FE8DFE35275910B900636FB9 /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +375,7 @@
 				FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */,
 				FE18F1E42744FED200A83F1F /* SearchGroundViewController.swift in Sources */,
 				FE18F1E82744FEEB00A83F1F /* ScheduleViewController.swift in Sources */,
+				FE8DFE37275910E000636FB9 /* SettingViewController.swift in Sources */,
 				FEE7C3EF274BABFD007CC37E /* Date++Extension.swift in Sources */,
 				FEDC159E274BC6B90097EC65 /* RealmModel.swift in Sources */,
 				FEDC15AB2750C20A0097EC65 /* Alert+Extension.swift in Sources */,
