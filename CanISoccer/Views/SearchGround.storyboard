@@ -96,6 +96,7 @@
                     <navigationItem key="navigationItem" id="2Xl-3Y-nWg"/>
                     <connections>
                         <outlet property="mapView" destination="9dG-rj-1Rl" id="GyF-Fd-tQc"/>
+                        <outlet property="searchButton" destination="RPm-li-o4D" id="1Nv-xf-aSl"/>
                         <outlet property="searchTextFiled" destination="w9S-th-xXJ" id="7NP-Ej-pZe"/>
                     </connections>
                 </viewController>

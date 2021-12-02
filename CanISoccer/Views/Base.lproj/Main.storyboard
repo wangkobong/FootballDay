@@ -173,6 +173,7 @@
                     <connections>
                         <outlet property="datePickerTextField" destination="QvU-Tj-eQb" id="w2P-VJ-UhA"/>
                         <outlet property="recommendationLabel" destination="jK0-Zu-6mZ" id="vLI-rd-RJW"/>
+                        <outlet property="searchButton" destination="kp7-OB-mse" id="DJx-Oa-WTg"/>
                         <outlet property="searchTextField" destination="zOb-l8-Ilz" id="mpH-pn-Tet"/>
                         <outlet property="temperatureLable" destination="QAf-AF-y1O" id="hKg-nb-CSz"/>
                         <outlet property="weatherDescriptionLabel" destination="nJA-4Z-0XB" id="AgF-HT-m1V"/>

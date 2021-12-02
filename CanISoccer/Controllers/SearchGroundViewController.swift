@@ -31,6 +31,7 @@ class SearchGroundViewController: UIViewController {
     let localRealm = try! Realm()
     
     
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchTextFiled: UITextField!
     
@@ -38,6 +39,8 @@ class SearchGroundViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.delegate = self
+        searchTextFiled.delegate = self
+        
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -60,7 +63,6 @@ class SearchGroundViewController: UIViewController {
                     return
                 }
                 for (_, value) in items {
-                    print("실행된거냐?")
                     let address = value["address_name"].stringValue
                     let phone = value["phone"].stringValue
                     let placeName = value["place_name"].stringValue
@@ -233,3 +235,10 @@ extension SearchGroundViewController: MKMapViewDelegate {
     }
 }
 
+extension SearchGroundViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.searchButtonPressed(self.searchButton)
+        searchTextFiled.resignFirstResponder()
+        return true
+    }
+}

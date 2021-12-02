@@ -52,6 +52,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var weatherStatusImageView: UIImageView!
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
     @IBOutlet weak var recommendationLabel: UILabel!
+    @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,8 @@ class MainViewController: UIViewController {
         self.datePickerTextField.setInputViewDatePicker(target: self, selector: #selector(tapDone))
     
         locationManager.delegate = self
+        searchTextField.delegate = self
+        datePickerTextField.delegate = self
         
         print("Realm is located at:", localRealm.configuration.fileURL!)
         
@@ -184,7 +187,13 @@ class MainViewController: UIViewController {
             }
             
         }
-        self.datePickerTextField.resignFirstResponder() 
+        
+        if searchTextField.text == "" {
+            self.searchTextField.becomeFirstResponder()
+            self.datePickerTextField.resignFirstResponder()
+        } else {
+            self.datePickerTextField.resignFirstResponder()
+        }
     }
     
 
@@ -339,7 +348,18 @@ extension MainViewController: CLLocationManagerDelegate {
         self.latitude = ""
         self.longitude = ""
     }
-    
-    
-    
+}
+
+extension MainViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.searchTextField {
+            if self.datePickerTextField.text == "" {
+                self.datePickerTextField.becomeFirstResponder()
+            } else {
+                self.searchTextField.resignFirstResponder()
+                self.searchBtnPressed(self.searchButton)
+            }
+        }
+        return true
+    }
 }
