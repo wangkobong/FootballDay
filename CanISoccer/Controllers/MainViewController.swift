@@ -93,7 +93,7 @@ class MainViewController: UIViewController {
                     if code == 200 {
                         group.leave()
                     } else {
-                        self.showToastMessage(message: "좀 더 자세한 주소를 적어주세요", title: "잘못된 주소입니다.")
+                        self.showToastMessage(message: "정확한 주소를 적어주세요", title: "잘못된 주소입니다.")
                         return
                     }
                     
@@ -211,11 +211,11 @@ extension MainViewController: CLLocationManagerDelegate {
     }
     func checkCurrentLocationAuthorization(_ authorizationStatus: CLAuthorizationStatus) {
         switch authorizationStatus {
-        case .notDetermined:
+        case .notDetermined, .restricted:
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
-        case .restricted, .denied:
+        case .denied:
             showAlert(title: "위치권한 설정을 거부하셨습니다", message: "위치 설정 화면으로 가시겠습니까?", okTitle: "설정으로 이동") {
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL)
@@ -270,6 +270,7 @@ extension MainViewController: CLLocationManagerDelegate {
                 UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString)! as URL)
             }
         }
+        print("error: \(error)")
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

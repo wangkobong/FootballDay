@@ -21,7 +21,6 @@
 		FE2A27F9274260F60056706E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27F7274260F60056706E /* Main.storyboard */; };
 		FE2A27FB274260F80056706E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FA274260F80056706E /* Assets.xcassets */; };
 		FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FC274260F80056706E /* LaunchScreen.storyboard */; };
-		FE8E5E7E2756311800E0D94C /* GroundInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E5E7D2756311800E0D94C /* GroundInfoModel.swift */; };
 		FE8E5E862757DC1400E0D94C /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E822757DC1300E0D94C /* NotoSansKR-Bold.otf */; };
 		FE8E5E872757DC1400E0D94C /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E832757DC1400E0D94C /* NotoSansKR-Light.otf */; };
 		FE8E5E882757DC1400E0D94C /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E842757DC1400E0D94C /* NotoSansKR-Black.otf */; };
@@ -66,7 +65,6 @@
 		FE2A27FA274260F80056706E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE2A27FD274260F80056706E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE2A27FF274260F80056706E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE8E5E7D2756311800E0D94C /* GroundInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundInfoModel.swift; sourceTree = "<group>"; };
 		FE8E5E822757DC1300E0D94C /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Bold.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		FE8E5E832757DC1400E0D94C /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Light.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		FE8E5E842757DC1400E0D94C /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Black.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Black.otf"; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 				FEDC15A6274FF5F70097EC65 /* RecommendationModel.swift */,
 				FEDC15A8274FFC010097EC65 /* HoursModel.swift */,
 				FEDBF64B275501BD001A3389 /* PlacesModel.swift */,
-				FE8E5E7D2756311800E0D94C /* GroundInfoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -360,7 +357,6 @@
 				FEE7C3E927493BD2007CC37E /* CanISoccer++Bundle.swift in Sources */,
 				FED6022927465FEC00428EFA /* FavoriteTableViewCell.swift in Sources */,
 				FE2A27F2274260F60056706E /* AppDelegate.swift in Sources */,
-				FE8E5E7E2756311800E0D94C /* GroundInfoModel.swift in Sources */,
 				FEDC15A9274FFC010097EC65 /* HoursModel.swift in Sources */,
 				FE18F1E62744FEE100A83F1F /* FavoriteListViewController.swift in Sources */,
 				FEE7C3ED274A8616007CC37E /* WeatherModel.swift in Sources */,
@@ -544,6 +540,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Debug;
 		};
@@ -574,6 +571,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;
 		};

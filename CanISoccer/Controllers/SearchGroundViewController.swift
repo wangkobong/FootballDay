@@ -51,12 +51,16 @@ class SearchGroundViewController: UIViewController {
         locations.removeAll()
         let annotations = mapView.annotations
         mapView.removeAnnotations(annotations)
-        if let locationKeyword = searchTextFiled.text {
+        if let locationKeyword = searchTextFiled.text,  searchTextFiled.text != "" {
             let keyword = "\(locationKeyword) \(groundKeyword)"
             WeatherManager.shared.fetchSearchPlaces(keyword) { items in
-                print(items[0]["address"])
-                for (_, value) in items {
 
+                if items.isEmpty {
+                    self.showToastMessage(message: "지역명을 확인해주세요.", title: "검색어가 유효하지 않습니다.")
+                    return
+                }
+                for (_, value) in items {
+                    print("실행된거냐?")
                     let address = value["address_name"].stringValue
                     let phone = value["phone"].stringValue
                     let placeName = value["place_name"].stringValue
@@ -70,7 +74,7 @@ class SearchGroundViewController: UIViewController {
                 self.setAnnotation()
             }
         } else {
-            print("통신실패")
+            showToastMessage(message: "지역명을 확인해주세요.", title: "검색어가 유효하지 않습니다.")
         }
     }
     
