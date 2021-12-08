@@ -17,25 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0b5-Mx-gQp" customClass="FSCalendar">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiL-TC-jch" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="44" width="414" height="414"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="0b5-Mx-gQp" secondAttribute="height" multiplier="1:1" id="jZh-sz-oOu"/>
+                                    <constraint firstAttribute="width" secondItem="IiL-TC-jch" secondAttribute="height" multiplier="1:1" id="fAn-u2-QyM"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0b5-Mx-gQp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bG3-he-dqW"/>
-                            <constraint firstItem="0b5-Mx-gQp" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="hhf-dD-Dz3"/>
-                            <constraint firstItem="0b5-Mx-gQp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="kYZ-t9-Mof"/>
+                            <constraint firstItem="IiL-TC-jch" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="QF8-dq-zaM"/>
+                            <constraint firstItem="IiL-TC-jch" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ZiZ-UN-JED"/>
+                            <constraint firstItem="IiL-TC-jch" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="vo2-dU-he4"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="일정" image="calendar.badge.plus" catalog="system" id="FTN-v3-TdP"/>
                     <connections>
-                        <outlet property="calendar" destination="0b5-Mx-gQp" id="nJF-3t-HXG"/>
+                        <outlet property="fsCalendar" destination="IiL-TC-jch" id="n3P-VV-bVn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

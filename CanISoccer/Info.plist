@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSRemindersUsageDescription</key>
-	<string>경기일정 3시간전에 알람을 받기위해 리마인더 접근권한이 필요합니다.</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>경기일정을 캘린더에 추가하기 위해 캘린더 접근권한이 필요합니다.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSansKR-Light.otf</string>
@@ -13,12 +9,6 @@
 		<string>NotoSansKR-Black.otf</string>
 		<string>NotoSansKR-Bold.otf</string>
 	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>검색된 위치의 일기예보 데이터를 받기 위해 위치권한이 필요합니다.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>현재 사용자 위치의 날씨를 분석하기 위해 위치권한이 필요합니다.</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

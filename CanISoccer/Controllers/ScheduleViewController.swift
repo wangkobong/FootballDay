@@ -7,25 +7,75 @@
 
 import UIKit
 import FSCalendar
+import EventKit
+import EventKitUI
 
-class ScheduleViewController: UIViewController {
+class ScheduleViewController: UIViewController, EKEventEditViewDelegate {
 
-    @IBOutlet weak var calendar: FSCalendar!
+    var startDate = Date()
+    var endDate = Date()
+    
+    let store = EKEventStore()
+
+    @IBOutlet weak var fsCalendar: FSCalendar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        calendar.delegate = self
+        fsCalendar.delegate = self
+        fsCalendar.locale = Locale(identifier: "ko_KR")
 
     }
+    
+   func didTapCalendar() {
+        switch EKEventStore.authorizationStatus(for: .event) {
+        case .notDetermined:
+            let eventStore = EKEventStore()
+            eventStore.requestAccess(to: .event) { (granted, error) in
+                if granted {
+                    // do stuff
+                    DispatchQueue.main.async {
+                        self.showEventViewController()
+                    }
+                }
+            }
+        case .authorized:
+            // do stuff
+            DispatchQueue.main.async {
+                self.showEventViewController()
+            }
+        default:
+            break
+        }
+
+    }
+    
+    func showEventViewController() {
+        let eventVC = EKEventEditViewController()
+        eventVC.editViewDelegate = self // don't forget the delegate
+        eventVC.eventStore = EKEventStore()
+        
+        let event = EKEvent(eventStore: eventVC.eventStore)
+        event.title = "공차는 날!"
+        event.startDate = startDate
+        event.endDate = endDate
+        
+        eventVC.event = event
+        
+        present(eventVC, animated: true)
+    }
+    
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 
 }
 
 extension ScheduleViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        print("selected date: \(date)")
+        self.startDate = date
+        self.endDate = date
+        didTapCalendar()
     }
-    
-    
 }

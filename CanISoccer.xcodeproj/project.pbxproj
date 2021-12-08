@@ -21,6 +21,7 @@
 		FE2A27F9274260F60056706E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27F7274260F60056706E /* Main.storyboard */; };
 		FE2A27FB274260F80056706E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FA274260F80056706E /* Assets.xcassets */; };
 		FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FC274260F80056706E /* LaunchScreen.storyboard */; };
+		FE8B860B275FA67D0047E98E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = FE8B860A275FA67D0047E98E /* FSCalendar */; };
 		FE8DFE35275910B900636FB9 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8DFE34275910B900636FB9 /* Setting.storyboard */; };
 		FE8DFE37275910E000636FB9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8DFE36275910E000636FB9 /* SettingViewController.swift */; };
 		FE8DFE3D275B580A00636FB9 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8DFE3C275B580A00636FB9 /* UIView++Extension.swift */; };
@@ -101,6 +102,7 @@
 				FEE7C3E1274935A6007CC37E /* Alamofire in Frameworks */,
 				FEE7C3DC27493584007CC37E /* Realm in Frameworks */,
 				FEE7C3E5274937A8007CC37E /* SwiftyJSON in Frameworks */,
+				FE8B860B275FA67D0047E98E /* FSCalendar in Frameworks */,
 				C282DEEE90F8D9D80E76A40D /* Pods_CanISoccer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,7 +238,7 @@
 				FE2A27EA274260F60056706E /* Sources */,
 				FE2A27EB274260F60056706E /* Frameworks */,
 				FE2A27EC274260F60056706E /* Resources */,
-				88EBAC1862891C49ED400A00 /* [CP] Embed Pods Frameworks */,
+				FE8B8608275F9AB50047E98E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -249,6 +251,7 @@
 				FEE7C3E0274935A6007CC37E /* Alamofire */,
 				FEE7C3E4274937A8007CC37E /* SwiftyJSON */,
 				FEDC15A2274F5DAF0097EC65 /* Toast */,
+				FE8B860A275FA67D0047E98E /* FSCalendar */,
 			);
 			productName = CanISoccer;
 			productReference = FE2A27EE274260F60056706E /* CanISoccer.app */;
@@ -283,6 +286,7 @@
 				FEE7C3DF274935A6007CC37E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				FEE7C3E3274937A8007CC37E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				FEDC15A1274F5DAF0097EC65 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				FE8B8609275FA67D0047E98E /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = FE2A27EF274260F60056706E /* Products */;
 			projectDirPath = "";
@@ -339,22 +343,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		88EBAC1862891C49ED400A00 /* [CP] Embed Pods Frameworks */ = {
+		FE8B8608275F9AB50047E98E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+			);
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -443,7 +447,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -532,15 +536,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YWSA3TX7T7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CanISoccer/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "경기일정을 캘린더에 추가하기 위해 캘린더 접근권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "검색된 위치의 일기예보 데이터를 받기 위해 위치권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 사용자 위치의 날씨를 분석하기 위해 위치권한이 필요합니다.";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "예정된 경기일정에 맞춰 알람을 받기위해 리마인더 접근권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,15 +572,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = YWSA3TX7T7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CanISoccer/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "경기일정을 캘린더에 추가하기 위해 캘린더 접근권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "검색된 위치의 일기예보 데이터를 받기 위해 위치권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 사용자 위치의 날씨를 분석하기 위해 위치권한이 필요합니다.";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "예정된 경기일정에 맞춰 알람을 받기위해 리마인더 접근권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -611,6 +625,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FE8B8609275FA67D0047E98E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		FEDC15A1274F5DAF0097EC65 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -646,6 +668,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FE8B860A275FA67D0047E98E /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE8B8609275FA67D0047E98E /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
 		FEDC15A2274F5DAF0097EC65 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FEDC15A1274F5DAF0097EC65 /* XCRemoteSwiftPackageReference "Toast-Swift" */;

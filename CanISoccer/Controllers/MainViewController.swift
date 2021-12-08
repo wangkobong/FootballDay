@@ -223,7 +223,6 @@ extension MainViewController: CLLocationManagerDelegate {
         case .notDetermined, .restricted:
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
         case .denied:
             showAlert(title: "위치권한 설정을 거부하셨습니다", message: "위치 설정 화면으로 가시겠습니까?", okTitle: "설정으로 이동") {
                 if #available(iOS 10.0, *) {
