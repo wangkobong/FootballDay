@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Firebase 초기화
 //        FirebaseApp.configure()
-        sleep(2)
+        sleep(1)
         return true
     }
 

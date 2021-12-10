@@ -28,13 +28,23 @@ class ScheduleViewController: UIViewController, EKEventEditViewDelegate {
     
    func didTapCalendar() {
         switch EKEventStore.authorizationStatus(for: .event) {
-        case .notDetermined:
+        case .notDetermined, .denied:
             let eventStore = EKEventStore()
             eventStore.requestAccess(to: .event) { (granted, error) in
                 if granted {
                     // do stuff
                     DispatchQueue.main.async {
                         self.showEventViewController()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "캘린더 권한 설정을 거부하셨습니다", message: "권한 설정 화면으로 가시겠습니까?", okTitle: "설정으로 이동") {
+                            if #available(iOS 10.0, *) {
+                                UIApplication.shared.open(NSURL(string:UIApplication.openSettingsURLString)! as URL)
+                            } else {
+                                UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString)! as URL)
+                            }
+                        }
                     }
                 }
             }

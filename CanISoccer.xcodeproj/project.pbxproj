@@ -22,6 +22,7 @@
 		FE2A27FB274260F80056706E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FA274260F80056706E /* Assets.xcassets */; };
 		FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FC274260F80056706E /* LaunchScreen.storyboard */; };
 		FE8B860B275FA67D0047E98E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = FE8B860A275FA67D0047E98E /* FSCalendar */; };
+		FE8B862F27637B230047E98E /* libswift_Concurrency.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FE8DFE35275910B900636FB9 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8DFE34275910B900636FB9 /* Setting.storyboard */; };
 		FE8DFE37275910E000636FB9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8DFE36275910E000636FB9 /* SettingViewController.swift */; };
 		FE8DFE3D275B580A00636FB9 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8DFE3C275B580A00636FB9 /* UIView++Extension.swift */; };
@@ -69,6 +70,7 @@
 		FE2A27FA274260F80056706E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE2A27FD274260F80056706E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE2A27FF274260F80056706E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
 		FE8DFE34275910B900636FB9 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		FE8DFE36275910E000636FB9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		FE8DFE3C275B580A00636FB9 /* UIView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++Extension.swift"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE8B862F27637B230047E98E /* libswift_Concurrency.tbd in Frameworks */,
 				FEDC15A3274F5DAF0097EC65 /* Toast in Frameworks */,
 				FEE7C3DE27493584007CC37E /* RealmSwift in Frameworks */,
 				FEE7C3E1274935A6007CC37E /* Alamofire in Frameworks */,
@@ -122,6 +125,7 @@
 		DB8DCB90466AD7B478D6FE8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */,
 				9F490D0C1CD9DD5DB13D8379 /* Pods_CanISoccer.framework */,
 			);
 			name = Frameworks;
@@ -536,14 +540,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = YWSA3TX7T7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CanISoccer/Info.plist;
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "경기일정을 캘린더에 추가하기 위해 캘린더 접근권한이 필요합니다.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "검색된 위치의 일기예보 데이터를 받기 위해 위치권한이 필요합니다.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "사용자의 캘린더에 축구일정을 추가하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 사용자 위치의 날씨를 분석하기 위해 위치권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 사용자 위치의 날씨를 분석하기 위해 위치권한이 필요합니다.";
-				INFOPLIST_KEY_NSRemindersUsageDescription = "예정된 경기일정에 맞춰 알람을 받기위해 리마인더 접근권한이 필요합니다.";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "사용자의 리마인더에 축구일정을 추가하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -554,6 +558,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobong.CanISoccer;
@@ -572,14 +580,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = YWSA3TX7T7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CanISoccer/Info.plist;
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "경기일정을 캘린더에 추가하기 위해 캘린더 접근권한이 필요합니다.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "검색된 위치의 일기예보 데이터를 받기 위해 위치권한이 필요합니다.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "사용자의 캘린더에 축구일정을 추가하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "현재 사용자 위치의 날씨를 분석하기 위해 위치권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 사용자 위치의 날씨를 분석하기 위해 위치권한이 필요합니다.";
-				INFOPLIST_KEY_NSRemindersUsageDescription = "예정된 경기일정에 맞춰 알람을 받기위해 리마인더 접근권한이 필요합니다.";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "사용자의 리마인더에 축구일정을 추가하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -590,6 +598,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobong.CanISoccer;
