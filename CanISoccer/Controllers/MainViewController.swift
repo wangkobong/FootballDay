@@ -71,6 +71,7 @@ class MainViewController: UIViewController {
 
     @IBAction func currentLocationBtnPressed(_ sender: UIButton) {
         print("currentLocationBtnPressed")
+        fatalError()
         locationManager.startUpdatingLocation()
     }
     

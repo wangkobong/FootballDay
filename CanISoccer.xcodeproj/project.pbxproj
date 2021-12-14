@@ -23,6 +23,7 @@
 		FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FC274260F80056706E /* LaunchScreen.storyboard */; };
 		FE8B860B275FA67D0047E98E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = FE8B860A275FA67D0047E98E /* FSCalendar */; };
 		FE8B862F27637B230047E98E /* libswift_Concurrency.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
+		FE8B86612767B3640047E98E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE8B86602767B3640047E98E /* GoogleService-Info.plist */; };
 		FE8DFE35275910B900636FB9 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8DFE34275910B900636FB9 /* Setting.storyboard */; };
 		FE8DFE37275910E000636FB9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8DFE36275910E000636FB9 /* SettingViewController.swift */; };
 		FE8DFE3D275B580A00636FB9 /* UIView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8DFE3C275B580A00636FB9 /* UIView++Extension.swift */; };
@@ -71,6 +72,7 @@
 		FE2A27FD274260F80056706E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE2A27FF274260F80056706E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
+		FE8B86602767B3640047E98E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE8DFE34275910B900636FB9 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		FE8DFE36275910E000636FB9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		FE8DFE3C275B580A00636FB9 /* UIView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++Extension.swift"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				FE2A27FA274260F80056706E /* Assets.xcassets */,
 				FE2A27FC274260F80056706E /* LaunchScreen.storyboard */,
 				FE2A27FF274260F80056706E /* Info.plist */,
+				FE8B86602767B3640047E98E /* GoogleService-Info.plist */,
 				FE18F1D92744F4EC00A83F1F /* Constants.swift */,
 				FEDBF6492754F32F001A3389 /* WeatherInfo.plist */,
 			);
@@ -242,7 +245,8 @@
 				FE2A27EA274260F60056706E /* Sources */,
 				FE2A27EB274260F60056706E /* Frameworks */,
 				FE2A27EC274260F60056706E /* Resources */,
-				FE8B8608275F9AB50047E98E /* ShellScript */,
+				FE8B8608275F9AB50047E98E /* Run Script */,
+				DE57FD6AE5961C267BA8357A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -319,6 +323,7 @@
 				FE18F1E02744FC1400A83F1F /* Schedule.storyboard in Resources */,
 				FEDBF64A2754F32F001A3389 /* WeatherInfo.plist in Resources */,
 				FE8DFE35275910B900636FB9 /* Setting.storyboard in Resources */,
+				FE8B86612767B3640047E98E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +352,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FE8B8608275F9AB50047E98E /* ShellScript */ = {
+		DE57FD6AE5961C267BA8357A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE8B8608275F9AB50047E98E /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -355,14 +377,17 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

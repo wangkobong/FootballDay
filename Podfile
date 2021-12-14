@@ -4,7 +4,9 @@
 target 'CanISoccer' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-	
-  # Pods for CanISoccer
 
+  # Pods for CanISoccer
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
+  
 end
