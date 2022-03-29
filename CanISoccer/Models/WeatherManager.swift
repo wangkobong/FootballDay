@@ -83,6 +83,8 @@ struct WeatherManager {
         }
     }
     
+    // MARK: - map APis
+    
     func fetchSearchPlaces(_ keyword: String, result: @escaping (JSON) -> ()) {
         let int0 = 0
         let urlString = "https://dapi.kakao.com/v2/local/search/keyword?query=\(keyword)&radius=\(int0)"

@@ -71,7 +71,6 @@ class MainViewController: UIViewController {
 
     @IBAction func currentLocationBtnPressed(_ sender: UIButton) {
         print("currentLocationBtnPressed")
-        fatalError()
         locationManager.startUpdatingLocation()
     }
     
@@ -110,11 +109,7 @@ class MainViewController: UIViewController {
                     if isExisting.isEmpty {
                         print("X좌표: \(self.longitude), Y좌표: \(self.latitude)")
                         WeatherManager.shared.fetchWeatherForecast(self.latitude, self.longitude){ list, code in
-                            print(#function)
-                            print("fetchWeatherForecast: \(address)")
-                            print("selectedTime: \(self.selectedTime)")
-                            print(" fetchWeatherForecast X좌표: \(self.longitude), Y좌표: \(self.latitude)")
-                            print("fetchWeatherForecast 상태코드 : \(code)")
+
                             switch code {
                                 case 200:
                                     for item in list {

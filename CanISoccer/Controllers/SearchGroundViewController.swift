@@ -183,6 +183,7 @@ extension SearchGroundViewController: CLLocationManagerDelegate {
     //5. 위치 접근이 실패했을 경우
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(#function)
+        print("error \(error)")
     }
     
     
