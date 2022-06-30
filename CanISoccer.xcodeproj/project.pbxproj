@@ -194,21 +194,93 @@
 		FE2A27F0274260F60056706E /* CanISoccer */ = {
 			isa = PBXGroup;
 			children = (
+				FE608056286D9EE4007730CA /* App */,
 				FE8E5E812757DBCB00E0D94C /* Fonts */,
+				FE608055286D9ED1007730CA /* Utils */,
 				FED60231274902DB00428EFA /* Extension */,
+				FE60805B286D9F21007730CA /* Manager */,
+				FE608057286D9EEC007730CA /* Component */,
+				FE608058286D9EF7007730CA /* Domain */,
+				FE608059286D9EFF007730CA /* Repository */,
+				FE60805A286D9F04007730CA /* Service */,
 				FE18F1D82744F4D700A83F1F /* Models */,
-				FE18F1D72744F4C900A83F1F /* Views */,
+				FE60805C286D9F2A007730CA /* ViewModel */,
 				FE18F1D62744F4BB00A83F1F /* Controllers */,
-				FE2A27F1274260F60056706E /* AppDelegate.swift */,
-				FE2A27F3274260F60056706E /* SceneDelegate.swift */,
-				FE2A27FA274260F80056706E /* Assets.xcassets */,
-				FE2A27FC274260F80056706E /* LaunchScreen.storyboard */,
+				FE18F1D72744F4C900A83F1F /* Views */,
+				FE60805D286D9F66007730CA /* Coordinator */,
 				FE2A27FF274260F80056706E /* Info.plist */,
 				FE8B86602767B3640047E98E /* GoogleService-Info.plist */,
 				FE18F1D92744F4EC00A83F1F /* Constants.swift */,
 				FEDBF6492754F32F001A3389 /* WeatherInfo.plist */,
 			);
 			path = CanISoccer;
+			sourceTree = "<group>";
+		};
+		FE608055286D9ED1007730CA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FE608056286D9EE4007730CA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FE2A27F1274260F60056706E /* AppDelegate.swift */,
+				FE2A27F3274260F60056706E /* SceneDelegate.swift */,
+				FE2A27FA274260F80056706E /* Assets.xcassets */,
+				FE2A27FC274260F80056706E /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FE608057286D9EEC007730CA /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		FE608058286D9EF7007730CA /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FE608059286D9EFF007730CA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FE60805A286D9F04007730CA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FE60805B286D9F21007730CA /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		FE60805C286D9F2A007730CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FE60805D286D9F66007730CA /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		FE8E5E812757DBCB00E0D94C /* Fonts */ = {

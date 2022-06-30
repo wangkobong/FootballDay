@@ -1,4 +1,5 @@
 PODS:
+  - Differentiator (5.0.0)
   - Firebase/Analytics (8.10.0):
     - Firebase/Core
   - Firebase/Core (8.10.0):
@@ -97,13 +98,39 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxGesture (4.0.4):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxKeyboard (2.0.0):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - RxViewController (2.0.0):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Crashlytics
+  - RxCocoa
+  - RxDataSources
+  - RxGesture
+  - RxKeyboard
+  - RxSwift
+  - RxViewController
 
 SPEC REPOS:
   trunk:
+    - Differentiator
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -115,8 +142,16 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
+    - RxCocoa
+    - RxDataSources
+    - RxGesture
+    - RxKeyboard
+    - RxRelay
+    - RxSwift
+    - RxViewController
 
 SPEC CHECKSUMS:
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
   FirebaseAnalytics: 319c9b3b1bdd400d60e2f415dff0c5f6959e6760
   FirebaseCore: 04186597c095da37d90ff9fd3e53bc61a1ff2440
@@ -128,7 +163,14 @@ SPEC CHECKSUMS:
   GoogleUtilities: 684ee790a24f73ebb2d1d966e9711c203f2a4237
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
+  RxKeyboard: 4f5863f43b4ff0cbb2a20b94688d6b80c8a43c14
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  RxViewController: 56486fa0afd629a1d6b5ba077f3b8cd9dc31b5d2
 
-PODFILE CHECKSUM: d482d6636ee5fd440d6b8a8ce3398ae815af9a5c
+PODFILE CHECKSUM: 84fd2987f5fe0e126aa11480368d31e926697d17
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
