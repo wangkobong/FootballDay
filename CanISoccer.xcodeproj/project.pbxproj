@@ -31,6 +31,26 @@
 		FE8E5E872757DC1400E0D94C /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E832757DC1400E0D94C /* NotoSansKR-Light.otf */; };
 		FE8E5E882757DC1400E0D94C /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E842757DC1400E0D94C /* NotoSansKR-Black.otf */; };
 		FE8E5E892757DC1400E0D94C /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE8E5E852757DC1400E0D94C /* NotoSansKR-Medium.otf */; };
+		FE95BEA5286DA70800307505 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEA4286DA70800307505 /* Logger.swift */; };
+		FE95BEA7286DA7F500307505 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEA6286DA7F500307505 /* Coordinator.swift */; };
+		FE95BEAB286DB04D00307505 /* SoccerNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEAA286DB04D00307505 /* SoccerNavigationViewController.swift */; };
+		FE95BEAD286DB0A600307505 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEAC286DB0A600307505 /* AppCoordinator.swift */; };
+		FE95BEAF286DB18700307505 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEAE286DB18700307505 /* MainTabBarCoordinator.swift */; };
+		FE95BEB2286DB24900307505 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEB1286DB24900307505 /* MainTabBarViewController.swift */; };
+		FE95BEB4286DB3B400307505 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEB3286DB3B400307505 /* HomeCoordinator.swift */; };
+		FE95BEB6286DB42400307505 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEB5286DB42400307505 /* BaseViewController.swift */; };
+		FE95BEB8286DB4BD00307505 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEB7286DB4BD00307505 /* HomeViewController.swift */; };
+		FE95BEBB286DC00000307505 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEBA286DC00000307505 /* BaseView.swift */; };
+		FE95BEBD286DC05400307505 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEBC286DC05400307505 /* HomeView.swift */; };
+		FE95BEBF286DC14700307505 /* SearchGroundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEBE286DC14700307505 /* SearchGroundCoordinator.swift */; };
+		FE95BEC2286DC29200307505 /* SearchGroundViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEC1286DC29200307505 /* SearchGroundViewController2.swift */; };
+		FE95BEC4286DC32000307505 /* SearchGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEC3286DC32000307505 /* SearchGroundView.swift */; };
+		FE95BEC6286DC37100307505 /* FavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEC5286DC37100307505 /* FavoriteCoordinator.swift */; };
+		FE95BEC8286DC39700307505 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEC7286DC39700307505 /* FavoriteViewController.swift */; };
+		FE95BECA286DC52B00307505 /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEC9286DC52B00307505 /* ScheduleCoordinator.swift */; };
+		FE95BECC286DC54E00307505 /* ScheduleViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BECB286DC54E00307505 /* ScheduleViewController2.swift */; };
+		FE95BECE286DC5B800307505 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BECD286DC5B800307505 /* FavoriteView.swift */; };
+		FE95BED0286DC5C200307505 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BECF286DC5C200307505 /* ScheduleView.swift */; };
 		FED6022927465FEC00428EFA /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */; };
 		FED6022A27465FEC00428EFA /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */; };
 		FEDBF64A2754F32F001A3389 /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEDBF6492754F32F001A3389 /* WeatherInfo.plist */; };
@@ -80,6 +100,26 @@
 		FE8E5E832757DC1400E0D94C /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Light.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		FE8E5E842757DC1400E0D94C /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Black.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Black.otf"; sourceTree = "<group>"; };
 		FE8E5E852757DC1400E0D94C /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Medium.otf"; path = "../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		FE95BEA4286DA70800307505 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		FE95BEA6286DA7F500307505 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		FE95BEAA286DB04D00307505 /* SoccerNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerNavigationViewController.swift; sourceTree = "<group>"; };
+		FE95BEAC286DB0A600307505 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FE95BEAE286DB18700307505 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
+		FE95BEB1286DB24900307505 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		FE95BEB3286DB3B400307505 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		FE95BEB5286DB42400307505 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FE95BEB7286DB4BD00307505 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FE95BEBA286DC00000307505 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		FE95BEBC286DC05400307505 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FE95BEBE286DC14700307505 /* SearchGroundCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroundCoordinator.swift; sourceTree = "<group>"; };
+		FE95BEC1286DC29200307505 /* SearchGroundViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroundViewController2.swift; sourceTree = "<group>"; };
+		FE95BEC3286DC32000307505 /* SearchGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroundView.swift; sourceTree = "<group>"; };
+		FE95BEC5286DC37100307505 /* FavoriteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCoordinator.swift; sourceTree = "<group>"; };
+		FE95BEC7286DC39700307505 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		FE95BEC9286DC52B00307505 /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
+		FE95BECB286DC54E00307505 /* ScheduleViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController2.swift; sourceTree = "<group>"; };
+		FE95BECD286DC5B800307505 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		FE95BECF286DC5C200307505 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		FEDBF6492754F32F001A3389 /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
@@ -136,6 +176,8 @@
 		FE18F1D62744F4BB00A83F1F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FE95BEB0286DB22700307505 /* Base+TabBar */,
+				FE95BEC0286DC27A00307505 /* refactoring */,
 				FE2A27F5274260F60056706E /* MainViewController.swift */,
 				FE18F1E32744FED200A83F1F /* SearchGroundViewController.swift */,
 				FE18F1E52744FEE100A83F1F /* FavoriteListViewController.swift */,
@@ -148,6 +190,7 @@
 		FE18F1D72744F4C900A83F1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FE95BEB9286DBFF100307505 /* Base */,
 				FE2A27F7274260F60056706E /* Main.storyboard */,
 				FE18F1DB2744FBE000A83F1F /* SearchGround.storyboard */,
 				FE18F1DD2744FC0000A83F1F /* FavoriteList.storyboard */,
@@ -155,6 +198,10 @@
 				FED6022727465FEC00428EFA /* FavoriteTableViewCell.swift */,
 				FED6022827465FEC00428EFA /* FavoriteTableViewCell.xib */,
 				FE8DFE34275910B900636FB9 /* Setting.storyboard */,
+				FE95BEBC286DC05400307505 /* HomeView.swift */,
+				FE95BEC3286DC32000307505 /* SearchGroundView.swift */,
+				FE95BECD286DC5B800307505 /* FavoriteView.swift */,
+				FE95BECF286DC5C200307505 /* ScheduleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +266,7 @@
 		FE608055286D9ED1007730CA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FE95BEA4286DA70800307505 /* Logger.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -237,6 +285,7 @@
 		FE608057286D9EEC007730CA /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				FE95BEA9286DB03A00307505 /* Controller */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -279,6 +328,11 @@
 		FE60805D286D9F66007730CA /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				FE95BEA8286DA87200307505 /* Base+TabBar */,
+				FE95BEB3286DB3B400307505 /* HomeCoordinator.swift */,
+				FE95BEBE286DC14700307505 /* SearchGroundCoordinator.swift */,
+				FE95BEC5286DC37100307505 /* FavoriteCoordinator.swift */,
+				FE95BEC9286DC52B00307505 /* ScheduleCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -292,6 +346,52 @@
 				FE8E5E852757DC1400E0D94C /* NotoSansKR-Medium.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FE95BEA8286DA87200307505 /* Base+TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				FE95BEA6286DA7F500307505 /* Coordinator.swift */,
+				FE95BEAC286DB0A600307505 /* AppCoordinator.swift */,
+				FE95BEAE286DB18700307505 /* MainTabBarCoordinator.swift */,
+			);
+			path = "Base+TabBar";
+			sourceTree = "<group>";
+		};
+		FE95BEA9286DB03A00307505 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE95BEAA286DB04D00307505 /* SoccerNavigationViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FE95BEB0286DB22700307505 /* Base+TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				FE95BEB1286DB24900307505 /* MainTabBarViewController.swift */,
+				FE95BEB5286DB42400307505 /* BaseViewController.swift */,
+			);
+			path = "Base+TabBar";
+			sourceTree = "<group>";
+		};
+		FE95BEB9286DBFF100307505 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				FE95BEBA286DC00000307505 /* BaseView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		FE95BEC0286DC27A00307505 /* refactoring */ = {
+			isa = PBXGroup;
+			children = (
+				FE95BEC1286DC29200307505 /* SearchGroundViewController2.swift */,
+				FE95BEB7286DB4BD00307505 /* HomeViewController.swift */,
+				FE95BEC7286DC39700307505 /* FavoriteViewController.swift */,
+				FE95BECB286DC54E00307505 /* ScheduleViewController2.swift */,
+			);
+			path = refactoring;
 			sourceTree = "<group>";
 		};
 		FED60231274902DB00428EFA /* Extension */ = {
@@ -469,26 +569,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE2A27F6274260F60056706E /* MainViewController.swift in Sources */,
+				FE95BEA5286DA70800307505 /* Logger.swift in Sources */,
+				FE95BEAD286DB0A600307505 /* AppCoordinator.swift in Sources */,
+				FE95BEB2286DB24900307505 /* MainTabBarViewController.swift in Sources */,
+				FE95BEC4286DC32000307505 /* SearchGroundView.swift in Sources */,
 				FEE7C3E927493BD2007CC37E /* CanISoccer++Bundle.swift in Sources */,
+				FE95BEB8286DB4BD00307505 /* HomeViewController.swift in Sources */,
+				FE95BED0286DC5C200307505 /* ScheduleView.swift in Sources */,
+				FE95BEB4286DB3B400307505 /* HomeCoordinator.swift in Sources */,
+				FE95BECE286DC5B800307505 /* FavoriteView.swift in Sources */,
+				FE95BEC8286DC39700307505 /* FavoriteViewController.swift in Sources */,
+				FE95BEC6286DC37100307505 /* FavoriteCoordinator.swift in Sources */,
+				FE95BEBF286DC14700307505 /* SearchGroundCoordinator.swift in Sources */,
 				FED6022927465FEC00428EFA /* FavoriteTableViewCell.swift in Sources */,
 				FE2A27F2274260F60056706E /* AppDelegate.swift in Sources */,
+				FE95BEAB286DB04D00307505 /* SoccerNavigationViewController.swift in Sources */,
 				FEDC15A9274FFC010097EC65 /* HoursModel.swift in Sources */,
 				FE18F1E62744FEE100A83F1F /* FavoriteListViewController.swift in Sources */,
 				FE8DFE3D275B580A00636FB9 /* UIView++Extension.swift in Sources */,
+				FE95BEBD286DC05400307505 /* HomeView.swift in Sources */,
+				FE95BECC286DC54E00307505 /* ScheduleViewController2.swift in Sources */,
 				FEE7C3ED274A8616007CC37E /* WeatherModel.swift in Sources */,
+				FE95BEAF286DB18700307505 /* MainTabBarCoordinator.swift in Sources */,
 				FEDBF64C275501BD001A3389 /* PlacesModel.swift in Sources */,
+				FE95BEC2286DC29200307505 /* SearchGroundViewController2.swift in Sources */,
 				FEDC15A0274BC9CE0097EC65 /* FavoriteModel.swift in Sources */,
 				FEDC15A7274FF5F70097EC65 /* RecommendationModel.swift in Sources */,
 				FE2A27F4274260F60056706E /* SceneDelegate.swift in Sources */,
 				FEE7C3EB27495B7D007CC37E /* WeatherManager.swift in Sources */,
+				FE95BEBB286DC00000307505 /* BaseView.swift in Sources */,
 				FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */,
 				FE18F1E42744FED200A83F1F /* SearchGroundViewController.swift in Sources */,
 				FE18F1E82744FEEB00A83F1F /* ScheduleViewController.swift in Sources */,
+				FE95BEA7286DA7F500307505 /* Coordinator.swift in Sources */,
 				FE8DFE37275910E000636FB9 /* SettingViewController.swift in Sources */,
 				FEE7C3EF274BABFD007CC37E /* Date++Extension.swift in Sources */,
 				FEDC159E274BC6B90097EC65 /* RealmModel.swift in Sources */,
 				FEDC15AB2750C20A0097EC65 /* Alert+Extension.swift in Sources */,
+				FE95BECA286DC52B00307505 /* ScheduleCoordinator.swift in Sources */,
 				FE18F1DA2744F4EC00A83F1F /* Constants.swift in Sources */,
+				FE95BEB6286DB42400307505 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
