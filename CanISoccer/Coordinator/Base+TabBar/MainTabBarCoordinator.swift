@@ -25,8 +25,14 @@ class MainTabBarCoordinator: NSObject, Coordinator {
     
     func start() {
         let mainTabBarVC = MainTabBarViewController()
-        
+        mainTabBarVC.coordinatorFinishDelegate = self
+        mainTabBarVC.tabBarItems.forEach { tabBarItem in
+            let coordinator = tabBarItem.coordinator(presenter: presenter)
+            coordinator.delegate = self
+            childCoordinators.append(coordinator)
+        }
+    
+        presenter.viewControllers = [mainTabBarVC]
     }
-    
-    
+        
 }

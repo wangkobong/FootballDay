@@ -35,7 +35,7 @@ final class HomeViewController: BaseViewController {
     // MARK: - Configures
     
     override func configureUI() {
-        
+        view.backgroundColor = .red
     }
     
     override func setUpBindins() {

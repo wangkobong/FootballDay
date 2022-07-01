@@ -386,8 +386,8 @@
 		FE95BEC0286DC27A00307505 /* refactoring */ = {
 			isa = PBXGroup;
 			children = (
-				FE95BEC1286DC29200307505 /* SearchGroundViewController2.swift */,
 				FE95BEB7286DB4BD00307505 /* HomeViewController.swift */,
+				FE95BEC1286DC29200307505 /* SearchGroundViewController2.swift */,
 				FE95BEC7286DC39700307505 /* FavoriteViewController.swift */,
 				FE95BECB286DC54E00307505 /* ScheduleViewController2.swift */,
 			);
@@ -767,7 +767,7 @@
 				INFOPLIST_KEY_NSRemindersUsageDescription = "사용자의 리마인더에 축구일정을 추가하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -807,7 +807,7 @@
 				INFOPLIST_KEY_NSRemindersUsageDescription = "사용자의 리마인더에 축구일정을 추가하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;

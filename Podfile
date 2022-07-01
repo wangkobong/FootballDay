@@ -16,5 +16,6 @@ target 'CanISoccer' do
   # Pods for CanISoccer
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
+  pod 'SnapKit', '~> 5.0.0'
   
 end
