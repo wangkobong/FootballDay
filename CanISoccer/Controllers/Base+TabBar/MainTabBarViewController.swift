@@ -23,19 +23,19 @@ class MainTabBarViewController: UITabBarController {
         
         var image: UIImage? {
             switch self {
-            case .home: return UIImage(named: "location.fill")
-            case .searchGround: return UIImage(named: "magnifyingglass")
-            case .favorite: return UIImage(named: "star.fill")
-            case .schedule: return UIImage(named: "calendar.badge.plus")
+            case .home: return UIImage(systemName: "location.fill")
+            case .searchGround: return UIImage(systemName: "magnifyingglass")
+            case .favorite: return UIImage(systemName: "star.fill")
+            case .schedule: return UIImage(systemName: "calendar.badge.plus")
             }
         }
         
         var selectedImage: UIImage? {
             switch self {
-            case .home: return UIImage(named: "location.fill")
-            case .searchGround: return UIImage(named: "magnifyingglass")
-            case .favorite: return UIImage(named: "star.fill")
-            case .schedule: return UIImage(named: "calendar.badge.plus")
+            case .home: return UIImage(systemName: "location.fill")
+            case .searchGround: return UIImage(systemName: "magnifyingglass")
+            case .favorite: return UIImage(systemName: "star.fill")
+            case .schedule: return UIImage(systemName: "calendar.badge.plus")
             }
         }
         

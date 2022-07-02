@@ -24,6 +24,8 @@ class AppCoordinator: NSObject, Coordinator {
 
     func start() {
         window.rootViewController = presenter
+        self.presenter.navigationBar.layer.zPosition = -1
+        self.presenter.navigationBar.isUserInteractionEnabled = false
         let coordinator = MainTabBarCoordinator(presenter: presenter)
         coordinator.start()
         window.makeKeyAndVisible()

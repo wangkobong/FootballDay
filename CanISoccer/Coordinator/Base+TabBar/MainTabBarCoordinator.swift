@@ -26,6 +26,8 @@ class MainTabBarCoordinator: NSObject, Coordinator {
     func start() {
         let mainTabBarVC = MainTabBarViewController()
         mainTabBarVC.coordinatorFinishDelegate = self
+        self.presenter.navigationBar.layer.zPosition = -1
+        self.presenter.navigationBar.isUserInteractionEnabled = false
         mainTabBarVC.tabBarItems.forEach { tabBarItem in
             let coordinator = tabBarItem.coordinator(presenter: presenter)
             coordinator.delegate = self

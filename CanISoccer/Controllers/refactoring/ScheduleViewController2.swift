@@ -35,7 +35,7 @@ final class ScheduleViewController2: BaseViewController {
     // MARK: - Configures
     
     override func configureUI() {
-        
+        self.view.backgroundColor = .yellow
     }
     
     override func setUpBindins() {

@@ -35,7 +35,7 @@ final class FavoriteViewController: BaseViewController {
     // MARK: - Configures
     
     override func configureUI() {
-        
+        self.view.backgroundColor = .green
     }
     
     override func setUpBindins() {

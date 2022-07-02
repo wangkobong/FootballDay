@@ -35,7 +35,7 @@ final class SearchGroundViewController2: BaseViewController {
     // MARK: - Configures
     
     override func configureUI() {
-        
+        self.view.backgroundColor = .gray
     }
     
     override func setUpBindins() {
