@@ -18,13 +18,11 @@ final class HomeCoordinator: Coordinator {
     }
     
     func start() {
-//        let service = NetworkService(with: Session(interceptor: Interceptor(interceptors: [AuthorizationInterceptor()])))
-//        let repository = UserRepositoryImpl(service: service)
-//        let userUsecase = UserUsecase(repository: repository)
-//        let viewModel = HomeViewModel(dependencies: .init(userUsecase: userUsecase))
-//        self.presenter.navigationBar.layer.zPosition = -1
-//        self.presenter.navigationBar.isUserInteractionEnabled = true
-        let homeVC = HomeViewController()
+        let repository = WeatherRepositoryImpl()
+        let usecase = WeatherUsecase(repository: repository)
+        let viewModel = HomeViewModel(dependencies: .init(usecase: usecase))
+
+        let homeVC = HomeViewController(viewModel: viewModel)
         homeVC.coordinator = self
         homeVC.coordinatorFinishDelegate = self
         self.presenter.setNavigationBarHidden(true, animated: true)

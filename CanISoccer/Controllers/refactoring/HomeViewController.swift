@@ -13,7 +13,7 @@ final class HomeViewController: BaseViewController {
     
     var coordinator: HomeCoordinator?
     
-//    let viewModel: HomeViewModel
+    let viewModel: HomeViewModel
     
     // MARK: - UI Proteries
     
@@ -21,7 +21,8 @@ final class HomeViewController: BaseViewController {
     
     // MARK: - Lifecycles
     
-    init() {
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
