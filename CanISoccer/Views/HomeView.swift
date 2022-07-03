@@ -14,58 +14,91 @@ final class HomeView: BaseView {
     
     private let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .yellow
         return view
     }()
     
     private let searchStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.backgroundColor = .red
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 10
+        stackView.contentMode = .scaleToFill
         return stackView
     }()
     
     private let locationButton: UIButton = {
         let button = UIButton()
         
+        button.setImage(UIImage(systemName: "location.circle.fill"), for: .normal)
         return button
     }()
     
     private let searchTextfield: UITextField = {
         let textField = UITextField()
-        
+        textField.textAlignment = .center
+        textField.placeholder = "주소를 입력해주세요"
         return textField
     }()
     
     private let searchButton: UIButton = {
-        let searchButton = UIButton()
-        
-        return searchButton
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        return button
     }()
     
     private let datePickerTextField: UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = .green
+        textField.textAlignment = .center
+        textField.placeholder = "시간대를 선택해주세요"
         return textField
     }()
     
     private let temperatureStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.backgroundColor = .darkGray
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.contentMode = .scaleToFill
+        stackView.spacing = 0
         return stackView
+    }()
+
+    private let temperatureLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = label.font.withSize(55)
+        label.text = "26"
+        return label
+    }()
+    
+    private let degreeLabel: UILabel = {
+       let label = UILabel()
+        label.text = "°"
+        label.textAlignment = .center
+        label.font = label.font.withSize(60)
+        return label
+    }()
+    
+    private let celsius: UILabel = {
+       let label = UILabel()
+        label.text = "C"
+        label.textAlignment = .center
+        label.font = label.font.withSize(47)
+        return label
     }()
     
     private let weatherStatusLabel: UILabel = {
         let label = UILabel()
         label.text = "Clouds"
-        label.backgroundColor = .blue
+        label.font = label.font.withSize(25)
+        label.textAlignment = .right
         return label
     }()
     
     private let weatherIconImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .brown
+        imageView.image = UIImage(systemName: "cloud.bolt")
         return imageView
     }()
     
@@ -88,10 +121,12 @@ final class HomeView: BaseView {
     // MARK: - Configures
  
     override func configureUI() {
-        self.backgroundColor = .yellow
+        self.backgroundColor = .systemBackground
         [containerView, searchStackView, datePickerTextField, temperatureStackView, weatherStatusLabel, weatherIconImage, weatherDescriptionLabel, recommendationLabel].forEach { addSubview($0) }
         
-        [locationButton, searchTextfield, searchButton].forEach { addSubview($0) }
+        [locationButton, searchTextfield, searchButton].forEach { searchStackView.addSubview($0) }
+        
+        [temperatureLabel, degreeLabel, celsius].forEach { temperatureStackView.addSubview($0) }
         
       
         
@@ -106,6 +141,27 @@ final class HomeView: BaseView {
             $0.height.equalTo(40)
         }
         
+        locationButton.snp.makeConstraints {
+            $0.top.equalTo(searchStackView.snp.top)
+            $0.leading.equalTo(searchStackView.snp.leading)
+            $0.width.equalTo(40)
+            $0.height.equalTo(40)
+        }
+        
+        searchTextfield.snp.makeConstraints {
+            $0.top.equalTo(searchStackView.snp.top)
+            $0.leading.equalTo(locationButton.snp.trailing)
+            $0.trailing.equalTo(searchButton.snp.leading)
+            $0.height.equalTo(searchStackView)
+        }
+        
+        searchButton.snp.makeConstraints {
+            $0.top.equalTo(searchStackView.snp.top)
+            $0.trailing.equalTo(searchStackView.snp.trailing)
+            $0.width.equalTo(40)
+            $0.height.equalTo(40)
+        }
+        
         datePickerTextField.snp.makeConstraints {
             $0.leading.equalTo(self.snp.leading).offset(16)
             $0.trailing.equalTo(self.snp.trailing).offset(-16)
@@ -117,9 +173,31 @@ final class HomeView: BaseView {
             $0.top.equalTo(datePickerTextField.snp.bottom).offset(8)
             $0.leading.equalTo(self.snp.leading).offset(16)
             $0.height.equalTo(100)
-            $0.width.equalTo(110)
+            $0.width.equalTo(120)
         }
         
+        temperatureLabel.snp.makeConstraints {
+            $0.top.equalTo(temperatureStackView.snp.top)
+            $0.leading.equalTo(temperatureStackView.snp.leading)
+            $0.height.equalTo(temperatureStackView)
+            $0.width.equalTo(61.5)
+        }
+        
+        degreeLabel.snp.makeConstraints {
+            $0.top.equalTo(temperatureStackView.snp.top)
+            $0.leading.equalTo(temperatureLabel.snp.trailing)
+            $0.height.equalTo(temperatureStackView)
+            $0.width.equalTo(24.5)
+        }
+        
+        celsius.snp.makeConstraints {
+            $0.top.equalTo(temperatureStackView.snp.top)
+            $0.leading.equalTo(degreeLabel.snp.trailing)
+            $0.trailing.equalTo(temperatureStackView.snp.trailing)
+            $0.height.equalTo(temperatureStackView)
+            $0.width.equalTo(24.5)
+        }
+    
         weatherStatusLabel.snp.makeConstraints {
             $0.top.equalTo(temperatureStackView)
             $0.leading.equalTo(temperatureStackView.snp.trailing).offset(8)
@@ -131,6 +209,7 @@ final class HomeView: BaseView {
             $0.leading.equalTo(weatherStatusLabel.snp.trailing).offset(8)
             $0.trailing.equalTo(self.snp.trailing).offset(-16)
             $0.height.equalTo(temperatureStackView)
+            $0.width.equalTo(100)
         }
         
         weatherDescriptionLabel.snp.makeConstraints {
