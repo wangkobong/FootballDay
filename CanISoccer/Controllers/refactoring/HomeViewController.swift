@@ -7,7 +7,7 @@
 
 import UIKit
 import RxSwift
-import SnapKit
+import RxCocoa
 
 final class HomeViewController: BaseViewController {
     
@@ -36,15 +36,12 @@ final class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        LocationPermissionManager.shared.locationSubject
-          .compactMap { $0 }
-          .bind { [weak self] in print( "\($0)" )}
-          .disposed(by: self.disposeBag)
-        
-        LocationPermissionManager.shared.requestLocation()
-          .bind { print($0) }
-          .disposed(by: self.disposeBag)
+    
+       
+//        LocationPermissionManager.shared.locationSubject
+//          .compactMap { $0 }
+//          .bind { [weak self] in print( "\($0)" )}
+//          .disposed(by: self.disposeBag)
     }
     
     // MARK: - Configures
@@ -53,6 +50,34 @@ final class HomeViewController: BaseViewController {
     }
     
     override func setUpBindins() {
+        
+        // MARK: - INPUT
+        let fetching = rx.viewWillAppear.map { _ in }
+        let tapLocation = selfView.locationButton.rx.tap.asObservable()
+        let tapSearch = selfView.searchButton.rx.tap.asObservable()
+        
+        // MARK: - BINDS
+        
+        tapSearch.bind { _ in
+            print("tapSearch")
+        }
+        .disposed(by: disposeBag)
+        
+        tapLocation.bind { _ in
+            print("tapLocation")
+        }
+        .disposed(by: disposeBag)
+        
+        // MARK: - OUTPUT
+        
+        let output = viewModel.transform(input: .init(viewDidLoad: rx.viewDidAppear.map { _ in }.asObservable(), didTapLocation: tapLocation.asObservable(), didTapSearch: tapSearch.asObservable(), fetching: fetching.asObservable()))
+        
+        output.test
+            .take(1)
+            .subscribe {
+                print($0.element)
+            }
+            .disposed(by: disposeBag)
         
     }
     

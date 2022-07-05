@@ -27,7 +27,7 @@ final class HomeView: BaseView {
         return stackView
     }()
     
-    private let locationButton: UIButton = {
+    private (set) var locationButton: UIButton = {
         let button = UIButton()
         
         button.setImage(UIImage(systemName: "location.circle.fill"), for: .normal)
@@ -41,7 +41,7 @@ final class HomeView: BaseView {
         return textField
     }()
     
-    private let searchButton: UIButton = {
+    private (set) var searchButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         return button

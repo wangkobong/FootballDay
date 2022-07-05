@@ -25,6 +25,7 @@ final class LocationPermissionManager {
     private init() {
         
         self.locationManager.rx.didUpdateLocations
+        
             .compactMap(\.locations.last?.coordinate)
             .bind(onNext: self.locationSubject.onNext(_:))
             .disposed(by: self.disposeBag)
