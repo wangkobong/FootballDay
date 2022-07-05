@@ -12,10 +12,15 @@ class HomeViewModel: ViewModelType {
    
     
     struct Input {
-        
+        let viewDidAppear: Observable<Void>
+        let didTapLocation: Observable<Void>
+        let didTapSearch: Observable<Void>
+        let fetching: Observable<Void>
     }
     
     struct Output {
+        let userLocation: Observable<String>
+        let weather: Observable<Forecast>
         
     }
     
@@ -28,7 +33,12 @@ class HomeViewModel: ViewModelType {
     let dependencies: Dependencies
     
     func transform(input: Input) -> Output {
-        return Output()
+        
+        //MARK: Output Data
+        let weather = PublishRelay<Forecast>()
+        let currentUserLocation = PublishRelay<String>()
+        
+        return Output(userLocation: currentUserLocation.asObservable(), weather: weather.asObservable())
     }
     
     required init(dependencies: Dependencies) {

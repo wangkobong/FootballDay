@@ -67,7 +67,7 @@ final class HomeView: BaseView {
     private let temperatureLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = label.font.withSize(55)
+        label.font = label.font.withSize(50)
         label.text = "26"
         return label
     }()
@@ -84,7 +84,7 @@ final class HomeView: BaseView {
        let label = UILabel()
         label.text = "C"
         label.textAlignment = .center
-        label.font = label.font.withSize(47)
+        label.font = label.font.withSize(40)
         return label
     }()
     
@@ -173,7 +173,7 @@ final class HomeView: BaseView {
             $0.top.equalTo(datePickerTextField.snp.bottom).offset(8)
             $0.leading.equalTo(self.snp.leading).offset(16)
             $0.height.equalTo(100)
-            $0.width.equalTo(120)
+            $0.width.equalTo(119)
         }
         
         temperatureLabel.snp.makeConstraints {
@@ -195,7 +195,7 @@ final class HomeView: BaseView {
             $0.leading.equalTo(degreeLabel.snp.trailing)
             $0.trailing.equalTo(temperatureStackView.snp.trailing)
             $0.height.equalTo(temperatureStackView)
-            $0.width.equalTo(24.5)
+            $0.width.equalTo(33)
         }
     
         weatherStatusLabel.snp.makeConstraints {
