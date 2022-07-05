@@ -7,6 +7,7 @@
 
 import RxSwift
 import RxRelay
+import RxCoreLocation
 
 class HomeViewModel: ViewModelType {
    

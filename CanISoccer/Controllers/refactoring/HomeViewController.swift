@@ -34,6 +34,19 @@ final class HomeViewController: BaseViewController {
         self.view = selfView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        LocationPermissionManager.shared.locationSubject
+          .compactMap { $0 }
+          .bind { [weak self] in print( "\($0)" )}
+          .disposed(by: self.disposeBag)
+        
+        LocationPermissionManager.shared.requestLocation()
+          .bind { print($0) }
+          .disposed(by: self.disposeBag)
+    }
+    
     // MARK: - Configures
     
     override func configureUI() {

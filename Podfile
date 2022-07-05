@@ -12,6 +12,7 @@ target 'CanISoccer' do
   pod 'RxGesture'
   pod 'RxViewController'
   pod 'RxKeyboard' 
+  pod 'RxCoreLocation', '~> 1.5.1'
 
   # Pods for CanISoccer
   pod 'Firebase/Crashlytics'
