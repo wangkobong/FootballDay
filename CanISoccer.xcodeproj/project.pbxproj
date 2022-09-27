@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C282DEEE90F8D9D80E76A40D /* Pods_CanISoccer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F490D0C1CD9DD5DB13D8379 /* Pods_CanISoccer.framework */; };
 		FE18F1DA2744F4EC00A83F1F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE18F1D92744F4EC00A83F1F /* Constants.swift */; };
 		FE18F1DC2744FBE000A83F1F /* SearchGround.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE18F1DB2744FBE000A83F1F /* SearchGround.storyboard */; };
 		FE18F1DE2744FC0000A83F1F /* FavoriteList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE18F1DD2744FC0000A83F1F /* FavoriteList.storyboard */; };
@@ -29,7 +28,7 @@
 		FE362D702871E2BD00869431 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D6F2871E2BD00869431 /* WeatherRepository.swift */; };
 		FE362D742871E36B00869431 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D732871E36B00869431 /* NetworkService.swift */; };
 		FE362D762871E3C600869431 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D752871E3C600869431 /* APIRouter.swift */; };
-		FE8B860B275FA67D0047E98E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = FE8B860A275FA67D0047E98E /* FSCalendar */; };
+		FE4C76AA28E1F36B00AC73B3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4C76A928E1F36B00AC73B3 /* MainView.swift */; };
 		FE8B862F27637B230047E98E /* libswift_Concurrency.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FE8B86612767B3640047E98E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE8B86602767B3640047E98E /* GoogleService-Info.plist */; };
 		FE8DFE35275910B900636FB9 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8DFE34275910B900636FB9 /* Setting.storyboard */; };
@@ -65,14 +64,9 @@
 		FEDBF64C275501BD001A3389 /* PlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDBF64B275501BD001A3389 /* PlacesModel.swift */; };
 		FEDC159E274BC6B90097EC65 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDC159D274BC6B90097EC65 /* RealmModel.swift */; };
 		FEDC15A0274BC9CE0097EC65 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDC159F274BC9CE0097EC65 /* FavoriteModel.swift */; };
-		FEDC15A3274F5DAF0097EC65 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = FEDC15A2274F5DAF0097EC65 /* Toast */; };
 		FEDC15A7274FF5F70097EC65 /* RecommendationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDC15A6274FF5F70097EC65 /* RecommendationModel.swift */; };
 		FEDC15A9274FFC010097EC65 /* HoursModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDC15A8274FFC010097EC65 /* HoursModel.swift */; };
 		FEDC15AB2750C20A0097EC65 /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDC15AA2750C20A0097EC65 /* Alert+Extension.swift */; };
-		FEE7C3DC27493584007CC37E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3DB27493584007CC37E /* Realm */; };
-		FEE7C3DE27493584007CC37E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3DD27493584007CC37E /* RealmSwift */; };
-		FEE7C3E1274935A6007CC37E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3E0274935A6007CC37E /* Alamofire */; };
-		FEE7C3E5274937A8007CC37E /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = FEE7C3E4274937A8007CC37E /* SwiftyJSON */; };
 		FEE7C3E927493BD2007CC37E /* CanISoccer++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7C3E827493BD2007CC37E /* CanISoccer++Bundle.swift */; };
 		FEE7C3EB27495B7D007CC37E /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7C3EA27495B7D007CC37E /* WeatherManager.swift */; };
 		FEE7C3ED274A8616007CC37E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE7C3EC274A8616007CC37E /* WeatherModel.swift */; };
@@ -81,9 +75,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		386EDCC3338A05F3EC2C0712 /* Pods-CanISoccer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanISoccer.debug.xcconfig"; path = "Target Support Files/Pods-CanISoccer/Pods-CanISoccer.debug.xcconfig"; sourceTree = "<group>"; };
-		9F490D0C1CD9DD5DB13D8379 /* Pods_CanISoccer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CanISoccer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C57217D48634D0906F7DCFDB /* Pods-CanISoccer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanISoccer.release.xcconfig"; path = "Target Support Files/Pods-CanISoccer/Pods-CanISoccer.release.xcconfig"; sourceTree = "<group>"; };
 		FE18F1D92744F4EC00A83F1F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FE18F1DB2744FBE000A83F1F /* SearchGround.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchGround.storyboard; sourceTree = "<group>"; };
 		FE18F1DD2744FC0000A83F1F /* FavoriteList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteList.storyboard; sourceTree = "<group>"; };
@@ -107,6 +98,7 @@
 		FE362D6F2871E2BD00869431 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 		FE362D732871E36B00869431 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FE362D752871E3C600869431 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		FE4C76A928E1F36B00AC73B3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
 		FE8B86602767B3640047E98E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE8DFE34275910B900636FB9 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
@@ -158,13 +150,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE8B862F27637B230047E98E /* libswift_Concurrency.tbd in Frameworks */,
-				FEDC15A3274F5DAF0097EC65 /* Toast in Frameworks */,
-				FEE7C3DE27493584007CC37E /* RealmSwift in Frameworks */,
-				FEE7C3E1274935A6007CC37E /* Alamofire in Frameworks */,
-				FEE7C3DC27493584007CC37E /* Realm in Frameworks */,
-				FEE7C3E5274937A8007CC37E /* SwiftyJSON in Frameworks */,
-				FE8B860B275FA67D0047E98E /* FSCalendar in Frameworks */,
-				C282DEEE90F8D9D80E76A40D /* Pods_CanISoccer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,8 +159,6 @@
 		3591F13CC7DE6FBA4AFE1B54 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				386EDCC3338A05F3EC2C0712 /* Pods-CanISoccer.debug.xcconfig */,
-				C57217D48634D0906F7DCFDB /* Pods-CanISoccer.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -184,7 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */,
-				9F490D0C1CD9DD5DB13D8379 /* Pods_CanISoccer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -257,6 +239,7 @@
 		FE2A27F0274260F60056706E /* CanISoccer */ = {
 			isa = PBXGroup;
 			children = (
+				FE4C76A628E1F2F200AC73B3 /* SwiftUIView */,
 				FE608056286D9EE4007730CA /* App */,
 				FE8E5E812757DBCB00E0D94C /* Fonts */,
 				FE608055286D9ED1007730CA /* Utils */,
@@ -293,6 +276,14 @@
 				FE362D752871E3C600869431 /* APIRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		FE4C76A628E1F2F200AC73B3 /* SwiftUIView */ = {
+			isa = PBXGroup;
+			children = (
+				FE4C76A928E1F36B00AC73B3 /* MainView.swift */,
+			);
+			path = SwiftUIView;
 			sourceTree = "<group>";
 		};
 		FE608055286D9ED1007730CA /* Utils */ = {
@@ -453,26 +444,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE2A2802274260F80056706E /* Build configuration list for PBXNativeTarget "CanISoccer" */;
 			buildPhases = (
-				07CE1D034E9D0B6731143C1B /* [CP] Check Pods Manifest.lock */,
 				FE2A27EA274260F60056706E /* Sources */,
 				FE2A27EB274260F60056706E /* Frameworks */,
 				FE2A27EC274260F60056706E /* Resources */,
 				FE8B8608275F9AB50047E98E /* Run Script */,
-				DE57FD6AE5961C267BA8357A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = CanISoccer;
-			packageProductDependencies = (
-				FEE7C3DB27493584007CC37E /* Realm */,
-				FEE7C3DD27493584007CC37E /* RealmSwift */,
-				FEE7C3E0274935A6007CC37E /* Alamofire */,
-				FEE7C3E4274937A8007CC37E /* SwiftyJSON */,
-				FEDC15A2274F5DAF0097EC65 /* Toast */,
-				FE8B860A275FA67D0047E98E /* FSCalendar */,
-			);
 			productName = CanISoccer;
 			productReference = FE2A27EE274260F60056706E /* CanISoccer.app */;
 			productType = "com.apple.product-type.application";
@@ -504,9 +485,10 @@
 			packageReferences = (
 				FEE7C3DA27493584007CC37E /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				FEE7C3DF274935A6007CC37E /* XCRemoteSwiftPackageReference "Alamofire" */,
-				FEE7C3E3274937A8007CC37E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				FEDC15A1274F5DAF0097EC65 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				FE8B8609275FA67D0047E98E /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				FE4C76AB28E1F46300AC73B3 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				FE4C76B228E1F63900AC73B3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = FE2A27EF274260F60056706E /* Products */;
 			projectDirPath = "";
@@ -542,45 +524,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07CE1D034E9D0B6731143C1B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CanISoccer-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DE57FD6AE5961C267BA8357A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CanISoccer/Pods-CanISoccer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FE8B8608275F9AB50047E98E /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -599,7 +542,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -636,6 +579,7 @@
 				FE95BEAF286DB18700307505 /* MainTabBarCoordinator.swift in Sources */,
 				FEDBF64C275501BD001A3389 /* PlacesModel.swift in Sources */,
 				FE95BEC2286DC29200307505 /* SearchGroundViewController2.swift in Sources */,
+				FE4C76AA28E1F36B00AC73B3 /* MainView.swift in Sources */,
 				FE362D702871E2BD00869431 /* WeatherRepository.swift in Sources */,
 				FEDC15A0274BC9CE0097EC65 /* FavoriteModel.swift in Sources */,
 				FEDC15A7274FF5F70097EC65 /* RecommendationModel.swift in Sources */,
@@ -733,7 +677,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -788,7 +732,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -800,7 +744,6 @@
 		};
 		FE2A2803274260F80056706E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 386EDCC3338A05F3EC2C0712 /* Pods-CanISoccer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -819,7 +762,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -840,7 +783,6 @@
 		};
 		FE2A2804274260F80056706E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C57217D48634D0906F7DCFDB /* Pods-CanISoccer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -859,7 +801,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -902,6 +844,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FE4C76AB28E1F46300AC73B3 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
+		FE4C76B228E1F63900AC73B3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		FE8B8609275FA67D0047E98E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
@@ -934,48 +892,7 @@
 				version = 5.4.0;
 			};
 		};
-		FEE7C3E3274937A8007CC37E /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
-			requirement = {
-				kind = exactVersion;
-				version = 5.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FE8B860A275FA67D0047E98E /* FSCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FE8B8609275FA67D0047E98E /* XCRemoteSwiftPackageReference "FSCalendar" */;
-			productName = FSCalendar;
-		};
-		FEDC15A2274F5DAF0097EC65 /* Toast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FEDC15A1274F5DAF0097EC65 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
-			productName = Toast;
-		};
-		FEE7C3DB27493584007CC37E /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FEE7C3DA27493584007CC37E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
-			productName = Realm;
-		};
-		FEE7C3DD27493584007CC37E /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FEE7C3DA27493584007CC37E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
-			productName = RealmSwift;
-		};
-		FEE7C3E0274935A6007CC37E /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FEE7C3DF274935A6007CC37E /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		FEE7C3E4274937A8007CC37E /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FEE7C3E3274937A8007CC37E /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FE2A27E6274260F60056706E /* Project object */;
 }

@@ -1,20 +1,20 @@
+////
+////  ScheduleView.swift
+////  CanISoccer
+////
+////  Created by sungyeon kim on 2022/06/30.
+////
 //
-//  ScheduleView.swift
-//  CanISoccer
+//import UIKit
 //
-//  Created by sungyeon kim on 2022/06/30.
-//
-
-import UIKit
-
-final class ScheduleView: BaseView {
-    
-    // MARK: - UI Properties
-    
-    
-    // MARK: - Configures
-    
-    override func configureUI() {
-        
-    }
-}
+//final class ScheduleView: BaseView {
+//    
+//    // MARK: - UI Properties
+//    
+//    
+//    // MARK: - Configures
+//    
+//    override func configureUI() {
+//        
+//    }
+//}
