@@ -9,7 +9,30 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("날씨")
+                }
+            SearchGroundView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("구장검색")
+                }
+            
+            FavoriteView()
+                .tabItem {
+                    Image(systemName: "bag")
+                    Text("즐겨찾기")
+                }
+            
+            ScheduleView()
+                .tabItem {
+                    Image(systemName: "bag")
+                    Text("즐겨찾기")
+                }
+        }
     }
 }
 

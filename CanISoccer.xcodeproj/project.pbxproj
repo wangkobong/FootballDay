@@ -14,6 +14,10 @@
 		FE18F1E42744FED200A83F1F /* SearchGroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE18F1E32744FED200A83F1F /* SearchGroundViewController.swift */; };
 		FE18F1E62744FEE100A83F1F /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE18F1E52744FEE100A83F1F /* FavoriteListViewController.swift */; };
 		FE18F1E82744FEEB00A83F1F /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE18F1E72744FEEB00A83F1F /* ScheduleViewController.swift */; };
+		FE2515EA28E27CEF0055CF04 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2515E928E27CEF0055CF04 /* HomeView.swift */; };
+		FE2515EC28E27CFA0055CF04 /* SearchGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2515EB28E27CFA0055CF04 /* SearchGroundView.swift */; };
+		FE2515EE28E27D040055CF04 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2515ED28E27D040055CF04 /* FavoriteView.swift */; };
+		FE2515F028E27D100055CF04 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2515EF28E27D100055CF04 /* ScheduleView.swift */; };
 		FE2A27F2274260F60056706E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A27F1274260F60056706E /* AppDelegate.swift */; };
 		FE2A27F4274260F60056706E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A27F3274260F60056706E /* SceneDelegate.swift */; };
 		FE2A27F6274260F60056706E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2A27F5274260F60056706E /* MainViewController.swift */; };
@@ -82,6 +86,10 @@
 		FE18F1E32744FED200A83F1F /* SearchGroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroundViewController.swift; sourceTree = "<group>"; };
 		FE18F1E52744FEE100A83F1F /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		FE18F1E72744FEEB00A83F1F /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		FE2515E928E27CEF0055CF04 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FE2515EB28E27CFA0055CF04 /* SearchGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroundView.swift; sourceTree = "<group>"; };
+		FE2515ED28E27D040055CF04 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		FE2515EF28E27D100055CF04 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		FE2A27EE274260F60056706E /* CanISoccer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CanISoccer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE2A27F1274260F60056706E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE2A27F3274260F60056706E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -282,6 +290,10 @@
 			isa = PBXGroup;
 			children = (
 				FE4C76A928E1F36B00AC73B3 /* MainView.swift */,
+				FE2515E928E27CEF0055CF04 /* HomeView.swift */,
+				FE2515EB28E27CFA0055CF04 /* SearchGroundView.swift */,
+				FE2515ED28E27D040055CF04 /* FavoriteView.swift */,
+				FE2515EF28E27D100055CF04 /* ScheduleView.swift */,
 			);
 			path = SwiftUIView;
 			sourceTree = "<group>";
@@ -580,6 +592,8 @@
 				FEDBF64C275501BD001A3389 /* PlacesModel.swift in Sources */,
 				FE95BEC2286DC29200307505 /* SearchGroundViewController2.swift in Sources */,
 				FE4C76AA28E1F36B00AC73B3 /* MainView.swift in Sources */,
+				FE2515EC28E27CFA0055CF04 /* SearchGroundView.swift in Sources */,
+				FE2515EE28E27D040055CF04 /* FavoriteView.swift in Sources */,
 				FE362D702871E2BD00869431 /* WeatherRepository.swift in Sources */,
 				FEDC15A0274BC9CE0097EC65 /* FavoriteModel.swift in Sources */,
 				FEDC15A7274FF5F70097EC65 /* RecommendationModel.swift in Sources */,
@@ -590,6 +604,8 @@
 				FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */,
 				FE18F1E42744FED200A83F1F /* SearchGroundViewController.swift in Sources */,
 				FE18F1E82744FEEB00A83F1F /* ScheduleViewController.swift in Sources */,
+				FE2515F028E27D100055CF04 /* ScheduleView.swift in Sources */,
+				FE2515EA28E27CEF0055CF04 /* HomeView.swift in Sources */,
 				FE32CCA228745C6700B3C152 /* SoccerError.swift in Sources */,
 				FE95BEA7286DA7F500307505 /* Coordinator.swift in Sources */,
 				FE8DFE37275910E000636FB9 /* SettingViewController.swift in Sources */,
