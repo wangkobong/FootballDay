@@ -8,37 +8,28 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var address = ""
+    @State private var time = ""
     var body: some View {
         VStack {
+            HomeSearchView()
+            
+            TextField("시간대를 선택해주세요", text: $time)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            WeatherDescriptionView()
+            
             HStack {
-                Button {
-                    print("내위치클릭")
-                } label: {
-                    Image(systemName: "location.circle.fill")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                }
-               
-                
-                TextField("주소를 입력해주세요", text: $address)
-                    .foregroundColor(.white)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                
-                Button {
-                    print("내위치클릭")
-                } label: {
-                    Image(systemName: "magnifyingglass")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                }
+                Spacer()
+                Text("서울특별시 마포구의 날씨입니다.")
+                    .font(.custom(NotoSansKR.medium500.rawValue, size: 18))
+                    .padding(.trailing)
+            }
+            
+            Spacer()
 
-            }//: HSTACK
-            .frame(height: 50)
-            .background()
         }//: VSTACK
         .background(Image("layered-waves-haikei"))
+        .foregroundColor(.white)
     }
 }
 

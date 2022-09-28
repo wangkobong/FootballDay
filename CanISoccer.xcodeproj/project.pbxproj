@@ -22,6 +22,9 @@
 		FE2A27FE274260F80056706E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2A27FC274260F80056706E /* LaunchScreen.storyboard */; };
 		FE32CCA228745C6700B3C152 /* SoccerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE32CCA128745C6700B3C152 /* SoccerError.swift */; };
 		FE32CCA428747FD500B3C152 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE32CCA328747FD500B3C152 /* LocationManager.swift */; };
+		FE32E50128E499A800ECD580 /* HomeSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE32E50028E499A800ECD580 /* HomeSearchView.swift */; };
+		FE32E50328E49B4900ECD580 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE32E50228E49B4900ECD580 /* Font.swift */; };
+		FE32E50528E49C3400ECD580 /* WeatherDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE32E50428E49C3400ECD580 /* WeatherDescriptionView.swift */; };
 		FE362D6A2871E0D800869431 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D692871E0D800869431 /* HomeViewModel.swift */; };
 		FE362D6C2871E0F200869431 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D6B2871E0F200869431 /* ViewModelType.swift */; };
 		FE362D6E2871E29100869431 /* WeatherUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D6D2871E29100869431 /* WeatherUsecase.swift */; };
@@ -84,6 +87,9 @@
 		FE2A27FF274260F80056706E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE32CCA128745C6700B3C152 /* SoccerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerError.swift; sourceTree = "<group>"; };
 		FE32CCA328747FD500B3C152 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		FE32E50028E499A800ECD580 /* HomeSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchView.swift; sourceTree = "<group>"; };
+		FE32E50228E49B4900ECD580 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		FE32E50428E49C3400ECD580 /* WeatherDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDescriptionView.swift; sourceTree = "<group>"; };
 		FE362D692871E0D800869431 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		FE362D6B2871E0F200869431 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		FE362D6D2871E29100869431 /* WeatherUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUsecase.swift; sourceTree = "<group>"; };
@@ -225,6 +231,15 @@
 			path = CanISoccer;
 			sourceTree = "<group>";
 		};
+		FE32E4FF28E4999500ECD580 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				FE32E50028E499A800ECD580 /* HomeSearchView.swift */,
+				FE32E50428E49C3400ECD580 /* WeatherDescriptionView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		FE362D712871E35300869431 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +260,7 @@
 		FE4C76A628E1F2F200AC73B3 /* SwiftUIView */ = {
 			isa = PBXGroup;
 			children = (
+				FE32E4FF28E4999500ECD580 /* Component */,
 				FE4C76A928E1F36B00AC73B3 /* MainView.swift */,
 				FE2515E928E27CEF0055CF04 /* HomeView.swift */,
 				FE2515EB28E27CFA0055CF04 /* SearchGroundView.swift */,
@@ -393,6 +409,7 @@
 				FEE7C3EE274BABFD007CC37E /* Date++Extension.swift */,
 				FEDC15AA2750C20A0097EC65 /* Alert+Extension.swift */,
 				FE8DFE3C275B580A00636FB9 /* UIView++Extension.swift */,
+				FE32E50228E49B4900ECD580 /* Font.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -507,12 +524,15 @@
 				FE32CCA428747FD500B3C152 /* LocationManager.swift in Sources */,
 				FE2A27F4274260F60056706E /* SceneDelegate.swift in Sources */,
 				FEE7C3EB27495B7D007CC37E /* WeatherManager.swift in Sources */,
+				FE32E50328E49B4900ECD580 /* Font.swift in Sources */,
 				FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */,
 				FE18F1E42744FED200A83F1F /* SearchGroundViewController.swift in Sources */,
 				FE18F1E82744FEEB00A83F1F /* ScheduleViewController.swift in Sources */,
 				FE2515F028E27D100055CF04 /* ScheduleView.swift in Sources */,
 				FE2515EA28E27CEF0055CF04 /* HomeView.swift in Sources */,
 				FE32CCA228745C6700B3C152 /* SoccerError.swift in Sources */,
+				FE32E50528E49C3400ECD580 /* WeatherDescriptionView.swift in Sources */,
+				FE32E50128E499A800ECD580 /* HomeSearchView.swift in Sources */,
 				FE95BEA7286DA7F500307505 /* Coordinator.swift in Sources */,
 				FE8DFE37275910E000636FB9 /* SettingViewController.swift in Sources */,
 				FEE7C3EF274BABFD007CC37E /* Date++Extension.swift in Sources */,
