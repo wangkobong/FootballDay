@@ -12,25 +12,25 @@ struct MainView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Image(systemName: "house")
+                    Image(systemName: "location.fill")
                     Text("날씨")
                 }
             SearchGroundView()
                 .tabItem {
-                    Image(systemName: "person")
+                    Image(systemName: "magnifyingglass")
                     Text("구장검색")
                 }
             
             FavoriteView()
                 .tabItem {
-                    Image(systemName: "bag")
+                    Image(systemName: "star.fill")
                     Text("즐겨찾기")
                 }
             
             ScheduleView()
                 .tabItem {
-                    Image(systemName: "bag")
-                    Text("즐겨찾기")
+                    Image(systemName: "calendar.badge.plus")
+                    Text("일정")
                 }
         }
     }
