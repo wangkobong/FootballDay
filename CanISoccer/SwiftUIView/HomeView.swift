@@ -26,7 +26,16 @@ struct HomeView: View {
             }
             
             Spacer()
-
+                .frame(height: 20)
+            
+            HStack {
+                Spacer()
+                Text("운동하기 딱 좋은 온도입니다!")
+                    .font(.custom(NotoSansKR.medium500.rawValue, size: 18))
+                    .padding(.trailing)
+            }
+            Spacer()
+            
         }//: VSTACK
         .background(Image("layered-waves-haikei"))
         .foregroundColor(.white)
