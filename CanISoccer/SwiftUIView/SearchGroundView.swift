@@ -6,10 +6,59 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct SearchGroundView: View {
+    
+    @State private var address = ""
+    @State private var region = MKCoordinateRegion(
+                    center: CLLocationCoordinate2D(
+                        latitude: 40.83834587046632,
+                        longitude: 14.254053016537693),
+                    span: MKCoordinateSpan(
+                        latitudeDelta: 0.03,
+                        longitudeDelta: 0.03)
+                    )
     var body: some View {
-        Text("구장검색")
+        VStack {
+            HStack {
+                Button {
+                    print("내위치클릭")
+                } label: {
+                    Image(systemName: "location.circle.fill")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .tint(.black)
+                        .padding(.leading)
+                        .padding(.trailing)
+                }
+               
+                
+                TextField("", text: $address)
+                    .placeholder(when: address.isEmpty) {
+                        Text("주소를 입력해주세요")
+                            .foregroundColor(.black)
+                    }
+                    .background(.clear)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                
+                Button {
+                    print("내위치클릭")
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .tint(.black)
+                        .padding(.leading)
+                        .padding(.trailing)
+                }
+
+            }//: HSTACK
+            .frame(height: 50)
+            
+            Map(coordinateRegion: $region)
+        }//: VSATCK
     }
 }
 
