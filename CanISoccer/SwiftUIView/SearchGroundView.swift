@@ -17,8 +17,10 @@ struct SearchGroundView: View {
                         longitude: 14.254053016537693),
                     span: MKCoordinateSpan(
                         latitudeDelta: 0.03,
-                        longitudeDelta: 0.03)
-                    )
+                        longitudeDelta: 0.03))
+    @State private var ground = "futsal"
+    var grounds = ["futsal", "soccer"]
+                    
     var body: some View {
         VStack {
             HStack {
@@ -56,7 +58,12 @@ struct SearchGroundView: View {
 
             }//: HSTACK
             .frame(height: 50)
-            
+            Picker("어느 경기장을 검색하시겠습니까?", selection: $ground) {
+                         ForEach(grounds, id: \.self) {
+                             Text($0)
+                         }
+                     }
+                     .pickerStyle(.segmented)
             Map(coordinateRegion: $region)
         }//: VSATCK
     }
