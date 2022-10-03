@@ -31,6 +31,7 @@
 		FE362D702871E2BD00869431 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D6F2871E2BD00869431 /* WeatherRepository.swift */; };
 		FE362D742871E36B00869431 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D732871E36B00869431 /* NetworkService.swift */; };
 		FE362D762871E3C600869431 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D752871E3C600869431 /* APIRouter.swift */; };
+		FE38A73E28EB2AA3005DFD92 /* FavoriteRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE38A73D28EB2AA3005DFD92 /* FavoriteRow.swift */; };
 		FE4C76AA28E1F36B00AC73B3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4C76A928E1F36B00AC73B3 /* MainView.swift */; };
 		FE8B862F27637B230047E98E /* libswift_Concurrency.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FE8B86612767B3640047E98E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE8B86602767B3640047E98E /* GoogleService-Info.plist */; };
@@ -96,6 +97,7 @@
 		FE362D6F2871E2BD00869431 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 		FE362D732871E36B00869431 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FE362D752871E3C600869431 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		FE38A73D28EB2AA3005DFD92 /* FavoriteRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRow.swift; sourceTree = "<group>"; };
 		FE4C76A928E1F36B00AC73B3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
 		FE8B86602767B3640047E98E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			children = (
 				FE32E50028E499A800ECD580 /* HomeSearchView.swift */,
 				FE32E50428E49C3400ECD580 /* WeatherDescriptionView.swift */,
+				FE38A73D28EB2AA3005DFD92 /* FavoriteRow.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				FE2515EA28E27CEF0055CF04 /* HomeView.swift in Sources */,
 				FE32CCA228745C6700B3C152 /* SoccerError.swift in Sources */,
 				FE32E50528E49C3400ECD580 /* WeatherDescriptionView.swift in Sources */,
+				FE38A73E28EB2AA3005DFD92 /* FavoriteRow.swift in Sources */,
 				FE32E50128E499A800ECD580 /* HomeSearchView.swift in Sources */,
 				FE95BEA7286DA7F500307505 /* Coordinator.swift in Sources */,
 				FE8DFE37275910E000636FB9 /* SettingViewController.swift in Sources */,
