@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ScheduleView: View {
+    
+    @State var currentDate: Date = Date()
     var body: some View {
-        Text("일정")
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 20) {
+                
+                CustomDatePicker(currentDate: $currentDate)
+            }//: VSTACK
+        }//: ScrollView
     }
 }
 

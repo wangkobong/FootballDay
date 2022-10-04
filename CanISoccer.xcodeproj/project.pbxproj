@@ -32,6 +32,8 @@
 		FE362D742871E36B00869431 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D732871E36B00869431 /* NetworkService.swift */; };
 		FE362D762871E3C600869431 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE362D752871E3C600869431 /* APIRouter.swift */; };
 		FE38A73E28EB2AA3005DFD92 /* FavoriteRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE38A73D28EB2AA3005DFD92 /* FavoriteRow.swift */; };
+		FE38A74128EC7B7F005DFD92 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE38A74028EC7B7F005DFD92 /* CustomDatePicker.swift */; };
+		FE38A74328EC7F64005DFD92 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE38A74228EC7F64005DFD92 /* DateValue.swift */; };
 		FE4C76AA28E1F36B00AC73B3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4C76A928E1F36B00AC73B3 /* MainView.swift */; };
 		FE8B862F27637B230047E98E /* libswift_Concurrency.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FE8B86612767B3640047E98E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE8B86602767B3640047E98E /* GoogleService-Info.plist */; };
@@ -98,6 +100,8 @@
 		FE362D732871E36B00869431 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		FE362D752871E3C600869431 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		FE38A73D28EB2AA3005DFD92 /* FavoriteRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRow.swift; sourceTree = "<group>"; };
+		FE38A74028EC7B7F005DFD92 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		FE38A74228EC7F64005DFD92 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		FE4C76A928E1F36B00AC73B3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FE8B862E27637B230047E98E /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
 		FE8B86602767B3640047E98E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				FEDC15A6274FF5F70097EC65 /* RecommendationModel.swift */,
 				FEDC15A8274FFC010097EC65 /* HoursModel.swift */,
 				FEDBF64B275501BD001A3389 /* PlacesModel.swift */,
+				FE38A74228EC7F64005DFD92 /* DateValue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,9 +219,9 @@
 			children = (
 				FE4C76A628E1F2F200AC73B3 /* SwiftUIView */,
 				FE608056286D9EE4007730CA /* App */,
+				FE18F1D82744F4D700A83F1F /* Models */,
 				FE8E5E812757DBCB00E0D94C /* Fonts */,
 				FED60231274902DB00428EFA /* Extension */,
-				FE18F1D82744F4D700A83F1F /* Models */,
 				FE2A27FF274260F80056706E /* Info.plist */,
 				FE8B86602767B3640047E98E /* GoogleService-Info.plist */,
 				FEDBF6492754F32F001A3389 /* WeatherInfo.plist */,
@@ -230,6 +235,7 @@
 				FE32E50028E499A800ECD580 /* HomeSearchView.swift */,
 				FE32E50428E49C3400ECD580 /* WeatherDescriptionView.swift */,
 				FE38A73D28EB2AA3005DFD92 /* FavoriteRow.swift */,
+				FE38A74028EC7B7F005DFD92 /* CustomDatePicker.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -503,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE38A74128EC7B7F005DFD92 /* CustomDatePicker.swift in Sources */,
 				FE2A27F6274260F60056706E /* MainViewController.swift in Sources */,
 				FE95BEA5286DA70800307505 /* Logger.swift in Sources */,
 				FE362D742871E36B00869431 /* NetworkService.swift in Sources */,
@@ -553,6 +560,7 @@
 				FEDC15AB2750C20A0097EC65 /* Alert+Extension.swift in Sources */,
 				FE95BECA286DC52B00307505 /* ScheduleCoordinator.swift in Sources */,
 				FE18F1DA2744F4EC00A83F1F /* Constants.swift in Sources */,
+				FE38A74328EC7F64005DFD92 /* DateValue.swift in Sources */,
 				FE95BEB6286DB42400307505 /* BaseViewController.swift in Sources */,
 				FE362D762871E3C600869431 /* APIRouter.swift in Sources */,
 			);
