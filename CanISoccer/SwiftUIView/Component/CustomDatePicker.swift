@@ -21,25 +21,27 @@ struct CustomDatePicker: View {
             
             HStack(spacing: 20) {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("2022")
+                    Text(extraDate()[0])
                         .font(.caption)
                         .fontWeight(.semibold)
                     
-                    Text("September")
+                    Text(extraDate()[1])
                         .font(.title.bold())
                 }//: VSTACK
                 
                 Spacer(minLength: 0)
                 
                 Button {
-                    
+                    withAnimation {
+                        currentMonth -= 1
+                    }
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.title2)
                 }
                 
                 Button {
-                    
+                    currentMonth += 1
                 } label: {
                     Image(systemName: "chevron.right")
                         .font(.title2)
@@ -65,17 +67,40 @@ struct CustomDatePicker: View {
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(extractDate()) { value in
                     Text("\(value.day)")
+                        .font(.title3.bold())
                 }
             }
             
             
         }//: VSTACK
+        .onChange(of: currentMonth) { newValue in
+            // updating Month
+            currentDate = getCurrentMonth()
+        }
+    }
+    
+    // extracting Year and Month for display
+    func extraDate() -> [String] {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY MMMM"
+        
+        let date = formatter.string(from: currentDate)
+        
+        return date.components(separatedBy: " ")
+    }
+    
+    func getCurrentMonth() -> Date {
+        let calendar = Calendar.current
+        // Getting Current Month Date
+        guard let currentMonth = calendar.date(byAdding: .month, value: self.currentMonth, to: Date()) else { return Date() }
+        
+        return currentMonth
     }
     
     func extractDate() -> [DateValue] {
         let calendar = Calendar.current
         // Getting Current Month Date
-        guard let currentMonth = calendar.date(byAdding: .month, value: self.currentMonth, to: Date()) else { return [] }
+        let currentMonth = getCurrentMonth()
         
         return currentMonth.getAllDates().compactMap { date -> DateValue in
             // getting day
@@ -97,11 +122,16 @@ extension Date {
     
     func getAllDates() -> [Date] {
         let calendar = Calendar.current
-        let range = calendar.range(of: .day, in: .month, for: self)!
+        
+        // getting start Date...
+        let startDate = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
+        
+        var range = calendar.range(of: .day, in: .month, for: startDate)!
+        range.removeLast()
         
         // getting date
         return range.compactMap { day -> Date in
-            return  calendar.date(byAdding: .day, value: day, to: self)!
+            return  calendar.date(byAdding: .day, value: day == 1 ? 0 : day, to: startDate)!
         }
     }
 }
