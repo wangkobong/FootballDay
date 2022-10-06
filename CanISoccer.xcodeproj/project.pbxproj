@@ -58,6 +58,7 @@
 		FE95BEC8286DC39700307505 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEC7286DC39700307505 /* FavoriteViewController.swift */; };
 		FE95BECA286DC52B00307505 /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BEC9286DC52B00307505 /* ScheduleCoordinator.swift */; };
 		FE95BECC286DC54E00307505 /* ScheduleViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE95BECB286DC54E00307505 /* ScheduleViewController2.swift */; };
+		FEC3BDB028EE97BB00FCFDB8 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC3BDAF28EE97BB00FCFDB8 /* Task.swift */; };
 		FEDBF64A2754F32F001A3389 /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEDBF6492754F32F001A3389 /* WeatherInfo.plist */; };
 		FEDBF64C275501BD001A3389 /* PlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDBF64B275501BD001A3389 /* PlacesModel.swift */; };
 		FEDC159E274BC6B90097EC65 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDC159D274BC6B90097EC65 /* RealmModel.swift */; };
@@ -126,6 +127,7 @@
 		FE95BEC7286DC39700307505 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		FE95BEC9286DC52B00307505 /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
 		FE95BECB286DC54E00307505 /* ScheduleViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController2.swift; sourceTree = "<group>"; };
+		FEC3BDAF28EE97BB00FCFDB8 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		FEDBF6492754F32F001A3389 /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
 		FEDBF64B275501BD001A3389 /* PlacesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesModel.swift; sourceTree = "<group>"; };
 		FEDC159D274BC6B90097EC65 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				FEDC15A8274FFC010097EC65 /* HoursModel.swift */,
 				FEDBF64B275501BD001A3389 /* PlacesModel.swift */,
 				FE38A74228EC7F64005DFD92 /* DateValue.swift */,
+				FEC3BDAF28EE97BB00FCFDB8 /* Task.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				FEFA86792749049400A4A713 /* Textfield++Extension.swift in Sources */,
 				FE18F1E42744FED200A83F1F /* SearchGroundViewController.swift in Sources */,
 				FE18F1E82744FEEB00A83F1F /* ScheduleViewController.swift in Sources */,
+				FEC3BDB028EE97BB00FCFDB8 /* Task.swift in Sources */,
 				FE2515F028E27D100055CF04 /* ScheduleView.swift in Sources */,
 				FE2515EA28E27CEF0055CF04 /* HomeView.swift in Sources */,
 				FE32CCA228745C6700B3C152 /* SoccerError.swift in Sources */,

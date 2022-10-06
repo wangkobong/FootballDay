@@ -67,6 +67,15 @@ struct CustomDatePicker: View {
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(extractDate()) { value in
                     CardView(value: value)
+                        .background(
+                            Capsule()
+                                .fill(Color("Pink"))
+                                .padding(.horizontal, 8)
+                                .opacity(isSameDay(date1: value.date, date2: currentDate) ? 1 : 0)
+                        )
+                        .onTapGesture {
+                            currentDate = value.date
+                        }
                 }
             }
             
@@ -82,12 +91,40 @@ struct CustomDatePicker: View {
     func CardView(value: DateValue) -> some View {
         VStack {
             if value.day != -1 {
-                Text("\(value.day)")
-                    .font(.title3.bold())
+                if let task = tasks.first(where: { task in
+                    
+                    return isSameDay(date1: task.taskDate, date2: value.date)
+                }) {
+                    Text("\(value.day)")
+                        .font(.title3.bold())
+                        .foregroundColor(isSameDay(date1: task.taskDate, date2: currentDate) ? .white : .primary)
+                        .frame(maxWidth: .infinity)
+                    
+                    Spacer()
+                    
+                    Circle()
+                        .fill(isSameDay(date1: task.taskDate, date2: currentDate) ? .white : Color("Pink"))
+                        .frame(width: 8, height: 8)
+                    
+                } else {
+                    Text("\(value.day)")
+                        .font(.title3.bold())
+                        .foregroundColor(isSameDay(date1: value.date, date2: currentDate) ? .white : .primary)
+                        .frame(maxWidth: .infinity)
+                    
+                    Spacer()
+                }
             }
-        }
+        }//: VSTACK
         .padding(.vertical, 8)
-        .frame(height: 20, alignment: .top)
+        .frame(height: 60, alignment: .top)
+    }
+    
+    // checking dates
+    func isSameDay(date1: Date, date2: Date) -> Bool {
+        let calendar = Calendar.current
+        
+        return calendar.isDate(date1, inSameDayAs: date2)
     }
     
     // extracting Year and Month for display
