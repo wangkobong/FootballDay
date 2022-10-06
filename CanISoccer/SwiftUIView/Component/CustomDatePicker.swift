@@ -66,8 +66,7 @@ struct CustomDatePicker: View {
             
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(extractDate()) { value in
-                    Text("\(value.day)")
-                        .font(.title3.bold())
+                    CardView(value: value)
                 }
             }
             
@@ -79,11 +78,23 @@ struct CustomDatePicker: View {
         }
     }
     
+    @ViewBuilder
+    func CardView(value: DateValue) -> some View {
+        VStack {
+            if value.day != -1 {
+                Text("\(value.day)")
+                    .font(.title3.bold())
+            }
+        }
+        .padding(.vertical, 8)
+        .frame(height: 20, alignment: .top)
+    }
+    
     // extracting Year and Month for display
     func extraDate() -> [String] {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY MMMM"
-        
+        formatter.locale = Locale(identifier: "ko")
         let date = formatter.string(from: currentDate)
         
         return date.components(separatedBy: " ")
@@ -102,11 +113,19 @@ struct CustomDatePicker: View {
         // Getting Current Month Date
         let currentMonth = getCurrentMonth()
         
-        return currentMonth.getAllDates().compactMap { date -> DateValue in
+        var days = currentMonth.getAllDates().compactMap { date -> DateValue in
             // getting day
             let day = calendar.component(.day, from: date)
             return DateValue(day: day, date: date)
         }
+        
+        // adding offset days to get exact week day
+        let firstWeekday = calendar.component(.weekday, from: days.first?.date ?? Date())
+        
+        for _ in 0..<firstWeekday - 1 {
+            days.insert(DateValue(day: -1, date: Date()), at: 0)
+        }
+        return days
     }
 }
 
@@ -126,12 +145,11 @@ extension Date {
         // getting start Date...
         let startDate = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
         
-        var range = calendar.range(of: .day, in: .month, for: startDate)!
-        range.removeLast()
-        
+        let range = calendar.range(of: .day, in: .month, for: startDate)!
+ 
         // getting date
         return range.compactMap { day -> Date in
-            return  calendar.date(byAdding: .day, value: day == 1 ? 0 : day, to: startDate)!
+            return  calendar.date(byAdding: .day, value: day - 1, to: startDate)!
         }
     }
 }
