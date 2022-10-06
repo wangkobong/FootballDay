@@ -16,6 +16,7 @@ struct ScheduleView: View {
                 
                 CustomDatePicker(currentDate: $currentDate)
             }//: VSTACK
+            .padding(.vertical)
         }//: ScrollView
     }
 }
